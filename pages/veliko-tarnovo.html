@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Велико Търново | DISCOVER BULGARIA</title>
+    <link rel="stylesheet" href="../css/style.css">
+
+    <style>
+        .vt-page {
+            color: #17231d;
+            background: #f8f6f1;
+        }
+
+        .vt-hero {
+            min-height: 720px;
+            position: relative;
+            display: flex;
+            align-items: flex-end;
+            color: #fff;
+            background:
+                linear-gradient(90deg, rgba(10,18,15,.78) 0%, rgba(10,18,15,.42) 48%, rgba(10,18,15,.18) 100%),
+                linear-gradient(0deg, rgba(10,18,15,.68) 0%, transparent 58%),
+                url("https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Tsarevets_-_Veliko_Tarnovo.jpg/1280px-Tsarevets_-_Veliko_Tarnovo.jpg") center 42% / cover no-repeat;
+        }
+
+        .vt-hero-content {
+            width: min(1100px, 92%);
+            margin: 0 auto;
+            padding: 150px 0 95px;
+        }
+
+        .vt-kicker {
+            display: inline-block;
+            margin-bottom: 18px;
+            color: #d49a58;
+            font-size: 13px;
+            font-weight: 800;
+            letter-spacing: 3px;
+        }
+
+        .vt-hero h1 {
+            max-width: 900px;
+            margin: 0 0 22px;
+            color: #fff;
+            font-size: clamp(58px, 8vw, 104px);
+            line-height: .92;
+            letter-spacing: -4px;
+        }
+
+        .vt-hero p {
+            max-width: 720px;
+            margin: 0;
+            color: rgba(255,255,255,.92);
+            font-size: 20px;
+            line-height: 1.75;
+        }
+
+        .vt-section {
+            padding: 105px 0;
+        }
+
+        .vt-container {
+            width: min(1100px, 92%);
+            margin: 0 auto;
+        }
+
+        .vt-intro {
+            display: grid;
+            grid-template-columns: .8fr 1.6fr;
+            gap: 70px;
+            align-items: start;
+        }
+
+        .vt-label {
+            color: #b97938;
+            font-size: 13px;
+            font-weight: 800;
+            letter-spacing: 3px;
+        }
+
+        .vt-intro h2 {
+            margin: 12px 0 0;
+            font-size: clamp(36px, 4.5vw, 58px);
+            line-height: 1.02;
+        }
+
+        .vt-intro-copy p {
+            margin: 0 0 18px;
+            color: #606b65;
+            font-size: 18px;
+            line-height: 1.9;
+        }
+
+        .vt-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin-top: 42px;
+        }
+
+        .vt-stat {
+            padding: 24px;
+            border: 1px solid #ded9d0;
+            border-radius: 18px;
+            background: rgba(255,255,255,.55);
+        }
+
+        .vt-stat strong {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 26px;
+        }
+
+        .vt-stat span {
+            color: #6d756f;
+            line-height: 1.5;
+        }
+
+        .vt-feature-section {
+            background: #eee9df;
+        }
+
+        .vt-heading {
+            max-width: 780px;
+            margin-bottom: 45px;
+        }
+
+        .vt-heading h2 {
+            margin: 10px 0 0;
+            font-size: clamp(36px, 4.5vw, 56px);
+            line-height: 1.05;
+        }
+
+        .vt-heading p:last-child {
+            margin-top: 18px;
+            color: #66706a;
+            font-size: 17px;
+            line-height: 1.7;
+        }
+
+        .vt-features {
+            display: grid;
+            grid-template-columns: 1.2fr .9fr .9fr;
+            gap: 22px;
+        }
+
+        .vt-feature {
+            overflow: hidden;
+            border-radius: 24px;
+            background: #fff;
+            box-shadow: 0 12px 35px rgba(35,35,25,.08);
+        }
+
+        .vt-feature:first-child {
+            grid-row: span 2;
+        }
+
+        .vt-feature-image {
+            height: 260px;
+            background-position: center;
+            background-size: cover;
+        }
+
+        .vt-feature:first-child .vt-feature-image {
+            height: 540px;
+        }
+
+        .vt-feature-content {
+            padding: 27px;
+        }
+
+        .vt-feature-content h3 {
+            margin: 0 0 10px;
+            font-size: 28px;
+        }
+
+        .vt-feature-content p {
+            margin: 0;
+            color: #69726c;
+            line-height: 1.7;
+        }
+
+        .vt-feature-tag {
+            display: block;
+            margin-bottom: 12px;
+            color: #b97938;
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 2px;
+        }
+
+        .vt-experience {
+            background: #17231d;
+            color: #fff;
+        }
+
+        .vt-experience .vt-label {
+            color: #d49a58;
+        }
+
+        .vt-experience h2 {
+            color: #fff;
+        }
+
+        .vt-experience-intro {
+            max-width: 720px;
+            color: rgba(255,255,255,.72);
+            font-size: 17px;
+            line-height: 1.8;
+        }
+
+        .vt-experience-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 45px;
+        }
+
+        .vt-experience-card {
+            min-height: 255px;
+            padding: 30px;
+            border: 1px solid rgba(255,255,255,.12);
+            border-radius: 20px;
+            background: rgba(255,255,255,.045);
+        }
+
+        .vt-experience-card h3 {
+            margin: 14px 0 12px;
+            color: #fff;
+            font-size: 25px;
+        }
+
+        .vt-experience-card p {
+            color: rgba(255,255,255,.68);
+            line-height: 1.65;
+        }
+
+        .vt-price {
+            display: block;
+            margin-top: 28px;
+            color: #d49a58;
+            font-size: 23px;
+            font-weight: 800;
+        }
+
+        .vt-plan {
+            background: #f8f6f1;
+        }
+
+        .vt-plan-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin-top: 45px;
+        }
+
+        .vt-plan-card {
+            padding: 25px;
+            border-radius: 18px;
+            border: 1px solid #ded9d0;
+            background: #fff;
+        }
+
+        .vt-plan-card span {
+            display: block;
+            margin-bottom: 10px;
+            color: #8a918c;
+            font-size: 13px;
+        }
+
+        .vt-plan-card strong {
+            font-size: 18px;
+            line-height: 1.45;
+        }
+
+        .vt-cta {
+            padding: 110px 20px;
+            text-align: center;
+            background:
+                linear-gradient(rgba(18,31,25,.82), rgba(18,31,25,.82)),
+                url("https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Samovodska_Charshiya%2C_Veliko_Tarnovo%2C_Bulgaria_%285681385714%29.jpg/1280px-Samovodska_Charshiya%2C_Veliko_Tarnovo%2C_Bulgaria_%285681385714%29.jpg") center / cover;
+            color: #fff;
+        }
+
+        .vt-cta h2 {
+            margin: 0 auto 28px;
+            max-width: 760px;
+            color: #fff;
+            font-size: clamp(38px, 5vw, 64px);
+            line-height: 1;
+        }
+
+        .vt-cta a {
+            display: inline-block;
+            padding: 15px 25px;
+            border-radius: 12px;
+            background: #c18443;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 800;
+        }
+
+        .vt-credits {
+            padding: 28px 20px;
+            background: #101914;
+            color: rgba(255,255,255,.58);
+            font-size: 12px;
+            line-height: 1.7;
+        }
+
+        .vt-credits .vt-container {
+            width: min(1100px, 92%);
+        }
+
+        @media (max-width: 850px) {
+            .vt-intro {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .vt-features,
+            .vt-experience-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .vt-feature:first-child {
+                grid-row: auto;
+            }
+
+            .vt-feature:first-child .vt-feature-image,
+            .vt-feature-image {
+                height: 280px;
+            }
+
+            .vt-plan-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .vt-stats {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 560px) {
+            .vt-plan-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .vt-hero h1 {
+                letter-spacing: -2px;
+            }
+        }
+    </style>
+</head>
+
+<body class="vt-page">
+
+<header class="site-header">
+    <div class="container">
+        <nav>
+            <a class="logo" href="../index.html">DISCOVER BULGARIA</a>
+
+            <div class="main-nav">
+                <a href="../index.html">Начало</a>
+                <a href="destinations.html">Дестинации</a>
+                <a href="#">Преживявания</a>
+                <a href="#">Настаняване</a>
+                <a href="#">Магазин</a>
+            </div>
+
+            <div class="nav-actions">
+                <a href="#" aria-label="Любими">♡</a>
+                <a href="#" aria-label="Количка">🛒</a>
+                <a href="#">Вход</a>
+            </div>
+        </nav>
+    </div>
+</header>
+
+<main>
+
+    <section class="vt-hero">
+        <div class="vt-hero-content">
+            <span class="vt-kicker">ИСТОРИЯ · БЪЛГАРИЯ</span>
+            <h1>Велико Търново</h1>
+            <p>
+                Град на царе, крепости и стръмни хълмове —
+                място, в което историята не стои зад стъкло, а се усеща по улиците.
+            </p>
+        </div>
+    </section>
+
+    <section class="vt-section">
+        <div class="vt-container">
+            <div class="vt-intro">
+                <div>
+                    <span class="vt-label">ОТКРИЙ ВЕЛИКО ТЪРНОВО</span>
+                    <h2>Столицата на българската история.</h2>
+                </div>
+
+                <div class="vt-intro-copy">
+                    <p>
+                        Велико Търново е свързано с Търновското царство и средновековната
+                        история на България. Над града се издига крепостта Царевец,
+                        а старите квартали следват релефа на хълмовете.
+                    </p>
+                    <p>
+                        Тук можеш да съчетаеш исторически обекти, панорамни гледки,
+                        занаятчийски улици и спокойно градско преживяване в рамките на един ден.
+                    </p>
+
+                    <div class="vt-stats">
+                        <div class="vt-stat">
+                            <strong>Царевец</strong>
+                            <span>Средновековната крепост над града</span>
+                        </div>
+                        <div class="vt-stat">
+                            <strong>Трапезица</strong>
+                            <span>Исторически хълм срещу Царевец</span>
+                        </div>
+                        <div class="vt-stat">
+                            <strong>Самоводската чаршия</strong>
+                            <span>Стара занаятчийска улица в града</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="vt-section vt-feature-section">
+        <div class="vt-container">
+            <div class="vt-heading">
+                <span class="vt-label">ТРИ ЛИЦА НА ГРАДА</span>
+                <h2>История, която можеш да разгледаш отблизо.</h2>
+                <p>
+                    Подбрани места, с които Велико Търново се разпознава —
+                    от крепостните стени до старите занаятчийски улици.
+                </p>
+            </div>
+
+            <div class="vt-features">
+
+                <article class="vt-feature">
+                    <div class="vt-feature-image"
+                         style="background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/P1060513_levels_crop.jpg?width=1024');"></div>
+                    <div class="vt-feature-content">
+                        <span class="vt-feature-tag">01 · СРЕДНОВЕКОВИЕ</span>
+                        <h3>Царевец</h3>
+                        <p>
+                            Крепостта е разположена на хълма Царевец и е сред
+                            най-разпознаваемите исторически места във Велико Търново.
+                        </p>
+                    </div>
+                </article>
+
+                <article class="vt-feature">
+                    <div class="vt-feature-image"
+                         style="background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/Trapezitca_036.jpg?width=1024');"></div>
+                    <div class="vt-feature-content">
+                        <span class="vt-feature-tag">02 · ТЪРНОВГРАД</span>
+                        <h3>Трапезица</h3>
+                        <p>
+                            Хълм с останки от средновековния Търновград и църковни комплекси.
+                        </p>
+                    </div>
+                </article>
+
+                <article class="vt-feature">
+                    <div class="vt-feature-image"
+                         style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Samovodska_Charshiya%2C_Veliko_Tarnovo%2C_Bulgaria_%285681385714%29.jpg/1280px-Samovodska_Charshiya%2C_Veliko_Tarnovo%2C_Bulgaria_%285681385714%29.jpg');"></div>
+                    <div class="vt-feature-content">
+                        <span class="vt-feature-tag">03 · СТАРИЯТ ГРАД</span>
+                        <h3>Самоводската чаршия</h3>
+                        <p>
+                            Историческа улица, свързана със занаятите, малките работилници
+                            и атмосферата на старо Търново.
+                        </p>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="vt-section vt-experience">
+        <div class="vt-container">
+            <div class="vt-heading">
+                <span class="vt-label">ИЗЖИВЕЙ ВЕЛИКО ТЪРНОВО</span>
+                <h2>Направи историята част от пътуването.</h2>
+                <p class="vt-experience-intro">
+                    В Discover Bulgaria преживяването е повече от списък със забележителности.
+                    Затова градът може да бъде разгледан чрез различни маршрути.
+                </p>
+            </div>
+
+            <div class="vt-experience-grid">
+                <article class="vt-experience-card">
+                    <span class="vt-label">01 · ИСТОРИЯ</span>
+                    <h3>Царевец и Трапезица</h3>
+                    <p>
+                        Исторически маршрут с основните средновековни точки на града.
+                    </p>
+                    <strong class="vt-price">20,40 €</strong>
+                </article>
+
+                <article class="vt-experience-card">
+                    <span class="vt-label">02 · КУЛТУРА</span>
+                    <h3>Самоводската чаршия</h3>
+                    <p>
+                        Разходка из старите улици и занаятчийската атмосфера на Търново.
+                    </p>
+                    <strong class="vt-price">25,51 €</strong>
+                </article>
+
+                <article class="vt-experience-card">
+                    <span class="vt-label">03 · ПАНОРАМА</span>
+                    <h3>Вечерен Търново маршрут</h3>
+                    <p>
+                        Градски маршрут с панорамни спирки и време за снимки.
+                    </p>
+                    <strong class="vt-price">30,63 €</strong>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="vt-section vt-plan">
+        <div class="vt-container">
+            <div class="vt-heading">
+                <span class="vt-label">ПОЛЕЗНА ИНФОРМАЦИЯ</span>
+                <h2>Планирай по-лесно.</h2>
+            </div>
+
+            <div class="vt-plan-grid">
+                <div class="vt-plan-card">
+                    <span>Регион</span>
+                    <strong>Северна България</strong>
+                </div>
+                <div class="vt-plan-card">
+                    <span>Основен акцент</span>
+                    <strong>Царевец и Трапезица</strong>
+                </div>
+                <div class="vt-plan-card">
+                    <span>Подходящ сезон</span>
+                    <strong>Пролет, лято и есен</strong>
+                </div>
+                <div class="vt-plan-card">
+                    <span>Бюджет</span>
+                    <strong>Среден</strong>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="vt-cta">
+        <h2>Открий града, в който историята е част от пейзажа.</h2>
+        <a href="destinations.html">← Назад към дестинациите</a>
+    </section>
+
+</main>
+
+<footer>
+    <div class="footer-content">
+        <div>
+            <h2>DISCOVER BULGARIA</h2>
+            <p>Открий България. Изживей повече.</p>
+        </div>
+
+        <div>
+            <h3>Discover</h3>
+            <a href="destinations.html">Дестинации</a>
+            <a href="#">Преживявания</a>
+            <a href="#">Настаняване</a>
+            <a href="#">Магазин</a>
+        </div>
+
+        <div>
+            <h3>Помощ</h3>
+            <a href="#">За нас</a>
+            <a href="#">Контакти</a>
+            <a href="#">Често задавани въпроси</a>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <p>© 2026 Discover Bulgaria. Всички права запазени.</p>
+    </div>
+</footer>
+
+<div class="vt-credits">
+    <div class="vt-container">
+        Изображения: Wikimedia Commons —
+        Tsarevets (MrPanyGoff, CC BY-SA 3.0),
+        Tsarevets evening view (Joro.georgiev2001, CC0),
+        Trapezitsa (Vislupus, CC BY-SA 4.0),
+        Samovodska Charshia (yeowatzup, CC BY 2.0).
+        За финалната версия изображенията ще бъдат локализирани в assets/images.
+    </div>
+</div>
+
+</body>
+</html>

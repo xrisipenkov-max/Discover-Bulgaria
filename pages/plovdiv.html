@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Пловдив | DISCOVER BULGARIA</title>
+<link rel="stylesheet" href="../css/style.css">
+<style>
+:root{--p-ink:#171d1b;--p-muted:#69736f;--p-cream:#eee9df;--p-paper:#fbfaf7;--p-accent:#a85d3b;--p-line:rgba(23,29,27,.14)}
+body{margin:0;background:var(--p-paper);color:var(--p-ink)}
+.p-page{font-family:inherit;overflow:hidden}
+.p-hero{min-height:800px;position:relative;display:flex;align-items:flex-end;color:#fff;background:linear-gradient(180deg,rgba(0,0,0,.10),rgba(0,0,0,.18) 38%,rgba(0,0,0,.82)),url("https://commons.wikimedia.org/wiki/Special:Redirect/file/Plovdiv%20Ancient%20theatre.jpg") center/cover}
+.p-hero-inner{width:min(1160px,calc(100% - 48px));margin:auto;padding:155px 0 74px}
+.p-eyebrow{font-size:13px;letter-spacing:.18em;font-weight:800;margin-bottom:18px}
+.p-hero h1{font-size:clamp(72px,11vw,150px);line-height:.82;letter-spacing:-.065em;margin:0 0 28px}
+.p-lead{max-width:750px;font-size:clamp(20px,2.4vw,31px);line-height:1.34;margin:0 0 28px}
+.p-chip{display:inline-flex;border:1px solid rgba(255,255,255,.36);background:rgba(255,255,255,.1);padding:11px 16px;border-radius:999px;backdrop-filter:blur(8px);font-size:14px}
+
+.p-story{padding:112px 24px;background:var(--p-paper)}
+.p-story-grid{width:min(1120px,100%);margin:auto;display:grid;grid-template-columns:1.05fr .95fr;gap:82px;align-items:end}
+.p-kicker{font-size:12px;letter-spacing:.17em;font-weight:800;color:var(--p-accent);margin-bottom:16px}
+.p-story h2{font-size:clamp(43px,5.3vw,74px);line-height:.97;letter-spacing:-.045em;margin:0}
+.p-story-copy{font-size:18px;line-height:1.82;color:var(--p-muted);margin:0}
+.p-facts{width:min(1120px,100%);margin:55px auto 0;display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.p-fact{border-top:1px solid var(--p-line);padding-top:16px}.p-fact strong{display:block;font-size:19px;margin-bottom:5px}.p-fact span{font-size:14px;color:var(--p-muted)}
+
+.p-layers{padding:108px 24px;background:var(--p-cream)}
+.p-layers-head{width:min(1120px,100%);margin:auto;display:flex;justify-content:space-between;gap:35px;align-items:end;margin-bottom:44px}
+.p-layers h2{font-size:clamp(40px,5vw,68px);line-height:.96;letter-spacing:-.045em;margin:0}
+.p-layers-head p{max-width:410px;color:var(--p-muted);line-height:1.72;margin:0}
+.p-mosaic{width:min(1120px,100%);margin:auto;display:grid;grid-template-columns:1.15fr .85fr;grid-template-rows:300px 300px;gap:18px}
+.p-photo{overflow:hidden;border-radius:22px;position:relative;background:#ddd}
+.p-photo img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s ease}.p-photo:hover img{transform:scale(1.045)}
+.p-photo.main{grid-row:1/3}.p-label{position:absolute;left:18px;bottom:18px;padding:9px 13px;border-radius:999px;background:rgba(0,0,0,.55);color:#fff;font-size:13px;backdrop-filter:blur(7px)}
+
+.p-walk{padding:115px 24px;background:var(--p-ink);color:#fff}
+.p-walk-grid{width:min(1120px,100%);margin:auto;display:grid;grid-template-columns:.7fr 1.3fr;gap:80px;align-items:center}
+.p-walk h2{font-size:clamp(44px,5.4vw,78px);line-height:.93;letter-spacing:-.05em;margin:0}
+.p-walk-copy p{font-size:18px;line-height:1.8;color:rgba(255,255,255,.72);margin:0 0 35px}
+.p-route{display:grid;grid-template-columns:repeat(4,1fr);background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.13)}
+.p-stop{padding:23px;background:var(--p-ink);border-right:1px solid rgba(255,255,255,.13)}.p-stop:last-child{border-right:0}.p-stop b{display:block;font-size:14px;margin-bottom:9px}.p-stop span{font-size:13px;line-height:1.55;color:rgba(255,255,255,.58)}
+
+.p-exp{padding:110px 24px;background:#fff}.p-exp-inner{width:min(1120px,100%);margin:auto}.p-exp h2{font-size:clamp(40px,5vw,66px);line-height:1;letter-spacing:-.04em;margin:0 0 45px}
+.p-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.p-card{border:1px solid var(--p-line);border-radius:20px;padding:28px;min-height:170px;display:flex;flex-direction:column;justify-content:space-between;transition:.25s;background:#fff}
+.p-card:hover{transform:translateY(-5px);box-shadow:0 18px 40px rgba(23,29,27,.08)}
+.p-tag{font-size:11px;letter-spacing:.14em;color:var(--p-accent);font-weight:800}.p-card h3{font-size:21px;line-height:1.35;margin:20px 0 8px}.p-price{font-size:18px;font-weight:800}
+
+.p-practical{padding:100px 24px;background:var(--p-cream)}
+.p-practical-grid{width:min(1120px,100%);margin:auto;display:grid;grid-template-columns:1fr 1fr;gap:70px}
+.p-practical h2{font-size:clamp(40px,5vw,62px);line-height:1;letter-spacing:-.04em;margin:0 0 28px}
+.p-info{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--p-line)}
+.p-info div{padding:20px 0;border-bottom:1px solid var(--p-line)}.p-info strong{display:block;margin-bottom:6px}.p-info span{font-size:14px;color:var(--p-muted)}
+.p-note{align-self:end;color:var(--p-muted);font-size:18px;line-height:1.8}
+
+.p-cta{padding:112px 24px;text-align:center;background:var(--p-accent);color:#fff}.p-cta h2{font-size:clamp(45px,6vw,82px);line-height:.95;letter-spacing:-.05em;margin:0 0 22px}.p-cta p{max-width:590px;margin:0 auto 32px;font-size:18px;line-height:1.7;color:rgba(255,255,255,.82)}
+.p-btn{display:inline-block;padding:15px 24px;border-radius:999px;background:#fff;color:var(--p-ink);text-decoration:none;font-weight:800;transition:.25s}.p-btn:hover{transform:translateY(-3px);box-shadow:0 12px 25px rgba(0,0,0,.16)}
+.p-credits{padding:28px 24px;background:#111513;color:rgba(255,255,255,.52);font-size:12px;line-height:1.7;text-align:center}.p-credits a{color:rgba(255,255,255,.78)}
+
+@media(max-width:900px){.p-story-grid,.p-walk-grid,.p-practical-grid{grid-template-columns:1fr;gap:42px}.p-mosaic{grid-template-columns:1fr 1fr;grid-template-rows:340px 240px}.p-photo.main{grid-column:1/3;grid-row:auto}.p-route,.p-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:620px){.p-hero{min-height:690px}.p-hero-inner{width:calc(100% - 32px);padding-bottom:48px}.p-story,.p-layers,.p-walk,.p-exp,.p-practical,.p-cta{padding-top:75px;padding-bottom:75px}.p-facts,.p-grid,.p-route,.p-info{grid-template-columns:1fr}.p-mosaic{grid-template-columns:1fr;grid-template-rows:300px 220px 220px}.p-photo.main{grid-column:auto}.p-layers-head{display:block}.p-layers-head p{margin-top:20px}}
+</style>
+</head>
+<body>
+<div class="p-page">
+
+<section class="p-hero">
+<div class="p-hero-inner">
+<div class="p-eyebrow">ИСТОРИЯ · ИЗКУСТВО · СЕДЕМ ХЪЛМА</div>
+<h1>Пловдив.</h1>
+<p class="p-lead">Град, в който античният камък, възрожденските къщи и живите улици съществуват едновременно.</p>
+<span class="p-chip">🏛️ Един град. Много епохи.</span>
+</div>
+</section>
+
+<section class="p-story">
+<div class="p-story-grid">
+<div><div class="p-kicker">ОТКРИЙ ПЛОВДИВ</div><h2>Градът, който не се разглежда на един дъх.</h2></div>
+<p class="p-story-copy">Пловдив е място на пластове. Античният театър, Старият град, Капана и Небет тепе са различни лица на един и същи град — исторически, артистичен и жив.</p>
+</div>
+<div class="p-facts">
+<div class="p-fact"><strong>Античният театър</strong><span>Римският Пловдив оживява на хълма</span></div>
+<div class="p-fact"><strong>Старият град</strong><span>Възрожденски къщи и калдъръмени улици</span></div>
+<div class="p-fact"><strong>Капана</strong><span>Изкуство, дизайн, храна и градски живот</span></div>
+</div>
+</section>
+
+<section class="p-layers">
+<div class="p-layers-head">
+<div><div class="p-kicker">ТРИ ЕПОХИ · ЕДНА РАЗХОДКА</div><h2>Пловдив се<br>разкрива на пластове.</h2></div>
+<p>От римските сцени до тесните улици на Капана — най-хубавият начин да усетиш града е да вървиш между различните му лица.</p>
+</div>
+<div class="p-mosaic">
+<div class="p-photo main"><img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Ancient%20Roman%20Theatre%20in%20Plovdiv%2C%20Bulgaria.jpg" alt="Античен театър в Пловдив"><span class="p-label">Античният театър</span></div>
+<div class="p-photo"><img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Nebet%20tepe.jpg" alt="Небет тепе в Пловдив"><span class="p-label">Небет тепе</span></div>
+<div class="p-photo"><img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Plovdiv1111.jpg" alt="Капана в Пловдив"><span class="p-label">Капана</span></div>
+</div>
+</section>
+
+<section class="p-walk">
+<div class="p-walk-grid">
+<h2>Един ден.<br>Четири лица.</h2>
+<div class="p-walk-copy">
+<p>Започни с античния град, изкачи се към Стария Пловдив, слез към Капана и завърши деня на Небет тепе. Четири спирки, четири различни усещания.</p>
+<div class="p-route">
+<div class="p-stop"><b>01 · Античният театър</b><span>Камък, сцена и гледка към града.</span></div>
+<div class="p-stop"><b>02 · Старият град</b><span>Къщи, калдъръм и история.</span></div>
+<div class="p-stop"><b>03 · Капана</b><span>Изкуство, вкус и градски ритъм.</span></div>
+<div class="p-stop"><b>04 · Небет тепе</b><span>Хълмът и хоризонтът на Пловдив.</span></div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="p-exp">
+<div class="p-exp-inner">
+<div class="p-kicker">ИЗЖИВЕЙ ПЛОВДИВ</div>
+<h2>История през деня.<br>Градски живот вечер.</h2>
+<div class="p-grid">
+<article class="p-card"><div><div class="p-tag">АНТИЧНОСТ</div><h3>Античният театър и римският Пловдив</h3></div><div class="p-price">20,40 €</div></article>
+<article class="p-card"><div><div class="p-tag">СТАРИЯТ ГРАД</div><h3>Разходка из Стария Пловдив</h3></div><div class="p-price">17,84 €</div></article>
+<article class="p-card"><div><div class="p-tag">КАПАНА</div><h3>Изкуство и градски вкус</h3></div><div class="p-price">25,51 €</div></article>
+<article class="p-card"><div><div class="p-tag">ФОТОГРАФИЯ</div><h3>Пловдив през обектива</h3></div><div class="p-price">28,07 €</div></article>
+<article class="p-card"><div><div class="p-tag">ХРАНА</div><h3>Кулинарна разходка в центъра</h3></div><div class="p-price">30,63 €</div></article>
+<article class="p-card"><div><div class="p-tag">ЦЕЛОДНЕВНО</div><h3>Пловдив — история, изкуство и вкус</h3></div><div class="p-price">35,74 €</div></article>
+</div>
+</div>
+</section>
+
+<section class="p-practical">
+<div class="p-practical-grid">
+<div>
+<div class="p-kicker">ПРАКТИЧНО</div>
+<h2>Пловдив е град за ходене.</h2>
+<div class="p-info">
+<div><strong>Централна България</strong><span>Област Пловдив</span></div>
+<div><strong>Седем хълма</strong><span>Градски пейзаж и панорами</span></div>
+<div><strong>Сезон</strong><span>Пролет, лято, есен и зима</span></div>
+<div><strong>Подходящо за</strong><span>История, култура, храна и градски живот</span></div>
+</div>
+</div>
+<p class="p-note">Пловдив не е само списък със забележителности. Най-силното му усещане идва от прехода между тях — от античния камък към възрожденските фасади и оттам към живия ритъм на Капана.</p>
+</div>
+</section>
+
+<section class="p-cta">
+<h2>Пловдив те чака.</h2>
+<p>Създай своето пътуване и събери различните лица на града в един ден, уикенд или по-дълго приключение.</p>
+<a class="p-btn" href="trip-planner.html">Създай своето пътуване →</a>
+</section>
+
+<footer class="p-credits">
+Изображения: Wikimedia Commons — <a href="https://commons.wikimedia.org/wiki/File:Plovdiv_Ancient_theatre.jpg" target="_blank">Plovdiv Ancient theatre.jpg</a>,
+<a href="https://commons.wikimedia.org/wiki/File:Ancient_Roman_Theatre_in_Plovdiv,_Bulgaria.jpg" target="_blank">Ancient Roman Theatre in Plovdiv, Bulgaria.jpg</a>,
+<a href="https://commons.wikimedia.org/wiki/File:Nebet_tepe.jpg" target="_blank">Nebet tepe.jpg</a>,
+<a href="https://commons.wikimedia.org/wiki/File:Plovdiv1111.jpg" target="_blank">Plovdiv1111.jpg</a>.
+Лицензите и авторите са посочени на съответните страници на Wikimedia Commons.
+</footer>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,1144 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Исторически тур на Царевец | Discover Bulgaria</title>
+
+    <link rel="stylesheet" href="../../css/style.css">
+
+    <style>
+        /* =========================================
+           TSAREVETS HISTORICAL TOUR
+           ========================================= */
+
+        :root {
+            --history-dark: #241b15;
+            --history: #8b5e34;
+            --history-light: #c99a62;
+            --stone: #eee7dc;
+        }
+
+        body {
+            background: #f7f5f0;
+        }
+
+        /* ---------- HEADER ---------- */
+
+        .adventure-header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 20;
+        }
+
+        .adventure-header .nav {
+            min-height: 90px;
+            width: min(1240px, calc(100% - 48px));
+            margin: 0 auto;
+        }
+
+        /* ---------- HERO ---------- */
+
+        .adventure-hero {
+            min-height: 850px;
+
+            display: flex;
+            align-items: flex-end;
+
+            position: relative;
+            overflow: hidden;
+
+            background:
+                linear-gradient(
+                    180deg,
+                    rgba(20, 13, 8, .16) 0%,
+                    rgba(20, 13, 8, .18) 35%,
+                    rgba(20, 13, 8, .88) 100%
+                ),
+                url("https://upload.wikimedia.org/wikipedia/commons/b/b9/Tsarevets_-_Veliko_Tarnovo.jpg");
+
+            background-size: cover;
+            background-position: center;
+        }
+
+        .adventure-hero::after {
+            content: "";
+
+            position: absolute;
+            inset: 0;
+
+            background:
+                linear-gradient(
+                    115deg,
+                    rgba(45, 28, 16, .28),
+                    transparent 50%
+                );
+
+            pointer-events: none;
+        }
+
+        .adventure-hero-content {
+            position: relative;
+            z-index: 2;
+
+            width: min(1240px, calc(100% - 48px));
+            margin: 0 auto;
+
+            padding: 0 0 105px;
+
+            color: white;
+        }
+
+        .adventure-breadcrumb {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+
+            margin-bottom: 28px;
+
+            font-size: 14px;
+            color: rgba(255,255,255,.75);
+        }
+
+        .adventure-breadcrumb a {
+            color: rgba(255,255,255,.82);
+            text-decoration: none;
+
+            transition: color .3s ease;
+        }
+
+        .adventure-breadcrumb a:hover {
+            color: white;
+        }
+
+        .adventure-eyebrow {
+            margin-bottom: 18px;
+
+            font-size: 13px;
+            font-weight: 800;
+
+            letter-spacing: .2em;
+
+            color: #e2bd8d;
+        }
+
+        .adventure-hero h1 {
+            max-width: 1100px;
+
+            margin: 0 0 24px;
+
+            font-size: clamp(3rem, 7vw, 6.2rem);
+            line-height: .96;
+
+            letter-spacing: -.045em;
+
+            color: white;
+        }
+
+        .adventure-description {
+            max-width: 780px;
+
+            margin: 0 0 35px;
+
+            font-size: 19px;
+            line-height: 1.7;
+
+            color: rgba(255,255,255,.86);
+        }
+
+        /* ---------- META ---------- */
+
+        .adventure-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .meta-pill {
+            padding: 12px 17px;
+
+            border: 1px solid rgba(255,255,255,.25);
+            border-radius: 999px;
+
+            background: rgba(255,255,255,.10);
+
+            backdrop-filter: blur(14px);
+
+            font-size: 14px;
+            font-weight: 600;
+
+            color: white;
+
+            transition:
+                transform .3s ease,
+                background .3s ease;
+        }
+
+        .meta-pill:hover {
+            transform: translateY(-3px);
+            background: rgba(255,255,255,.18);
+        }
+
+        /* ---------- GENERAL ---------- */
+
+        .adventure-section {
+            width: min(1180px, calc(100% - 48px));
+            margin: 0 auto;
+
+            padding: 105px 0;
+        }
+
+        .section-label {
+            margin-bottom: 15px;
+
+            font-size: 12px;
+            font-weight: 800;
+
+            letter-spacing: .18em;
+
+            color: var(--history);
+        }
+
+        .adventure-section h2 {
+            max-width: 900px;
+
+            margin: 0 0 25px;
+
+            font-size: clamp(2.2rem, 5vw, 4rem);
+            line-height: 1.05;
+
+            letter-spacing: -.035em;
+
+            color: #241f1b;
+        }
+
+        .section-intro {
+            max-width: 780px;
+
+            font-size: 18px;
+            line-height: 1.8;
+
+            color: #66706b;
+        }
+
+        /* ---------- INTRO ---------- */
+
+        .intro-grid {
+            display: grid;
+            grid-template-columns: 1.25fr .75fr;
+
+            gap: 65px;
+
+            align-items: start;
+        }
+
+        .intro-quote {
+            padding: 35px;
+
+            border-left: 3px solid var(--history);
+
+            background: white;
+
+            box-shadow:
+                0 20px 60px rgba(0,0,0,.07);
+        }
+
+        .intro-quote strong {
+            display: block;
+
+            margin-bottom: 12px;
+
+            font-size: 23px;
+            line-height: 1.3;
+
+            color: #35271e;
+        }
+
+        .intro-quote p {
+            margin: 0;
+
+            line-height: 1.7;
+
+            color: #68736f;
+        }
+
+        /* ---------- EXPERIENCE CARDS ---------- */
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+
+            gap: 22px;
+
+            margin-top: 50px;
+        }
+
+        .feature-card {
+            padding: 32px;
+
+            border: 1px solid #e1ddd6;
+            border-radius: 18px;
+
+            background: white;
+
+            transition:
+                transform .4s cubic-bezier(.2,.8,.2,1),
+                box-shadow .4s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-9px);
+
+            box-shadow:
+                0 25px 60px rgba(0,0,0,.10);
+        }
+
+        .feature-icon {
+            width: 54px;
+            height: 54px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            margin-bottom: 22px;
+
+            border-radius: 50%;
+
+            background: #f1e7d9;
+
+            font-size: 24px;
+        }
+
+        .feature-card h3 {
+            margin: 0 0 12px;
+
+            font-size: 21px;
+
+            color: #35271e;
+        }
+
+        .feature-card p {
+            margin: 0;
+
+            line-height: 1.65;
+
+            color: #69746f;
+        }
+
+        /* ---------- TIMELINE ---------- */
+
+        .program {
+            background: #f0ebe3;
+        }
+
+        .program-list {
+            margin-top: 50px;
+
+            display: grid;
+            gap: 18px;
+        }
+
+        .program-item {
+            display: grid;
+            grid-template-columns: 80px 1fr;
+
+            gap: 25px;
+
+            align-items: start;
+
+            padding: 25px;
+
+            border-radius: 16px;
+
+            background: white;
+
+            transition: transform .3s ease;
+        }
+
+        .program-item:hover {
+            transform: translateX(7px);
+        }
+
+        .program-number {
+            font-size: 30px;
+            font-weight: 800;
+
+            color: var(--history);
+        }
+
+        .program-item h3 {
+            margin: 0 0 8px;
+
+            color: #35271e;
+        }
+
+        .program-item p {
+            margin: 0;
+
+            line-height: 1.65;
+
+            color: #6b7671;
+        }
+
+        /* ---------- BOOKING ---------- */
+
+        .booking-section {
+            background: var(--history-dark);
+
+            color: white;
+        }
+
+        .booking-inner {
+            width: min(1180px, calc(100% - 48px));
+            margin: 0 auto;
+
+            padding: 105px 0;
+
+            display: grid;
+            grid-template-columns: 1fr 390px;
+
+            gap: 70px;
+
+            align-items: center;
+        }
+
+        .booking-section .section-label {
+            color: #d5a66e;
+        }
+
+        .booking-section h2 {
+            margin: 0 0 22px;
+
+            font-size: clamp(2.4rem, 5vw, 4.5rem);
+            line-height: 1;
+
+            letter-spacing: -.04em;
+
+            color: white;
+        }
+
+        .booking-text {
+            max-width: 650px;
+
+            font-size: 18px;
+            line-height: 1.75;
+
+            color: rgba(255,255,255,.72);
+        }
+
+        .booking-card {
+            padding: 35px;
+
+            border: 1px solid rgba(255,255,255,.16);
+            border-radius: 22px;
+
+            background: rgba(255,255,255,.08);
+
+            backdrop-filter: blur(16px);
+        }
+
+        .price-label {
+            margin-bottom: 8px;
+
+            font-size: 13px;
+
+            color: rgba(255,255,255,.65);
+        }
+
+        .price {
+            margin-bottom: 25px;
+
+            font-size: 46px;
+            font-weight: 800;
+
+            color: white;
+        }
+
+        .price span {
+            font-size: 15px;
+            font-weight: 500;
+
+            color: rgba(255,255,255,.65);
+        }
+
+        .booking-button {
+            display: block;
+
+            width: 100%;
+
+            padding: 16px 22px;
+
+            border-radius: 12px;
+
+            background: white;
+
+            color: var(--history-dark);
+
+            text-align: center;
+            text-decoration: none;
+
+            font-weight: 800;
+
+            transition:
+                transform .3s ease,
+                box-shadow .3s ease;
+        }
+
+        .booking-button:hover {
+            transform: translateY(-4px);
+
+            box-shadow:
+                0 15px 35px rgba(0,0,0,.25);
+        }
+
+        /* ---------- WHAT TO BRING ---------- */
+
+        .bring-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+
+            gap: 15px;
+
+            margin-top: 45px;
+        }
+
+        .bring-item {
+            padding: 20px 22px;
+
+            border-radius: 13px;
+
+            background: white;
+
+            box-shadow:
+                0 8px 30px rgba(0,0,0,.05);
+
+            font-weight: 600;
+
+            color: #34423d;
+        }
+
+        /* ---------- FINAL CTA ---------- */
+
+        .final-cta {
+            text-align: center;
+
+            padding: 115px 24px;
+        }
+
+        .final-cta h2 {
+            max-width: 850px;
+
+            margin: 0 auto 25px;
+        }
+
+        .final-cta p {
+            max-width: 650px;
+
+            margin: 0 auto 35px;
+
+            line-height: 1.7;
+
+            color: #68736f;
+        }
+
+        .final-button {
+            display: inline-block;
+
+            padding: 16px 28px;
+
+            border-radius: 999px;
+
+            background: var(--history-dark);
+
+            color: white;
+
+            text-decoration: none;
+
+            font-weight: 800;
+
+            transition:
+                transform .3s ease,
+                box-shadow .3s ease;
+        }
+
+        .final-button:hover {
+            transform: translateY(-4px);
+
+            box-shadow:
+                0 15px 35px rgba(36,27,21,.25);
+        }
+
+        /* ---------- MOBILE ---------- */
+
+        @media (max-width: 850px) {
+
+            .adventure-hero {
+                min-height: 760px;
+            }
+
+            .adventure-hero-content {
+                padding-bottom: 75px;
+            }
+
+            .intro-grid,
+            .booking-inner {
+                grid-template-columns: 1fr;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .bring-list {
+                grid-template-columns: 1fr;
+            }
+
+            .booking-inner {
+                gap: 40px;
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            .adventure-section {
+                padding: 75px 0;
+            }
+
+            .adventure-hero h1 {
+                font-size: 3.2rem;
+            }
+
+            .adventure-description {
+                font-size: 16px;
+            }
+
+            .program-item {
+                grid-template-columns: 55px 1fr;
+
+                gap: 15px;
+            }
+
+            .meta-pill {
+                font-size: 12px;
+            }
+        }
+
+        /* ---------- REDUCED MOTION ---------- */
+
+        @media (prefers-reduced-motion: reduce) {
+
+            *,
+            *::before,
+            *::after {
+                scroll-behavior: auto !important;
+                transition-duration: .01ms !important;
+                animation-duration: .01ms !important;
+            }
+        }
+    </style>
+</head>
+
+
+<body>
+
+
+<header class="site-header adventure-header">
+
+    <div class="nav">
+
+        <a href="../../index.html" class="logo">
+            DISCOVER BULGARIA
+        </a>
+
+        <nav class="main-nav">
+
+            <a href="../../index.html">
+                Начало
+            </a>
+
+            <a href="../destinations.html">
+                Дестинации
+            </a>
+
+            <a href="../../index.html#experiences">
+                Преживявания
+            </a>
+
+            <a href="../../index.html#stay">
+                Настаняване
+            </a>
+
+            <a href="../../index.html#shop">
+                Магазин
+            </a>
+
+        </nav>
+
+        <div class="nav-actions">
+
+            <a href="#" aria-label="Любими">
+                ♡
+            </a>
+
+            <a href="#" aria-label="Количка">
+                🛒
+            </a>
+
+            <a href="#" aria-label="Профил">
+                Вход
+            </a>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+<!-- =========================================
+     HERO
+     ========================================= -->
+
+<section class="adventure-hero">
+
+    <div class="adventure-hero-content">
+
+        <div class="adventure-breadcrumb">
+
+            <a href="../../index.html">
+                Начало
+            </a>
+
+            <span>›</span>
+
+            <a href="../../index.html#experiences">
+                Преживявания
+            </a>
+
+            <span>›</span>
+
+            <span>Царевец</span>
+
+        </div>
+
+
+        <div class="adventure-eyebrow">
+            🏰 ИСТОРИЧЕСКО ПРЕЖИВЯВАНЕ
+        </div>
+
+
+        <h1>
+            Исторически тур на Царевец
+        </h1>
+
+
+        <p class="adventure-description">
+            Върни се назад във времето и открий крепостта,
+            която пази историята на средновековно Търново.
+            Разходи се сред крепостните стени и усети атмосферата
+            на един от най-впечатляващите исторически обекти в България.
+        </p>
+
+
+        <div class="adventure-meta">
+
+            <div class="meta-pill">
+                📍 Велико Търново
+            </div>
+
+            <div class="meta-pill">
+                ⏱️ 2 часа
+            </div>
+
+            <div class="meta-pill">
+                🏰 История и култура
+            </div>
+
+            <div class="meta-pill">
+                👥 Малка група
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================
+     INTRO
+     ========================================= -->
+
+<section class="adventure-section">
+
+    <div class="intro-grid">
+
+        <div>
+
+            <div class="section-label">
+                В СЪРЦЕТО НА ТЪРНОВО
+            </div>
+
+            <h2>
+                Историята оживява,
+                когато я видиш отблизо.
+            </h2>
+
+            <p class="section-intro">
+                Царевец не е просто крепост.
+                Това е място, което разказва за средновековното
+                Търново, за владетелите, крепостните стени
+                и живота в старата българска столица.
+            </p>
+
+        </div>
+
+
+        <div class="intro-quote">
+
+            <strong>
+                „Стъпка по стъпка през историята.“
+            </strong>
+
+            <p>
+                Турът е създаден за любопитни пътешественици,
+                които искат да видят Велико Търново не само
+                като красив град, а като част от българската история.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================
+     EXPERIENCE
+     ========================================= -->
+
+<section class="adventure-section">
+
+    <div class="section-label">
+        КАКВО ТЕ ОЧАКВА
+    </div>
+
+    <h2>
+        Два часа сред историята
+        на Търново.
+    </h2>
+
+
+    <div class="feature-grid">
+
+        <article class="feature-card">
+
+            <div class="feature-icon">
+                🏰
+            </div>
+
+            <h3>
+                Крепостта Царевец
+            </h3>
+
+            <p>
+                Разходка из крепостния комплекс
+                и неговите най-интересни места.
+            </p>
+
+        </article>
+
+
+        <article class="feature-card">
+
+            <div class="feature-icon">
+                👑
+            </div>
+
+            <h3>
+                Средновековна България
+            </h3>
+
+            <p>
+                Научи повече за ролята на Търново
+                като столица и политически център
+                на средновековна България.
+            </p>
+
+        </article>
+
+
+        <article class="feature-card">
+
+            <div class="feature-icon">
+                📖
+            </div>
+
+            <h3>
+                Истории и легенди
+            </h3>
+
+            <p>
+                Открий любопитни истории и легенди,
+                свързани с крепостта и стария град.
+            </p>
+
+        </article>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================
+     PROGRAM
+     ========================================= -->
+
+<section class="program">
+
+    <div class="adventure-section">
+
+        <div class="section-label">
+            ПРОГРАМА
+        </div>
+
+        <h2>
+            Пътешествие през вековете.
+        </h2>
+
+        <p class="section-intro">
+            Маршрутът преминава през ключови места
+            от крепостта и комбинира разходка,
+            история и гледки към Велико Търново.
+        </p>
+
+
+        <div class="program-list">
+
+            <article class="program-item">
+
+                <div class="program-number">
+                    01
+                </div>
+
+                <div>
+
+                    <h3>
+                        Среща при крепостта
+                    </h3>
+
+                    <p>
+                        Запознаваме се с маршрута и започваме
+                        нашето пътуване назад във времето.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <article class="program-item">
+
+                <div class="program-number">
+                    02
+                </div>
+
+                <div>
+
+                    <h3>
+                        Крепостните стени
+                    </h3>
+
+                    <p>
+                        Разглеждаме укрепленията и научаваме
+                        повече за защитата на средновековния град.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <article class="program-item">
+
+                <div class="program-number">
+                    03
+                </div>
+
+                <div>
+
+                    <h3>
+                        Патриаршеският комплекс
+                    </h3>
+
+                    <p>
+                        Продължаваме към една от най-разпознаваемите
+                        части на Царевец и разглеждаме историческия комплекс.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <article class="program-item">
+
+                <div class="program-number">
+                    04
+                </div>
+
+                <div>
+
+                    <h3>
+                        Панорамата на Велико Търново
+                    </h3>
+
+                    <p>
+                        Завършваме обиколката с време за снимки
+                        и гледка към града и околните хълмове.
+                    </p>
+
+                </div>
+
+            </article>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================
+     WHAT TO BRING
+     ========================================= -->
+
+<section class="adventure-section">
+
+    <div class="section-label">
+        ПОДГОТВИ СЕ
+    </div>
+
+    <h2>
+        Какво да носиш?
+    </h2>
+
+    <p class="section-intro">
+        Турът включва разходка по историческия комплекс,
+        затова най-важното е да се чувстваш удобно.
+    </p>
+
+
+    <div class="bring-list">
+
+        <div class="bring-item">
+            👟 Удобни обувки
+        </div>
+
+        <div class="bring-item">
+            💧 Бутилка вода
+        </div>
+
+        <div class="bring-item">
+            🧴 Слънцезащитен крем
+        </div>
+
+        <div class="bring-item">
+            🧢 Шапка при слънчево време
+        </div>
+
+        <div class="bring-item">
+            📱 Телефон или фотоапарат
+        </div>
+
+        <div class="bring-item">
+            📖 Любопитство към историята
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================
+     BOOKING
+     ========================================= -->
+
+<section class="booking-section">
+
+    <div class="booking-inner">
+
+        <div>
+
+            <div class="section-label">
+                РЕЗЕРВИРАЙ ПРЕЖИВЯВАНЕТО
+            </div>
+
+            <h2>
+                Готов ли си да прекрачиш портите на историята?
+            </h2>
+
+            <p class="booking-text">
+                Добави историческия тур на Царевец към своето
+                пътуване до Велико Търново и открий едно от
+                най-значимите исторически места в България.
+            </p>
+
+        </div>
+
+
+        <div class="booking-card">
+
+            <div class="price-label">
+                Цена за човек
+            </div>
+
+            <div class="price">
+                18,00 €
+                <span>/ човек</span>
+            </div>
+
+            <a href="#" class="booking-button">
+                Резервирай тура →
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================
+     FINAL CTA
+     ========================================= -->
+
+<section class="final-cta adventure-section">
+
+    <div class="section-label">
+        DISCOVER BULGARIA
+    </div>
+
+    <h2>
+        Историята не се чете.
+        Тя се изживява.
+    </h2>
+
+    <p>
+        Открий Велико Търново по начин,
+        който ще остане в спомените ти.
+    </p>
+
+    <a href="../../index.html#experiences" class="final-button">
+        Разгледай още приключения →
+    </a>
+
+</section>
+
+
+</body>
+</html>

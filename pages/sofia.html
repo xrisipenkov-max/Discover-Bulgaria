@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>София | DISCOVER BULGARIA</title>
+<link rel="stylesheet" href="../css/style.css">
+<style>
+:root{--s-ink:#151b19;--s-muted:#69736f;--s-paper:#faf9f6;--s-stone:#e9e5dc;--s-red:#8d4037;--s-line:rgba(21,27,25,.14)}
+body{margin:0;background:var(--s-paper);color:var(--s-ink)}
+.s-page{font-family:inherit;overflow:hidden}
+.s-hero{min-height:810px;position:relative;display:flex;align-items:flex-end;color:#fff;background:linear-gradient(180deg,rgba(0,0,0,.05),rgba(0,0,0,.20) 40%,rgba(0,0,0,.84)),url("https://commons.wikimedia.org/wiki/Special:Redirect/file/Sofia%20Alexander%20Nevsky%20Cathedral%2004.jpg") center/cover}
+.s-hero-inner{width:min(1160px,calc(100% - 48px));margin:auto;padding:155px 0 75px}
+.s-eyebrow{font-size:13px;letter-spacing:.18em;font-weight:800;margin-bottom:18px}
+.s-hero h1{font-size:clamp(75px,12vw,155px);line-height:.8;letter-spacing:-.07em;margin:0 0 30px}
+.s-lead{max-width:770px;font-size:clamp(20px,2.4vw,31px);line-height:1.34;margin:0 0 28px}
+.s-chip{display:inline-flex;padding:11px 16px;border-radius:999px;border:1px solid rgba(255,255,255,.35);background:rgba(255,255,255,.1);backdrop-filter:blur(8px);font-size:14px}
+
+.s-story{padding:112px 24px;background:var(--s-paper)}
+.s-story-grid{width:min(1120px,100%);margin:auto;display:grid;grid-template-columns:1fr 1fr;gap:82px;align-items:end}
+.s-kicker{font-size:12px;letter-spacing:.17em;font-weight:800;color:var(--s-red);margin-bottom:16px}
+.s-story h2{font-size:clamp(43px,5.3vw,74px);line-height:.97;letter-spacing:-.045em;margin:0}
+.s-copy{font-size:18px;line-height:1.82;color:var(--s-muted);margin:0}
+.s-facts{width:min(1120px,100%);margin:55px auto 0;display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.s-fact{border-top:1px solid var(--s-line);padding-top:16px}.s-fact strong{display:block;font-size:19px;margin-bottom:5px}.s-fact span{font-size:14px;color:var(--s-muted)}
+
+.s-capital{padding:108px 24px;background:var(--s-stone)}
+.s-head{width:min(1120px,100%);margin:auto;display:flex;justify-content:space-between;gap:35px;align-items:end;margin-bottom:44px}
+.s-head h2{font-size:clamp(40px,5vw,68px);line-height:.96;letter-spacing:-.045em;margin:0}
+.s-head p{max-width:410px;color:var(--s-muted);line-height:1.72;margin:0}
+.s-mosaic{width:min(1120px,100%);margin:auto;display:grid;grid-template-columns:1.18fr .82fr;grid-template-rows:300px 300px;gap:18px}
+.s-photo{overflow:hidden;border-radius:22px;position:relative;background:#ddd}.s-photo img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s ease}.s-photo:hover img{transform:scale(1.045)}
+.s-photo.main{grid-row:1/3}.s-label{position:absolute;left:18px;bottom:18px;padding:9px 13px;border-radius:999px;background:rgba(0,0,0,.55);color:#fff;font-size:13px;backdrop-filter:blur(7px)}
+
+.s-city{padding:115px 24px;background:var(--s-ink);color:#fff}
+.s-city-grid{width:min(1120px,100%);margin:auto;display:grid;grid-template-columns:.7fr 1.3fr;gap:80px;align-items:center}
+.s-city h2{font-size:clamp(44px,5.4vw,78px);line-height:.93;letter-spacing:-.05em;margin:0}
+.s-city-copy p{font-size:18px;line-height:1.8;color:rgba(255,255,255,.72);margin:0 0 35px}
+.s-route{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.13)}
+.s-stop{padding:23px;background:var(--s-ink);border-right:1px solid rgba(255,255,255,.13)}.s-stop:last-child{border-right:0}.s-stop b{display:block;font-size:14px;margin-bottom:9px}.s-stop span{font-size:13px;line-height:1.55;color:rgba(255,255,255,.58)}
+
+.s-exp{padding:110px 24px;background:#fff}.s-exp-inner{width:min(1120px,100%);margin:auto}.s-exp h2{font-size:clamp(40px,5vw,66px);line-height:1;letter-spacing:-.04em;margin:0 0 45px}
+.s-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.s-card{border:1px solid var(--s-line);border-radius:20px;padding:28px;min-height:170px;display:flex;flex-direction:column;justify-content:space-between;transition:.25s;background:#fff}.s-card:hover{transform:translateY(-5px);box-shadow:0 18px 40px rgba(21,27,25,.08)}
+.s-tag{font-size:11px;letter-spacing:.14em;color:var(--s-red);font-weight:800}.s-card h3{font-size:21px;line-height:1.35;margin:20px 0 8px}.s-price{font-size:18px;font-weight:800}
+
+.s-practical{padding:100px 24px;background:var(--s-stone)}.s-practical-grid{width:min(1120px,100%);margin:auto;display:grid;grid-template-columns:1fr 1fr;gap:70px}.s-practical h2{font-size:clamp(40px,5vw,62px);line-height:1;letter-spacing:-.04em;margin:0 0 28px}
+.s-info{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--s-line)}.s-info div{padding:20px 0;border-bottom:1px solid var(--s-line)}.s-info strong{display:block;margin-bottom:6px}.s-info span{font-size:14px;color:var(--s-muted)}
+.s-note{align-self:end;color:var(--s-muted);font-size:18px;line-height:1.8}
+
+.s-cta{padding:112px 24px;text-align:center;background:var(--s-red);color:#fff}.s-cta h2{font-size:clamp(45px,6vw,82px);line-height:.95;letter-spacing:-.05em;margin:0 0 22px}.s-cta p{max-width:590px;margin:0 auto 32px;font-size:18px;line-height:1.7;color:rgba(255,255,255,.82)}
+.s-btn{display:inline-block;padding:15px 24px;border-radius:999px;background:#fff;color:var(--s-ink);text-decoration:none;font-weight:800;transition:.25s}.s-btn:hover{transform:translateY(-3px);box-shadow:0 12px 25px rgba(0,0,0,.16)}
+.s-credits{padding:28px 24px;background:#111513;color:rgba(255,255,255,.52);font-size:12px;line-height:1.7;text-align:center}.s-credits a{color:rgba(255,255,255,.78)}
+
+@media(max-width:900px){.s-story-grid,.s-city-grid,.s-practical-grid{grid-template-columns:1fr;gap:42px}.s-mosaic{grid-template-columns:1fr 1fr;grid-template-rows:340px 240px}.s-photo.main{grid-column:1/3;grid-row:auto}.s-route,.s-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:620px){.s-hero{min-height:700px}.s-hero-inner{width:calc(100% - 32px);padding-bottom:48px}.s-story,.s-capital,.s-city,.s-exp,.s-practical,.s-cta{padding-top:75px;padding-bottom:75px}.s-facts,.s-grid,.s-route,.s-info{grid-template-columns:1fr}.s-mosaic{grid-template-columns:1fr;grid-template-rows:300px 220px 220px}.s-photo.main{grid-column:auto}.s-head{display:block}.s-head p{margin-top:20px}}
+</style>
+</head>
+<body>
+<div class="s-page">
+
+<section class="s-hero">
+<div class="s-hero-inner">
+<div class="s-eyebrow">СТОЛИЦА · ИСТОРИЯ · ВИТОША</div>
+<h1>София.</h1>
+<p class="s-lead">Столица с история под краката, градски ритъм около теб и планина, която се вижда на хоризонта.</p>
+<span class="s-chip">🇧🇬 Древна Сердика. Съвременна София.</span>
+</div>
+</section>
+
+<section class="s-story">
+<div class="s-story-grid">
+<div><div class="s-kicker">ОТКРИЙ СОФИЯ</div><h2>Градът, в който миналото и настоящето вървят заедно.</h2></div>
+<p class="s-copy">В София можеш да минеш от антични останки към златните куполи на Александър Невски, после през градските паркове и булеварди да стигнеш до гледка към Витоша. Именно този контраст е част от характера на столицата.</p>
+</div>
+<div class="s-facts">
+<div class="s-fact"><strong>Александър Невски</strong><span>Един от символите на столицата</span></div>
+<div class="s-fact"><strong>Сердика</strong><span>Античният град под съвременния център</span></div>
+<div class="s-fact"><strong>Витоша</strong><span>Планината до самия град</span></div>
+</div>
+</section>
+
+<section class="s-capital">
+<div class="s-head">
+<div><div class="s-kicker">СТОЛИЦАТА НА ПЛАСТОВЕ</div><h2>София се разкрива<br>между епохите.</h2></div>
+<p>Тук няколко минути пеша могат да променят напълно пейзажа — от римска крепост до храм, театър или оживен градски булевард.</p>
+</div>
+<div class="s-mosaic">
+<div class="s-photo main"><img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Sofia%20Alexander%20Nevsky%20Cathedral%2004.jpg" alt="Храм-паметник Александър Невски в София"><span class="s-label">Александър Невски</span></div>
+<div class="s-photo"><img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Archaeological%20Complex%20Serdica%20Sofia.jpg" alt="Крепостта Сердика в София"><span class="s-label">Сердика</span></div>
+<div class="s-photo"><img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Ivan-Vazov-National-Theatre-Sofia.jpg" alt="Народен театър Иван Вазов в София"><span class="s-label">Народният театър</span></div>
+</div>
+</section>
+
+<section class="s-city">
+<div class="s-city-grid">
+<h2>Един ден.<br>Четири лица.</h2>
+<div class="s-city-copy">
+<p>Започни от сърцето на антична Сердика, продължи към Александър Невски, премини през градината пред Народния театър и завърши с гледка към Витоша. София постоянно сменя декора.</p>
+<div class="s-route">
+<div class="s-stop"><b>01 · Сердика</b><span>Римски руини под центъра.</span></div>
+<div class="s-stop"><b>02 · Невски</b><span>Куполи, история и площад.</span></div>
+<div class="s-stop"><b>03 · Театърът</b><span>Градина и градска култура.</span></div>
+<div class="s-stop"><b>04 · Витоша</b><span>Планината на хоризонта.</span></div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="s-exp">
+<div class="s-exp-inner">
+<div class="s-kicker">ИЗЖИВЕЙ СОФИЯ</div>
+<h2>История сутрин.<br>Столица до вечерта.</h2>
+<div class="s-grid">
+<article class="s-card"><div><div class="s-tag">ИСТОРИЯ</div><h3>Антична Сердика и центърът</h3></div><div class="s-price">17,84 €</div></article>
+<article class="s-card"><div><div class="s-tag">АРХИТЕКТУРА</div><h3>Александър Невски и старият център</h3></div><div class="s-price">20,40 €</div></article>
+<article class="s-card"><div><div class="s-tag">КУЛТУРА</div><h3>Народният театър и градските градини</h3></div><div class="s-price">25,51 €</div></article>
+<article class="s-card"><div><div class="s-tag">ФОТОГРАФИЯ</div><h3>София през обектива</h3></div><div class="s-price">28,07 €</div></article>
+<article class="s-card"><div><div class="s-tag">ВКУС</div><h3>Кулинарна разходка в центъра</h3></div><div class="s-price">30,63 €</div></article>
+<article class="s-card"><div><div class="s-tag">ВИТОША</div><h3>София и планината в един ден</h3></div><div class="s-price">35,74 €</div></article>
+</div>
+</div>
+</section>
+
+<section class="s-practical">
+<div class="s-practical-grid">
+<div>
+<div class="s-kicker">ПРАКТИЧНО</div>
+<h2>София е голяма. Но центърът се усеща пеша.</h2>
+<div class="s-info">
+<div><strong>Западна България</strong><span>Столична община</span></div>
+<div><strong>Софийско поле</strong><span>Град и планина в един пейзаж</span></div>
+<div><strong>Сезон</strong><span>През цялата година</span></div>
+<div><strong>Подходящо за</strong><span>История, култура, храна и градски живот</span></div>
+</div>
+</div>
+<p class="s-note">София е различна от останалите градове в проекта. Тя не разчита на една забележителност — силата ѝ е в контраста между античния център, модерния град и Витоша.</p>
+</div>
+</section>
+
+<section class="s-cta">
+<h2>София те чака.</h2>
+<p>Създай своето пътуване и събери история, култура, градски живот и планина в едно преживяване.</p>
+<a class="s-btn" href="trip-planner.html">Създай своето пътуване →</a>
+</section>
+
+<footer class="s-credits">
+Изображения: Wikimedia Commons — <a href="https://commons.wikimedia.org/wiki/Category:Alexander_Nevsky_Cathedral,_Sofia" target="_blank">Alexander Nevsky Cathedral, Sofia</a>,
+<a href="https://commons.wikimedia.org/wiki/File:Archaeological_Complex_Serdica_Sofia.jpg" target="_blank">Archaeological Complex Serdica Sofia.jpg</a>,
+<a href="https://commons.wikimedia.org/wiki/File:Ivan-Vazov-National-Theatre-Sofia.jpg" target="_blank">Ivan-Vazov-National-Theatre-Sofia.jpg</a>,
+<a href="https://commons.wikimedia.org/wiki/File:Vitosha_seen_from_the_center_of_Sofia.jpg" target="_blank">Vitosha seen from the center of Sofia.jpg</a>.
+Лицензите и авторите са посочени на съответните страници на Wikimedia Commons.
+</footer>
+
+</div>
+</body>
+</html>

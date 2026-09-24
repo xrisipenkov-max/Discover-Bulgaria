@@ -1,0 +1,1189 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Създай своето пътуване с Discover Bulgaria.">
+    <title>Създай своето пътуване | Discover Bulgaria</title>
+    <link rel="stylesheet" href="../css/style.css">
+
+    <style>
+        /* =========================================================
+           DISCOVER BULGARIA — TRIP PLANNER CINEMATIC V2
+           HTML + CSS ONLY — diploma-project friendly
+        ========================================================= */
+
+        .trip-page {
+            --trip-ink: #14211b;
+            --trip-muted: #6c756f;
+            --trip-cream: #f5f2eb;
+            --trip-paper: rgba(255,255,255,.92);
+            --trip-green: #14221c;
+            --trip-gold: #d39a4f;
+            --trip-line: rgba(20,33,27,.11);
+            background: var(--trip-cream);
+            color: var(--trip-ink);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .trip-page header {
+            position: absolute;
+            inset: 0 0 auto;
+            z-index: 20;
+            background: linear-gradient(180deg, rgba(7,17,14,.54), rgba(7,17,14,0));
+        }
+
+        .trip-page header nav {
+            min-height: 90px;
+            width: min(1240px, calc(100% - 48px));
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 28px;
+        }
+
+        .trip-page header .logo {
+            flex: 0 0 auto;
+            color: #fff;
+            font-size: 21px;
+            font-weight: 800;
+            letter-spacing: 1.7px;
+            text-decoration: none;
+        }
+
+        .trip-page header ul {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 30px;
+            margin: 0 auto;
+            padding: 0;
+            list-style: none;
+        }
+
+        .trip-page header ul a,
+        .trip-page .nav-actions a {
+            color: rgba(255,255,255,.95);
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 700;
+            transition: color .22s ease, transform .22s ease, opacity .22s ease;
+        }
+
+        .trip-page header ul a:hover,
+        .trip-page .nav-actions a:hover {
+            color: #fff;
+            transform: translateY(-1px);
+        }
+
+        .trip-page .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 17px;
+            flex: 0 0 auto;
+        }
+
+        /* HERO */
+        .trip-hero {
+            position: relative;
+            min-height: 650px;
+            display: flex;
+            align-items: flex-end;
+            color: #fff;
+            isolation: isolate;
+            overflow: hidden;
+            background:
+                linear-gradient(90deg, rgba(6,17,14,.88) 0%, rgba(6,17,14,.63) 42%, rgba(6,17,14,.18) 100%),
+                linear-gradient(180deg, rgba(6,17,14,.16) 0%, rgba(6,17,14,.08) 45%, rgba(6,17,14,.67) 100%),
+                url("https://commons.wikimedia.org/wiki/Special:Redirect/file/Rila%20Lakes.jpg")
+                center/cover no-repeat;
+        }
+
+        .trip-hero::before {
+            content: "";
+            position: absolute;
+            inset: -6%;
+            z-index: -2;
+            background: inherit;
+            transform: scale(1.06);
+            animation: tripHeroZoom 16s ease-in-out infinite alternate;
+        }
+
+        .trip-hero::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+            background:
+                radial-gradient(circle at 82% 25%, rgba(255,210,135,.16), transparent 23%),
+                linear-gradient(110deg, transparent 35%, rgba(255,255,255,.06) 48%, transparent 61%);
+            background-size: 100% 100%, 250% 100%;
+            background-position: center, 180% 0;
+            background-repeat: no-repeat;
+            animation: tripLightSweep 10s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        @keyframes tripHeroZoom {
+            from { transform: scale(1.06); }
+            to   { transform: scale(1.12); }
+        }
+
+        @keyframes tripLightSweep {
+            0%, 55% { background-position: center, 180% 0; }
+            78%, 100% { background-position: center, -25% 0; }
+        }
+
+        .trip-hero-content {
+            width: min(1240px, calc(100% - 48px));
+            margin: 0 auto;
+            padding: 0 0 88px;
+            position: relative;
+            z-index: 3;
+            animation: tripHeroReveal .9s cubic-bezier(.2,.75,.25,1) both;
+        }
+
+        @keyframes tripHeroReveal {
+            from { opacity: 0; transform: translateY(28px); filter: blur(9px); }
+            to   { opacity: 1; transform: translateY(0); filter: blur(0); }
+        }
+
+        .trip-eyebrow {
+            margin: 0 0 15px;
+            color: var(--trip-gold);
+            font-size: 12px;
+            font-weight: 900;
+            letter-spacing: 3.4px;
+            text-transform: uppercase;
+        }
+
+        .trip-hero .trip-eyebrow {
+            color: #f0c071;
+        }
+
+        .trip-hero h1 {
+            max-width: 940px;
+            margin: 0 0 18px;
+            font-size: clamp(52px, 7vw, 92px);
+            line-height: .94;
+            letter-spacing: -4.4px;
+            text-wrap: balance;
+        }
+
+        .trip-hero-copy {
+            max-width: 720px;
+            margin: 0;
+            color: rgba(255,255,255,.86);
+            font-size: 18px;
+            line-height: 1.74;
+        }
+
+        .trip-hero-meta {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 26px;
+        }
+
+        .trip-hero-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            min-height: 38px;
+            padding: 0 14px;
+            border: 1px solid rgba(255,255,255,.18);
+            border-radius: 999px;
+            background: rgba(255,255,255,.08);
+            backdrop-filter: blur(12px);
+            color: rgba(255,255,255,.94);
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .trip-hero-stamp {
+            position: absolute;
+            right: 0;
+            bottom: 86px;
+            width: 178px;
+            padding: 18px;
+            border: 1px solid rgba(255,255,255,.16);
+            border-radius: 20px;
+            background: rgba(7,18,14,.30);
+            backdrop-filter: blur(14px);
+            box-shadow: 0 18px 40px rgba(0,0,0,.14);
+        }
+
+        .trip-hero-stamp strong {
+            display: block;
+            color: #fff;
+            font-size: 34px;
+            line-height: 1;
+            letter-spacing: -1px;
+        }
+
+        .trip-hero-stamp span {
+            display: block;
+            margin-top: 8px;
+            color: rgba(255,255,255,.68);
+            font-size: 12px;
+            line-height: 1.45;
+        }
+
+        /* MAIN */
+        .trip-main {
+            width: min(1240px, calc(100% - 48px));
+            margin: 0 auto;
+            padding: 92px 0 118px;
+        }
+
+        .trip-intro {
+            max-width: 860px;
+            margin-bottom: 44px;
+        }
+
+        .trip-intro h2 {
+            max-width: 800px;
+            margin: 0 0 16px;
+            font-size: clamp(38px, 5vw, 62px);
+            line-height: 1.02;
+            letter-spacing: -2.8px;
+        }
+
+        .trip-intro p {
+            max-width: 800px;
+            margin: 0;
+            color: var(--trip-muted);
+            font-size: 17px;
+            line-height: 1.75;
+        }
+
+        .trip-form {
+            display: grid;
+            grid-template-columns: minmax(0, 1.25fr) minmax(320px, .75fr);
+            gap: 28px;
+            align-items: start;
+        }
+
+        .trip-panel {
+            position: relative;
+            padding: 34px;
+            background: rgba(255,255,255,.88);
+            border: 1px solid rgba(20,33,27,.09);
+            border-radius: 30px;
+            box-shadow: 0 22px 60px rgba(20,33,27,.075);
+            backdrop-filter: blur(12px);
+        }
+
+        .trip-panel::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 4px;
+            border-radius: 30px 30px 0 0;
+            background: linear-gradient(90deg, #c88b3e, #ebc98d, transparent 72%);
+        }
+
+        .trip-progress {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin: 0 0 31px;
+        }
+
+        .trip-progress-dot {
+            width: 28px;
+            height: 28px;
+            display: grid;
+            place-items: center;
+            border-radius: 50%;
+            background: #14221c;
+            color: #fff;
+            font-size: 12px;
+            font-weight: 900;
+        }
+
+        .trip-progress-line {
+            height: 1px;
+            flex: 1;
+            background: linear-gradient(90deg, #14221c, rgba(20,33,27,.12));
+        }
+
+        .trip-progress-label {
+            color: #7a817c;
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+
+        .trip-section {
+            padding: 0 0 30px;
+            margin-bottom: 30px;
+            border-bottom: 1px solid var(--trip-line);
+        }
+
+        .trip-section:last-of-type {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: 0;
+        }
+
+        .trip-section-kicker {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 8px;
+            color: #9a7444;
+            font-size: 11px;
+            font-weight: 900;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .trip-section-kicker b {
+            display: inline-grid;
+            place-items: center;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: #f1e6d3;
+            color: #8c6330;
+            font-size: 11px;
+        }
+
+        .trip-section h3 {
+            margin: 0 0 8px;
+            font-size: 25px;
+            line-height: 1.15;
+            letter-spacing: -.6px;
+        }
+
+        .trip-section > p {
+            margin: 0 0 20px;
+            color: #747c76;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        .choice-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 12px;
+        }
+
+        .choice-wrap {
+            position: relative;
+        }
+
+        .choice-input {
+            position: absolute;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .choice {
+            position: relative;
+            display: block;
+            min-height: 96px;
+            padding: 17px 18px 18px;
+            border: 1px solid #ddd9d0;
+            border-radius: 17px;
+            background: #fff;
+            cursor: pointer;
+            overflow: hidden;
+            transition: transform .24s ease, border-color .24s ease, box-shadow .24s ease, background .24s ease;
+        }
+
+        .choice::after {
+            content: "✓";
+            position: absolute;
+            top: 13px;
+            right: 13px;
+            width: 24px;
+            height: 24px;
+            display: grid;
+            place-items: center;
+            border-radius: 50%;
+            background: #14221c;
+            color: #fff;
+            font-size: 12px;
+            font-weight: 900;
+            opacity: 0;
+            transform: scale(.7);
+            transition: opacity .2s ease, transform .2s ease;
+        }
+
+        .choice:hover {
+            transform: translateY(-3px);
+            border-color: #c89556;
+            box-shadow: 0 12px 28px rgba(20,33,27,.08);
+        }
+
+        .choice strong {
+            display: block;
+            padding-right: 28px;
+            margin-bottom: 7px;
+            color: #18241e;
+            font-size: 16px;
+            line-height: 1.25;
+        }
+
+        .choice span {
+            color: #727a75;
+            font-size: 13px;
+            line-height: 1.48;
+        }
+
+        .choice-input:checked + .choice {
+            border-color: #cd8e43;
+            background: linear-gradient(135deg, #fff8ef, #fffdf9);
+            box-shadow: inset 0 0 0 2px rgba(205,142,67,.13), 0 10px 28px rgba(20,33,27,.06);
+        }
+
+        .choice-input:checked + .choice::after {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .select-wrap {
+            position: relative;
+        }
+
+        .select-wrap::after {
+            content: "⌄";
+            position: absolute;
+            top: 50%;
+            right: 17px;
+            transform: translateY(-52%);
+            pointer-events: none;
+            color: #7b847e;
+            font-size: 16px;
+        }
+
+        .select-field,
+        .number-field {
+            width: 100%;
+            min-height: 54px;
+            padding: 14px 17px;
+            border: 1px solid #ddd9d0;
+            border-radius: 15px;
+            background: #fff;
+            color: #18241e;
+            font: inherit;
+            outline: none;
+            transition: border-color .2s ease, box-shadow .2s ease, transform .2s ease;
+            box-sizing: border-box;
+        }
+
+        .select-field {
+            appearance: none;
+            padding-right: 45px;
+        }
+
+        .select-field:focus,
+        .number-field:focus {
+            border-color: #c58a45;
+            box-shadow: 0 0 0 4px rgba(197,138,69,.10);
+        }
+
+        .trip-actions {
+            display: flex;
+            align-items: center;
+            gap: 11px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .trip-button {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 52px;
+            padding: 0 22px;
+            border-radius: 999px;
+            border: 0;
+            text-decoration: none;
+            font-weight: 850;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform .22s ease, box-shadow .22s ease, background .22s ease;
+        }
+
+        .trip-button::before {
+            content: "";
+            position: absolute;
+            inset: 0 auto 0 -35%;
+            width: 28%;
+            background: linear-gradient(100deg, transparent, rgba(255,255,255,.30), transparent);
+            transform: skewX(-18deg);
+            transition: left .65s ease;
+        }
+
+        .trip-button:hover::before {
+            left: 122%;
+        }
+
+        .trip-button:hover {
+            transform: translateY(-2px);
+        }
+
+        .trip-button.primary {
+            background: #14221c;
+            color: #fff;
+            box-shadow: 0 13px 30px rgba(20,33,27,.18);
+        }
+
+        .trip-button.primary:hover {
+            background: #1a2c24;
+            box-shadow: 0 16px 34px rgba(20,33,27,.22);
+        }
+
+        .trip-button.secondary {
+            background: #ebe6dd;
+            color: #14221c;
+        }
+
+        .trip-button.secondary:hover {
+            background: #e4ddd0;
+        }
+
+        /* SUMMARY */
+        .trip-summary {
+            position: sticky;
+            top: 24px;
+            padding: 31px;
+            border-radius: 30px;
+            background:
+                radial-gradient(circle at 90% 0%, rgba(211,154,79,.16), transparent 30%),
+                linear-gradient(145deg, #13221c, #1d3028);
+            color: #fff;
+            box-shadow: 0 24px 65px rgba(20,33,27,.16);
+            overflow: hidden;
+        }
+
+        .trip-summary::after {
+            content: "";
+            position: absolute;
+            width: 220px;
+            height: 220px;
+            right: -105px;
+            bottom: -115px;
+            border-radius: 50%;
+            border: 1px solid rgba(255,255,255,.08);
+            box-shadow: 0 0 0 28px rgba(255,255,255,.02), 0 0 0 57px rgba(255,255,255,.018);
+        }
+
+        .trip-summary .trip-eyebrow {
+            color: #e4b56f;
+            margin-bottom: 12px;
+        }
+
+        .trip-summary h3 {
+            position: relative;
+            z-index: 2;
+            max-width: 390px;
+            margin: 0;
+            font-size: 31px;
+            line-height: 1.05;
+            letter-spacing: -1.3px;
+        }
+
+        .summary-intro {
+            position: relative;
+            z-index: 2;
+            margin: 12px 0 20px;
+            color: rgba(255,255,255,.69);
+            font-size: 14px;
+            line-height: 1.65;
+        }
+
+        .summary-list {
+            position: relative;
+            z-index: 2;
+            display: grid;
+            gap: 0;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .summary-list li {
+            display: grid;
+            grid-template-columns: 32px 1fr;
+            gap: 12px;
+            padding: 17px 0;
+            border-bottom: 1px solid rgba(255,255,255,.10);
+            color: rgba(255,255,255,.66);
+            font-size: 14px;
+            line-height: 1.55;
+        }
+
+        .summary-list li:last-child {
+            border-bottom: 0;
+        }
+
+        .summary-number {
+            width: 30px;
+            height: 30px;
+            display: grid;
+            place-items: center;
+            border: 1px solid rgba(228,181,111,.32);
+            border-radius: 50%;
+            color: #e4b56f;
+            font-size: 11px;
+            font-weight: 900;
+        }
+
+        .summary-list li strong {
+            display: block;
+            margin-bottom: 3px;
+            color: #fff;
+            font-size: 14px;
+        }
+
+        .planner-note {
+            position: relative;
+            z-index: 2;
+            margin-top: 18px;
+            padding: 16px 17px;
+            border: 1px solid rgba(255,255,255,.09);
+            border-radius: 17px;
+            background: rgba(255,255,255,.06);
+            color: rgba(255,255,255,.64);
+            font-size: 12px;
+            line-height: 1.62;
+        }
+
+        .planner-note strong {
+            color: #fff;
+        }
+
+        /* READY IDEAS */
+        .ready-trips {
+            margin-top: 104px;
+        }
+
+        .ready-heading {
+            display: flex;
+            align-items: end;
+            justify-content: space-between;
+            gap: 25px;
+            margin-bottom: 28px;
+        }
+
+        .ready-heading h2 {
+            max-width: 820px;
+            margin: 0 0 9px;
+            font-size: clamp(34px, 4vw, 52px);
+            line-height: 1.03;
+            letter-spacing: -2.2px;
+        }
+
+        .ready-heading > div > p {
+            margin: 0;
+            color: #737b75;
+            font-size: 15px;
+            line-height: 1.65;
+        }
+
+        .ready-heading-note {
+            flex: 0 0 auto;
+            min-width: 150px;
+            padding: 14px 15px;
+            border: 1px solid rgba(20,33,27,.09);
+            border-radius: 16px;
+            background: rgba(255,255,255,.60);
+            color: #6f7772;
+            font-size: 12px;
+            line-height: 1.45;
+        }
+
+        .ready-heading-note strong {
+            display: block;
+            color: #18241e;
+            font-size: 18px;
+        }
+
+        .ready-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 20px;
+        }
+
+        .ready-card {
+            background: rgba(255,255,255,.91);
+            border: 1px solid rgba(20,33,27,.08);
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 18px 44px rgba(20,33,27,.07);
+            transition: transform .28s ease, box-shadow .28s ease;
+        }
+
+        .ready-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 54px rgba(20,33,27,.12);
+        }
+
+        .ready-card-image-wrap {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ready-card-image {
+            height: 214px;
+            background-size: cover;
+            background-position: center;
+            transform: scale(1.01);
+            transition: transform .5s cubic-bezier(.2,.7,.2,1);
+        }
+
+        .ready-card:hover .ready-card-image {
+            transform: scale(1.075);
+        }
+
+        .ready-card-image-wrap::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, transparent 48%, rgba(0,0,0,.34));
+            pointer-events: none;
+        }
+
+        .ready-card-tag {
+            position: absolute;
+            left: 14px;
+            bottom: 13px;
+            z-index: 2;
+            padding: 7px 10px;
+            border: 1px solid rgba(255,255,255,.17);
+            border-radius: 999px;
+            background: rgba(8,17,14,.48);
+            backdrop-filter: blur(10px);
+            color: #fff;
+            font-size: 11px;
+            font-weight: 800;
+        }
+
+        .ready-card:nth-child(1) .ready-card-image {
+            background-image: url("https://commons.wikimedia.org/wiki/Special:Redirect/file/Rila%20Lakes.jpg");
+        }
+
+        .ready-card:nth-child(2) .ready-card-image {
+            background-image: url("https://commons.wikimedia.org/wiki/Special:Redirect/file/Pomorie%20Lake%20Black%20Sea%20Black%20Beach.jpg");
+        }
+
+        .ready-card:nth-child(3) .ready-card-image {
+            background-image: url("https://commons.wikimedia.org/wiki/Special:Redirect/file/Tsarevets%20-%20Veliko%20Tarnovo.jpg");
+        }
+
+        .ready-card-content {
+            padding: 23px;
+        }
+
+        .ready-card-content h3 {
+            margin: 0 0 8px;
+            font-size: 22px;
+            line-height: 1.12;
+        }
+
+        .ready-card-content p {
+            min-height: 50px;
+            margin: 0 0 16px;
+            color: #707873;
+            font-size: 14px;
+            line-height: 1.62;
+        }
+
+        .ready-card-content a {
+            color: #ae6c24;
+            font-size: 14px;
+            font-weight: 900;
+            text-decoration: none;
+            transition: letter-spacing .2s ease, color .2s ease;
+        }
+
+        .ready-card-content a:hover {
+            color: #8d5419;
+            letter-spacing: .2px;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 1000px) {
+            .trip-page header ul {
+                gap: 17px;
+            }
+
+            .trip-form {
+                grid-template-columns: 1fr;
+            }
+
+            .trip-summary {
+                position: static;
+            }
+
+            .trip-hero-stamp {
+                display: none;
+            }
+        }
+
+        @media (max-width: 760px) {
+            .trip-page header nav {
+                min-height: 78px;
+                width: min(1240px, calc(100% - 32px));
+                gap: 16px;
+            }
+
+            .trip-page header ul {
+                display: none;
+            }
+
+            .trip-page .nav-actions {
+                gap: 11px;
+            }
+
+            .trip-hero {
+                min-height: 600px;
+            }
+
+            .trip-hero-content,
+            .trip-main {
+                width: min(1240px, calc(100% - 32px));
+            }
+
+            .trip-hero-content {
+                padding-bottom: 58px;
+            }
+
+            .trip-hero h1 {
+                font-size: clamp(46px, 14vw, 70px);
+                letter-spacing: -3px;
+            }
+
+            .trip-main {
+                padding-top: 68px;
+                padding-bottom: 82px;
+            }
+
+            .trip-panel,
+            .trip-summary {
+                padding: 24px;
+                border-radius: 24px;
+            }
+
+            .choice-grid,
+            .ready-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .ready-heading {
+                display: block;
+            }
+
+            .ready-heading-note {
+                margin-top: 18px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .trip-hero::before,
+            .trip-hero::after,
+            .trip-hero-content {
+                animation: none;
+            }
+
+            .trip-page *,
+            .trip-page *::before,
+            .trip-page *::after {
+                scroll-behavior: auto !important;
+                transition-duration: .01ms !important;
+            }
+        }
+    </style>
+</head>
+
+<body class="trip-page">
+
+<header>
+    <nav>
+        <a class="logo" href="../index.html">DISCOVER BULGARIA</a>
+
+        <ul>
+            <li><a href="../index.html">Начало</a></li>
+            <li><a href="destinations.html">Дестинации</a></li>
+            <li><a href="../index.html#experiences">Преживявания</a></li>
+            <li><a href="../index.html#stay">Настаняване</a></li>
+            <li><a href="../index.html#shop">Магазин</a></li>
+        </ul>
+
+        <div class="nav-actions">
+            <a href="destinations.html" aria-label="Любими">♡</a>
+            <a href="destinations.html" aria-label="Количка">🛒</a>
+            <a href="destinations.html">Вход</a>
+        </div>
+    </nav>
+</header>
+
+<main>
+    <section class="trip-hero">
+        <div class="trip-hero-content">
+            <p class="trip-eyebrow">ТВОЕТО ПЪТУВАНЕ · DISCOVER BULGARIA</p>
+            <h1>Създай своето приключение.</h1>
+            <p class="trip-hero-copy">
+                Избери колко време имаш, какво обичаш и какъв тип пътуване търсиш.
+                След това разгледай готовите направления и продължи към мястото, което те привлича.
+            </p>
+
+            <div class="trip-hero-meta">
+                <span class="trip-hero-pill">✦ HTML + CSS</span>
+                <span class="trip-hero-pill">⌂ България</span>
+                <span class="trip-hero-pill">→ Готови направления</span>
+            </div>
+        </div>
+
+        <div class="trip-hero-stamp" aria-hidden="true">
+            <strong>01</strong>
+            <span>Избираш посоката. Останалото е път.</span>
+        </div>
+    </section>
+
+    <section class="trip-main">
+        <div class="trip-intro">
+            <p class="trip-eyebrow">ПЪРВАТА СТЪПКА</p>
+            <h2>Нека започнем с твоето пътуване.</h2>
+            <p>
+                Определи продължителността, интереса, региона и размера на групата.
+                Планерът е изграден изцяло с HTML и CSS — без JavaScript — затова изборите водят към готовите
+                дестинации и маршрути в сайта.
+            </p>
+        </div>
+
+        <div class="trip-form">
+            <form class="trip-panel" action="destinations.html" method="get">
+                <div class="trip-progress" aria-hidden="true">
+                    <span class="trip-progress-dot">01</span>
+                    <span class="trip-progress-line"></span>
+                    <span class="trip-progress-label">Избери → разгледай → тръгни</span>
+                </div>
+
+                <div class="trip-section">
+                    <div class="trip-section-kicker"><b>01</b> Време</div>
+                    <h3>Колко време имаш?</h3>
+                    <p>Избери приблизителната продължителност.</p>
+
+                    <div class="choice-grid">
+                        <div class="choice-wrap">
+                            <input class="choice-input" type="radio" id="days1" name="duration" value="1" checked>
+                            <label class="choice" for="days1">
+                                <strong>1 ден</strong>
+                                <span>Кратко бягство</span>
+                            </label>
+                        </div>
+
+                        <div class="choice-wrap">
+                            <input class="choice-input" type="radio" id="days2" name="duration" value="2">
+                            <label class="choice" for="days2">
+                                <strong>2–3 дни</strong>
+                                <span>Уикенд приключение</span>
+                            </label>
+                        </div>
+
+                        <div class="choice-wrap">
+                            <input class="choice-input" type="radio" id="days4" name="duration" value="4">
+                            <label class="choice" for="days4">
+                                <strong>4–5 дни</strong>
+                                <span>По-пълно пътуване</span>
+                            </label>
+                        </div>
+
+                        <div class="choice-wrap">
+                            <input class="choice-input" type="radio" id="days7" name="duration" value="7">
+                            <label class="choice" for="days7">
+                                <strong>7+ дни</strong>
+                                <span>Голяма обиколка</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="trip-section">
+                    <div class="trip-section-kicker"><b>02</b> Интерес</div>
+                    <h3>Какво ти се прави?</h3>
+                    <p>Избери основния тип преживяване.</p>
+
+                    <div class="choice-grid">
+                        <div class="choice-wrap">
+                            <input class="choice-input" type="radio" id="mountain" name="interest" value="mountain" checked>
+                            <label class="choice" for="mountain">
+                                <strong>🏔️ Планини</strong>
+                                <span>Върхове, езера и преходи</span>
+                            </label>
+                        </div>
+
+                        <div class="choice-wrap">
+                            <input class="choice-input" type="radio" id="sea" name="interest" value="sea">
+                            <label class="choice" for="sea">
+                                <strong>🌊 Море</strong>
+                                <span>Плажове, заливи и каяк</span>
+                            </label>
+                        </div>
+
+                        <div class="choice-wrap">
+                            <input class="choice-input" type="radio" id="history" name="interest" value="history">
+                            <label class="choice" for="history">
+                                <strong>🏛️ История</strong>
+                                <span>Крепости, църкви и стари градове</span>
+                            </label>
+                        </div>
+
+                        <div class="choice-wrap">
+                            <input class="choice-input" type="radio" id="food" name="interest" value="food">
+                            <label class="choice" for="food">
+                                <strong>🍷 Кулинария</strong>
+                                <span>Местна храна, вина и традиции</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="trip-section">
+                    <div class="trip-section-kicker"><b>03</b> Регион</div>
+                    <h3>Къде искаш да бъде?</h3>
+                    <p>Избери регион, от който да започнеш.</p>
+
+                    <div class="select-wrap">
+                        <select class="select-field" name="region">
+                            <option value="all">Цяла България</option>
+                            <option value="southwest">Югозападна България</option>
+                            <option value="south">Южна България</option>
+                            <option value="north">Северна България</option>
+                            <option value="black-sea">Черноморие</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="trip-section">
+                    <div class="trip-section-kicker"><b>04</b> Компания</div>
+                    <h3>Колко души пътуват?</h3>
+                    <p>Избери приблизителния размер на групата.</p>
+
+                    <input class="number-field" type="number" name="people" min="1" max="20" value="2">
+                </div>
+
+                <div class="trip-actions">
+                    <button class="trip-button primary" type="submit">
+                        Разгледай предложенията →
+                    </button>
+                    <a class="trip-button secondary" href="destinations.html">
+                        Виж всички дестинации
+                    </a>
+                </div>
+            </form>
+
+            <aside class="trip-summary">
+                <p class="trip-eyebrow">КАК РАБОТИ</p>
+                <h3>Твоят избор → твоето пътуване</h3>
+                <p class="summary-intro">
+                    Четири прости стъпки ти помагат да оформяш посоката си още преди да тръгнеш.
+                </p>
+
+                <ul class="summary-list">
+                    <li>
+                        <span class="summary-number">01</span>
+                        <div>
+                            <strong>Избери продължителност</strong>
+                            Определи колко време искаш да отделиш.
+                        </div>
+                    </li>
+                    <li>
+                        <span class="summary-number">02</span>
+                        <div>
+                            <strong>Избери интерес</strong>
+                            Планина, море, история или кулинария.
+                        </div>
+                    </li>
+                    <li>
+                        <span class="summary-number">03</span>
+                        <div>
+                            <strong>Избери регион</strong>
+                            Стесни търсенето до част от България.
+                        </div>
+                    </li>
+                    <li>
+                        <span class="summary-number">04</span>
+                        <div>
+                            <strong>Разгледай предложенията</strong>
+                            Отвори конкретна дестинация и продължи към нейното преживяване.
+                        </div>
+                    </li>
+                </ul>
+
+                <div class="planner-note">
+                    <strong>Важно:</strong> това е демонстрационна HTML/CSS версия за дипломния проект.
+                    Избраните параметри се изпращат чрез стандартна HTML форма, без JavaScript.
+                </div>
+            </aside>
+        </div>
+
+        <section class="ready-trips">
+            <div class="ready-heading">
+                <div>
+                    <p class="trip-eyebrow">ГОТОВИ ИДЕИ</p>
+                    <h2>Ако искаш да тръгнеш веднага.</h2>
+                    <p>Три готови посоки, които вече можеш да разгледаш в подробните страници.</p>
+                </div>
+                <div class="ready-heading-note">
+                    <strong>03</strong>
+                    готови направления
+                </div>
+            </div>
+
+            <div class="ready-grid">
+                <article class="ready-card">
+                    <div class="ready-card-image-wrap">
+                        <div class="ready-card-image"></div>
+                        <span class="ready-card-tag">🏔️ Планина</span>
+                    </div>
+                    <div class="ready-card-content">
+                        <h3>Планинско бягство</h3>
+                        <p>Рила, езера, планински маршрути и Рилският манастир.</p>
+                        <a href="rila.html">Открий Рила →</a>
+                    </div>
+                </article>
+
+                <article class="ready-card">
+                    <div class="ready-card-image-wrap">
+                        <div class="ready-card-image"></div>
+                        <span class="ready-card-tag">🌊 Черноморие</span>
+                    </div>
+                    <div class="ready-card-content">
+                        <h3>Море и релакс</h3>
+                        <p>Поморие, морски преживявания, солено езеро и СПА.</p>
+                        <a href="pomorie.html">Открий Поморие →</a>
+                    </div>
+                </article>
+
+                <article class="ready-card">
+                    <div class="ready-card-image-wrap">
+                        <div class="ready-card-image"></div>
+                        <span class="ready-card-tag">🏛️ История</span>
+                    </div>
+                    <div class="ready-card-content">
+                        <h3>История и култура</h3>
+                        <p>Царевец, Трапезица и атмосферата на старо Търново.</p>
+                        <a href="veliko-tarnovo.html">Открий Велико Търново →</a>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </section>
+</main>
+
+</body>
+</html>

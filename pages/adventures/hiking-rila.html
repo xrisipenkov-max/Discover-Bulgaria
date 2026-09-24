@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Планински преход в Рила | Discover Bulgaria</title>
+
+    <link rel="stylesheet" href="../../css/style.css">
+
+    <style>
+        /* =========================================================
+           DISCOVER BULGARIA
+           EXPERIENCE DETAIL — RILA HIKE
+           HTML + CSS ONLY
+        ========================================================= */
+
+        .adventure-page {
+            background: #f8f6f1;
+            color: #17231d;
+        }
+
+        .adventure-header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 20;
+            background: linear-gradient(
+                to bottom,
+                rgba(0,0,0,.42),
+                rgba(0,0,0,0)
+            );
+        }
+
+        .adventure-header .nav {
+    min-height: 90px;
+    width: min(1240px, calc(100% - 48px));
+    margin: 0 auto;
+}
+
+        .adventure-header .logo,
+        .adventure-header .main-nav a,
+        .adventure-header .nav-actions a {
+            color: #fff;
+        }
+
+        .adventure-hero {
+            min-height: 720px;
+            display: flex;
+            align-items: flex-end;
+            position: relative;
+            overflow: hidden;
+
+            background:
+                linear-gradient(
+                    180deg,
+                    rgba(0,0,0,.12) 0%,
+                    rgba(0,0,0,.18) 35%,
+                    rgba(0,0,0,.72) 100%
+                ),
+                url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQBWnADIX8UZFZU8Vh7yP_nUcBsLKeyal_vFFpugp5kf71VBpI00drXDcY&s=10");
+
+            background-size: cover;
+            background-position: center;
+        }
+
+        .adventure-hero::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(
+                    90deg,
+                    rgba(0,0,0,.30),
+                    transparent 65%
+                );
+            pointer-events: none;
+        }
+
+        .adventure-hero-content {
+    position: relative;
+    z-index: 2;
+    width: min(1240px, calc(100% - 48px));
+    margin: 0 auto;
+    padding: 0 0 105px;
+        }
+
+        .adventure-breadcrumb {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            margin-bottom: 24px;
+
+            color: rgba(255,255,255,.76);
+            font-size: 14px;
+        }
+
+        .adventure-breadcrumb a {
+            color: rgba(255,255,255,.9);
+            text-decoration: none;
+        }
+
+        .adventure-eyebrow {
+            margin: 0 0 15px;
+
+            color: #e1b47c;
+            font-size: 13px;
+            font-weight: 800;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .adventure-hero h1 {
+            max-width: 1080px;
+            margin: 0 0 20px;
+
+            color: #fff;
+            font-size: clamp(52px, 7vw, 88px);
+            line-height: .95;
+            letter-spacing: -3px;
+        }
+
+        .adventure-hero-description {
+            max-width: 720px;
+            margin: 0;
+
+            color: rgba(255,255,255,.9);
+            font-size: 19px;
+            line-height: 1.75;
+        }
+
+        .adventure-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 30px;
+        }
+
+        .adventure-meta span {
+            padding: 11px 15px;
+
+            border: 1px solid rgba(255,255,255,.22);
+            border-radius: 999px;
+
+            background: rgba(255,255,255,.12);
+            backdrop-filter: blur(10px);
+
+            color: #fff;
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .adventure-main {
+            width: min(1240px, calc(100% - 48px));
+            margin: 0 auto;
+            padding: 95px 0 120px;
+        }
+
+        .adventure-intro {
+            display: grid;
+            grid-template-columns: 1.25fr .75fr;
+            gap: 55px;
+            align-items: start;
+            margin-bottom: 80px;
+        }
+
+        .adventure-section-eyebrow {
+            margin: 0 0 10px;
+
+            color: #b5793d;
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .adventure-intro h2 {
+            margin: 0 0 20px;
+
+            color: #24332c;
+            font-size: clamp(34px, 4vw, 52px);
+            line-height: 1.05;
+            letter-spacing: -1.5px;
+        }
+
+        .adventure-intro p {
+            margin: 0;
+            color: #68706b;
+            font-size: 17px;
+            line-height: 1.8;
+        }
+
+        .adventure-booking {
+            padding: 30px;
+
+            background: #fff;
+            border: 1px solid #e4dfd7;
+            border-radius: 22px;
+
+            box-shadow: 0 18px 50px rgba(30,40,35,.08);
+        }
+
+        .adventure-booking-label {
+            margin-bottom: 8px;
+
+            color: #8d9390;
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .adventure-price {
+            margin: 0 0 20px;
+
+            color: #17231d;
+            font-size: 36px;
+            font-weight: 800;
+        }
+
+        .adventure-booking-note {
+            margin: 0 0 22px;
+
+            color: #68706b;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .adventure-book-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+
+            width: 100%;
+            padding: 15px 20px;
+
+            border-radius: 12px;
+            background: #b5793d;
+            color: #fff;
+
+            text-decoration: none;
+            font-weight: 800;
+
+            transition:
+                transform .25s ease,
+                background .25s ease,
+                box-shadow .25s ease;
+        }
+
+        .adventure-book-button:hover {
+            background: #95612f;
+            transform: translateY(-2px);
+            box-shadow: 0 12px 25px rgba(149,97,47,.25);
+        }
+
+        .adventure-section {
+            margin-bottom: 85px;
+        }
+
+        .adventure-section-title {
+            margin: 0 0 28px;
+
+            color: #24332c;
+            font-size: 32px;
+            letter-spacing: -.7px;
+        }
+
+        .adventure-info-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .adventure-info-card {
+            padding: 26px;
+
+            background: #fff;
+            border: 1px solid #e4dfd7;
+            border-radius: 18px;
+
+            box-shadow: 0 10px 30px rgba(0,0,0,.05);
+
+            transition:
+                transform .25s ease,
+                box-shadow .25s ease;
+        }
+
+        .adventure-info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 18px 40px rgba(0,0,0,.09);
+        }
+
+        .adventure-info-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+
+            width: 46px;
+            height: 46px;
+            margin-bottom: 18px;
+
+            border-radius: 14px;
+            background: #f4eadf;
+
+            font-size: 21px;
+        }
+
+        .adventure-info-card h3 {
+            margin: 0 0 8px;
+
+            color: #24332c;
+            font-size: 18px;
+        }
+
+        .adventure-info-card p {
+            margin: 0;
+
+            color: #68706b;
+            font-size: 14px;
+            line-height: 1.65;
+        }
+
+        .adventure-timeline {
+            display: grid;
+            gap: 16px;
+        }
+
+        .adventure-step {
+            display: grid;
+            grid-template-columns: 58px 1fr;
+            gap: 20px;
+            align-items: start;
+
+            padding: 24px;
+
+            background: #fff;
+            border: 1px solid #e4dfd7;
+            border-radius: 18px;
+        }
+
+        .adventure-step-number {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            width: 48px;
+            height: 48px;
+
+            border-radius: 50%;
+            background: #24332c;
+            color: #fff;
+
+            font-weight: 800;
+        }
+
+        .adventure-step h3 {
+            margin: 2px 0 7px;
+            font-size: 18px;
+        }
+
+        .adventure-step p {
+            margin: 0;
+            color: #68706b;
+            line-height: 1.65;
+        }
+
+        .adventure-list-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .adventure-list-card {
+            padding: 30px;
+
+            background: #fff;
+            border: 1px solid #e4dfd7;
+            border-radius: 20px;
+        }
+
+        .adventure-list-card h3 {
+            margin: 0 0 18px;
+            font-size: 20px;
+        }
+
+        .adventure-list-card ul {
+            margin: 0;
+            padding-left: 20px;
+            color: #68706b;
+            line-height: 1.9;
+        }
+
+        .adventure-final-cta {
+            position: relative;
+            overflow: hidden;
+
+            padding: 55px;
+            border-radius: 28px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(24,40,32,.96),
+                    rgba(44,59,49,.92)
+                );
+
+            color: #fff;
+        }
+
+        .adventure-final-cta::before {
+            content: "";
+            position: absolute;
+            width: 280px;
+            height: 280px;
+            right: -80px;
+            top: -100px;
+
+            border-radius: 50%;
+            background: rgba(255,255,255,.06);
+        }
+
+        .adventure-final-cta > * {
+            position: relative;
+            z-index: 2;
+        }
+
+        .adventure-final-cta h2 {
+            max-width: 700px;
+            margin: 0 0 15px;
+
+            color: #fff;
+            font-size: clamp(32px, 4vw, 48px);
+            line-height: 1.05;
+        }
+
+        .adventure-final-cta p {
+            max-width: 650px;
+            margin: 0 0 28px;
+
+            color: rgba(255,255,255,.78);
+            line-height: 1.7;
+        }
+
+        .adventure-final-button {
+            display: inline-flex;
+            padding: 14px 22px;
+
+            border-radius: 12px;
+            background: #fff;
+            color: #24332c;
+
+            text-decoration: none;
+            font-weight: 800;
+
+            transition: transform .25s ease;
+        }
+
+        .adventure-final-button:hover {
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 900px) {
+            .adventure-intro {
+                grid-template-columns: 1fr;
+            }
+
+            .adventure-info-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 650px) {
+            .adventure-hero {
+                min-height: 650px;
+            }
+
+            .adventure-hero-content {
+                width: min(100% - 36px, 1240px);
+                padding-bottom: 60px;
+            }
+
+            .adventure-hero h1 {
+                font-size: 48px;
+                letter-spacing: -2px;
+            }
+
+            .adventure-hero-description {
+                font-size: 16px;
+            }
+
+            .adventure-main {
+                width: min(100% - 36px, 1240px);
+                padding-top: 70px;
+            }
+
+            .adventure-info-grid,
+            .adventure-list-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .adventure-final-cta {
+                padding: 35px 25px;
+            }
+        }
+    </style>
+</head>
+
+<body class="adventure-page">
+
+<header class="site-header adventure-header">
+    <div class="container nav">
+
+        <a href="../index.html" class="logo">
+            DISCOVER BULGARIA
+        </a>
+
+        <nav class="main-nav">
+    <a href="../../index.html">Начало</a>
+    <a href="../destinations.html">Дестинации</a>
+    <a href="../../index.html#experiences">Преживявания</a>
+    <a href="../../index.html#stay">Настаняване</a>
+    <a href="../../index.html#shop">Магазин</a>
+</nav>
+
+        <div class="nav-actions">
+            <a href="#">♡</a>
+            <a href="#">🛒</a>
+            <a href="#">Вход</a>
+        </div>
+
+    </div>
+</header>
+
+
+<main>
+
+    <section class="adventure-hero">
+
+        <div class="adventure-hero-content">
+
+            <div class="adventure-breadcrumb">
+                <a href="../index.html">Начало</a>
+                <span>→</span>
+                <a href="../index.html#experiences">Преживявания</a>
+                <span>→</span>
+                <span>Рила</span>
+            </div>
+
+            <p class="adventure-eyebrow">
+                🥾 ПРИКЛЮЧЕНИЕ В ПЛАНИНАТА
+            </p>
+
+            <h1>
+                Планински преход в Рила
+            </h1>
+
+            <p class="adventure-hero-description">
+                Един ден сред високите върхове, кристалните езера
+                и дивата природа на Рила — преживяване за хора,
+                които искат да усетят планината отблизо.
+            </p>
+
+            <div class="adventure-meta">
+                <span>📍 Рила</span>
+                <span>⏱️ 6 часа</span>
+                <span>🥾 Начинаещи и средно напреднали</span>
+                <span>👥 Малка група</span>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section class="adventure-main">
+
+        <div class="adventure-intro">
+
+            <div>
+                <p class="adventure-section-eyebrow">
+                    ОТКРИЙ РИЛА
+                </p>
+
+                <h2>
+                    Планината се усеща различно, когато вървиш през нея.
+                </h2>
+
+                <p>
+                    Това приключение е създадено за хора, които искат
+                    да прекарат няколко часа сред природата, без да
+                    е необходимо да бъдат професионални планинари.
+                    Маршрутът съчетава красиви гледки, движение и
+                    достатъчно време за почивка и снимки.
+                </p>
+            </div>
+
+
+            <aside class="adventure-booking">
+
+                <p class="adventure-booking-label">
+                    Цена на човек
+                </p>
+
+                <p class="adventure-price">
+                    30,63 €
+                </p>
+
+                <p class="adventure-booking-note">
+                    Продължителност: 6 часа<br>
+                    Ниво: начинаещи и средно напреднали
+                </p>
+
+                <a href="#" class="adventure-book-button">
+                    Резервирай приключението →
+                </a>
+
+            </aside>
+
+        </div>
+
+
+        <section class="adventure-section">
+
+            <h2 class="adventure-section-title">
+                Какво включва преживяването?
+            </h2>
+
+            <div class="adventure-info-grid">
+
+                <article class="adventure-info-card">
+                    <span class="adventure-info-icon">🥾</span>
+                    <h3>Планински маршрут</h3>
+                    <p>
+                        Подбран маршрут с красиви гледки и подходящо
+                        темпо за начинаещи и средно напреднали.
+                    </p>
+                </article>
+
+                <article class="adventure-info-card">
+                    <span class="adventure-info-icon">🧭</span>
+                    <h3>Организация</h3>
+                    <p>
+                        Ясен план на деня, точки за почивка и
+                        предварително подготвена програма.
+                    </p>
+                </article>
+
+                <article class="adventure-info-card">
+                    <span class="adventure-info-icon">📸</span>
+                    <h3>Време за снимки</h3>
+                    <p>
+                        Спокойно темпо и възможност да запечатате
+                        най-красивите моменти от маршрута.
+                    </p>
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <section class="adventure-section">
+
+            <h2 class="adventure-section-title">
+                Програма на приключението
+            </h2>
+
+            <div class="adventure-timeline">
+
+                <article class="adventure-step">
+                    <span class="adventure-step-number">01</span>
+                    <div>
+                        <h3>Среща и подготовка</h3>
+                        <p>
+                            Кратък инструктаж, проверка на екипировката
+                            и запознаване с маршрута.
+                        </p>
+                    </div>
+                </article>
+
+                <article class="adventure-step">
+                    <span class="adventure-step-number">02</span>
+                    <div>
+                        <h3>Начало на прехода</h3>
+                        <p>
+                            Потегляме по планинската пътека и постепенно
+                            навлизаме в природата на Рила.
+                        </p>
+                    </div>
+                </article>
+
+                <article class="adventure-step">
+                    <span class="adventure-step-number">03</span>
+                    <div>
+                        <h3>Панорамна спирка</h3>
+                        <p>
+                            Почивка на живописно място с време за снимки,
+                            вода и кратко възстановяване.
+                        </p>
+                    </div>
+                </article>
+
+                <article class="adventure-step">
+                    <span class="adventure-step-number">04</span>
+                    <div>
+                        <h3>Финал и връщане</h3>
+                        <p>
+                            Завършваме маршрута с спокойно връщане и
+                            кратък финален разговор за преживяването.
+                        </p>
+                    </div>
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <section class="adventure-section">
+
+            <h2 class="adventure-section-title">
+                Какво да носиш?
+            </h2>
+
+            <div class="adventure-list-grid">
+
+                <article class="adventure-list-card">
+                    <h3>Препоръчително</h3>
+
+                    <ul>
+                        <li>Удобни туристически обувки</li>
+                        <li>Леки дрехи и връхна дреха</li>
+                        <li>Бутилка вода</li>
+                        <li>Малка раница</li>
+                        <li>Слънцезащита</li>
+                    </ul>
+                </article>
+
+                <article class="adventure-list-card">
+                    <h3>Добре е да имаш</h3>
+
+                    <ul>
+                        <li>Телефон или фотоапарат</li>
+                        <li>Лека храна или енергийно блокче</li>
+                        <li>Шапка и резервни чорапи</li>
+                        <li>Дъждобран при променливо време</li>
+                        <li>Добро настроение 😎</li>
+                    </ul>
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <section class="adventure-final-cta">
+
+            <h2>
+                Готов ли си да изживееш Рила?
+            </h2>
+
+            <p>
+                Избери дата, подготви раницата и остави планината
+                да свърши останалото.
+            </p>
+
+            <a href="#" class="adventure-final-button">
+                Резервирай своето приключение →
+            </a>
+
+        </section>
+
+    </section>
+
+</main>
+
+
+<footer class="site-footer">
+    <div class="container">
+        <p>
+            © 2026 Discover Bulgaria · Открий България. Изживей повече.
+        </p>
+    </div>
+</footer>
+
+</body>
+</html>

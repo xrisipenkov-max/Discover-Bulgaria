@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Разгледай дестинациите на Discover Bulgaria — планини, море, история и градове.">
+    <meta name="author" content="Discover Bulgaria">
+    <title>Дестинации | Discover Bulgaria</title>
+    <link rel="stylesheet" href="../css/style.css">
+
+    <style>
+        /* =========================================================
+           HTML + CSS ONLY — STATIC DESTINATION CATALOG
+        ========================================================= */
+
+        .static-catalog {
+            padding: 90px 0 110px;
+            background: #f8f6f1;
+        }
+
+        .catalog-intro {
+            max-width: 760px;
+            margin-bottom: 38px;
+        }
+
+        .catalog-intro h2 {
+            margin: 0 0 14px;
+            color: #17231d;
+            font-size: clamp(34px, 5vw, 54px);
+            line-height: 1.05;
+        }
+
+        .catalog-intro p {
+            margin: 0;
+            color: #68706b;
+            line-height: 1.7;
+            font-size: 16px;
+        }
+
+        .catalog-filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 34px;
+        }
+
+        .catalog-filter-input {
+            position: absolute;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .catalog-filter-label {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 44px;
+            padding: 0 18px;
+            border: 1px solid #ded9d0;
+            border-radius: 999px;
+            background: #ffffff;
+            color: #39453f;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: .2s ease;
+        }
+
+        .catalog-filter-label:hover {
+            transform: translateY(-1px);
+            border-color: #b5793d;
+        }
+
+        #filter-all:checked ~ .catalog-filters label[for="filter-all"],
+        #filter-mountains:checked ~ .catalog-filters label[for="filter-mountains"],
+        #filter-sea:checked ~ .catalog-filters label[for="filter-sea"],
+        #filter-history:checked ~ .catalog-filters label[for="filter-history"],
+        #filter-cities:checked ~ .catalog-filters label[for="filter-cities"] {
+            background: #17231d;
+            color: #ffffff;
+            border-color: #17231d;
+        }
+
+        .static-catalog-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 28px;
+        }
+
+        .static-destination-card {
+            min-width: 0;
+        }
+
+        .static-destination-card .destination-image {
+            min-height: 270px;
+        }
+
+        .static-destination-card .destination-content {
+            min-height: 190px;
+        }
+
+        /* CSS-only filtering */
+        #filter-mountains:checked ~ .static-catalog-grid .static-destination-card:not(.mountain),
+        #filter-sea:checked ~ .static-catalog-grid .static-destination-card:not(.sea),
+        #filter-history:checked ~ .static-catalog-grid .static-destination-card:not(.history),
+        #filter-cities:checked ~ .static-catalog-grid .static-destination-card:not(.city) {
+            display: none;
+        }
+
+        .catalog-note {
+            margin-top: 24px;
+            color: #7a807b;
+            font-size: 13px;
+        }
+
+        @media (max-width: 850px) {
+            .static-catalog-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body class="destinations-page">
+
+<header class="site-header">
+    <div class="container nav">
+        <a href="../index.html" class="logo">
+            DISCOVER <span>BULGARIA</span>
+        </a>
+
+        <nav class="main-nav">
+            <a href="../index.html">Начало</a>
+            <a href="destinations.html" class="active">Дестинации</a>
+            <a href="../index.html#experiences">Преживявания</a>
+            <a href="accommodation.html">Настаняване</a>
+            <a href="../index.html#shop">Магазин</a>
+        </nav>
+
+        <div class="nav-actions">
+            <a href="#favorites" aria-label="Любими">♡</a>
+            <a href="#cart" aria-label="Количка">🛒</a>
+            <a href="#login">Вход</a>
+        </div>
+    </div>
+</header>
+
+<main>
+
+<section class="destinations-hero">
+    <div class="container">
+        <p class="eyebrow">DISCOVER BULGARIA</p>
+
+        <h1>
+            Открий следващото<br>
+            си място.
+        </h1>
+
+        <p class="hero-description">
+            От величествените планини до слънчевото Черноморие —
+            избери мястото, което искаш да изживееш.
+        </p>
+
+        <a href="#catalog" class="btn btn-light">
+            Разгледай всички дестинации →
+        </a>
+    </div>
+</section>
+
+<section class="static-catalog" id="catalog">
+    <div class="container">
+
+        <div class="catalog-intro">
+            <p class="eyebrow">КАТАЛОГ НА ДЕСТИНАЦИИТЕ</p>
+            <h2>България те очаква.</h2>
+            <p>
+                Избери категория и разгледай подбраните места.
+                Филтрирането работи само с HTML и CSS — без JavaScript.
+            </p>
+        </div>
+
+        <input class="catalog-filter-input" type="radio" name="catalog-filter" id="filter-all" checked>
+        <input class="catalog-filter-input" type="radio" name="catalog-filter" id="filter-mountains">
+        <input class="catalog-filter-input" type="radio" name="catalog-filter" id="filter-sea">
+        <input class="catalog-filter-input" type="radio" name="catalog-filter" id="filter-history">
+        <input class="catalog-filter-input" type="radio" name="catalog-filter" id="filter-cities">
+
+        <div class="catalog-filters" aria-label="Филтри по категория">
+            <label class="catalog-filter-label" for="filter-all">Всички</label>
+            <label class="catalog-filter-label" for="filter-mountains">🏔️ Планини</label>
+            <label class="catalog-filter-label" for="filter-sea">🌊 Море</label>
+            <label class="catalog-filter-label" for="filter-history">🏛️ История</label>
+            <label class="catalog-filter-label" for="filter-cities">🏙️ Градове</label>
+        </div>
+
+        <div class="static-catalog-grid">
+
+            <article class="destination-card static-destination-card mountain">
+                <div class="destination-image destination-rila"></div>
+                <div class="destination-content">
+                    <p class="destination-location">Планина · Югозападна България</p>
+                    <h3>Рила</h3>
+                    <p>Величествени върхове, Седемте рилски езера и Рилският манастир.</p>
+                    <div class="destination-footer">
+                        <span>Природа</span>
+                        <a href="rila.html">Открий Рила →</a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="destination-card static-destination-card mountain">
+                <div class="destination-image destination-rhodopes"></div>
+                <div class="destination-content">
+                    <p class="destination-location">Планина · Южна България</p>
+                    <h3>Родопи</h3>
+                    <p>Пещери, чудни мостове, планински села и силна местна традиция.</p>
+                    <div class="destination-footer">
+                        <span>Природа</span>
+                        <a href="rhodopes.html">Открий Родопите →</a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="destination-card static-destination-card mountain">
+                <div class="destination-image destination-pirin"></div>
+                <div class="destination-content">
+                    <p class="destination-location">Планина · Югозападна България</p>
+                    <h3>Пирин</h3>
+                    <p>Алпийски пейзажи, високите върхове на Пирин и планински маршрути.</p>
+                    <div class="destination-footer">
+                        <span>Приключения</span>
+                        <a href="pirin.html">Разгледай →</a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="destination-card static-destination-card sea">
+                <div class="destination-image destination-pomorie"></div>
+                <div class="destination-content">
+                    <p class="destination-location">Море · Южно Черноморие</p>
+                    <h3>Поморие</h3>
+                    <p>Море, солено езеро, калолечение, вино и спокойна крайбрежна атмосфера.</p>
+                    <div class="destination-footer">
+                        <span>Море</span>
+                        <a href="pomorie.html">Открий Поморие →</a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="destination-card static-destination-card sea">
+                <div class="destination-image destination-sozopol"></div>
+                <div class="destination-content">
+                    <p class="destination-location">Море · Южно Черноморие</p>
+                    <h3>Созопол</h3>
+                    <p>Старият град, морето, дървените къщи и характерната крайбрежна атмосфера.</p>
+                    <div class="destination-footer">
+                        <span>Море</span>
+                        <a href="sozopol.html">Открий Созопол →</a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="destination-card static-destination-card sea">
+                <div class="destination-image destination-nessebar"></div>
+                <div class="destination-content">
+                    <p class="destination-location">Море · Стар град</p>
+                    <h3>Несебър</h3>
+                    <p>Полуостров, древни църкви, калдъръмени улици и Черно море.</p>
+                    <div class="destination-footer">
+                        <span>История</span>
+                        <a href="nessebar.html">Открий Несебър →</a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="destination-card static-destination-card sea">
+                <div class="destination-image destination-balchik"></div>
+                <div class="destination-content">
+                    <p class="destination-location">Море · Северно Черноморие</p>
+                    <h3>Балчик</h3>
+                    <p>Морският бряг, Дворецът и Ботаническата градина.</p>
+                    <div class="destination-footer">
+                        <span>Море</span>
+                        <a href="balchik.html">Открий Балчик →</a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="destination-card static-destination-card history">
+                <div class="destination-image destination-tarnovo"></div>
+                <div class="destination-content">
+                    <p class="destination-location">История · Северна България</p>
+                    <h3>Велико Търново</h3>
+                    <p>Царевец, Трапезица и Самоводската чаршия — история, която се усеща на място.</p>
+                    <div class="destination-footer">
+                        <span>История</span>
+                        <a href="veliko-tarnovo.html">Открий Велико Търново →</a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="destination-card static-destination-card history">
+                <div class="destination-image destination-plovdiv"></div>
+                <div class="destination-content">
+                    <p class="destination-location">История · Южна България</p>
+                    <h3>Пловдив</h3>
+                    <p>Античният театър, Старият град, Капана и културният живот на града.</p>
+                    <div class="destination-footer">
+                        <span>История</span>
+                        <a href="plovdiv.html">Открий Пловдив →</a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="destination-card static-destination-card city">
+                <div class="destination-image destination-sofia"></div>
+                <div class="destination-content">
+                    <p class="destination-location">Град · Западна България</p>
+                    <h3>София</h3>
+                    <p>Столицата с исторически център, градска култура и Витоша наблизо.</p>
+                    <div class="destination-footer">
+                        <span>Градски туризъм</span>
+                        <a href="sofia.html">Открий София →</a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="destination-card static-destination-card city">
+                <div class="destination-image destination-varna"></div>
+                <div class="destination-content">
+                    <p class="destination-location">Град · Черноморие</p>
+                    <h3>Варна</h3>
+                    <p>Морска столица, Морска градина, култура и градски живот край брега.</p>
+                    <div class="destination-footer">
+                        <span>Градски туризъм</span>
+                        <a href="varna.html">Открий Варна →</a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="destination-card static-destination-card city">
+                <div class="destination-image destination-burgas"></div>
+                <div class="destination-content">
+                    <p class="destination-location">Град · Черноморие</p>
+                    <h3>Бургас</h3>
+                    <p>Морската градина, плажът, културните събития и спокойният градски ритъм.</p>
+                    <div class="destination-footer">
+                        <span>Градски туризъм</span>
+                        <a href="burgas.html">Открий Бургас →</a>
+                    </div>
+                </div>
+            </article>
+
+        </div>
+
+        <p class="catalog-note">
+            Филтрите на тази страница са реализирани само с HTML и CSS.
+        </p>
+
+    </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container footer-grid">
+        <div>
+            <div class="logo">DISCOVER <span>BULGARIA</span></div>
+            <p>Открий България. Изживей повече.</p>
+        </div>
+
+        <div>
+            <h4>Разгледай</h4>
+            <a href="../index.html">Начало</a>
+            <a href="destinations.html">Дестинации</a>
+            <a href="#experiences">Преживявания</a>
+            <a href="#shop">Магазин</a>
+        </div>
+
+        <div>
+            <h4>Помощ</h4>
+            <a href="#contacts">Контакти</a>
+            <a href="#faq">Често задавани въпроси</a>
+            <a href="#terms">Условия</a>
+        </div>
+    </div>
+
+    <div class="container footer-bottom">
+        <p>© 2026 Discover Bulgaria. Всички права запазени.</p>
+    </div>
+</footer>
+
+</body>
+</html>

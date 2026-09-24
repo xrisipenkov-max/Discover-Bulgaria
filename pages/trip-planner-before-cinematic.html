@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Създай своето пътуване с Discover Bulgaria.">
+    <title>Създай своето пътуване | Discover Bulgaria</title>
+    <link rel="stylesheet" href="../css/style.css">
+
+    <style>
+        /* =========================================
+           DISCOVER BULGARIA
+           TRIP PLANNER — HTML + CSS ONLY
+        ========================================= */
+
+        .trip-page {
+            background: #f7f5ef;
+            color: #17231d;
+            min-height: 100vh;
+        }
+
+        .trip-hero {
+            min-height: 430px;
+            display: flex;
+            align-items: center;
+            background:
+                linear-gradient(90deg, rgba(8,18,15,.88), rgba(8,18,15,.52)),
+                url("https://commons.wikimedia.org/wiki/Special:Redirect/file/Rila%20Lakes.jpg")
+                center/cover no-repeat;
+            color: #fff;
+        }
+
+        .trip-hero-content {
+            width: min(1120px, 92%);
+            margin: 0 auto;
+            padding: 110px 0 80px;
+        }
+
+        .trip-eyebrow {
+            color: #d49a4a;
+            font-size: 13px;
+            font-weight: 800;
+            letter-spacing: 3px;
+            margin-bottom: 18px;
+        }
+
+        .trip-hero h1 {
+            max-width: 800px;
+            margin: 0 0 22px;
+            font-size: clamp(48px, 7vw, 82px);
+            line-height: .98;
+            letter-spacing: -3px;
+        }
+
+        .trip-hero p {
+            max-width: 700px;
+            font-size: 19px;
+            line-height: 1.7;
+            color: rgba(255,255,255,.88);
+        }
+
+        .trip-main {
+            width: min(1120px, 92%);
+            margin: 0 auto;
+            padding: 80px 0 100px;
+        }
+
+        .trip-intro {
+            max-width: 760px;
+            margin-bottom: 42px;
+        }
+
+        .trip-intro h2 {
+            font-size: clamp(34px, 5vw, 54px);
+            line-height: 1.05;
+            margin: 0 0 16px;
+        }
+
+        .trip-intro p {
+            color: #68706b;
+            line-height: 1.75;
+            font-size: 17px;
+        }
+
+        .trip-form {
+            display: grid;
+            grid-template-columns: 1.15fr .85fr;
+            gap: 28px;
+            align-items: start;
+        }
+
+        .trip-panel,
+        .trip-summary {
+            background: #fff;
+            border: 1px solid rgba(23,35,29,.10);
+            border-radius: 26px;
+            box-shadow: 0 18px 45px rgba(23,35,29,.08);
+        }
+
+        .trip-panel {
+            padding: 34px;
+        }
+
+        .trip-summary {
+            padding: 32px;
+            position: sticky;
+            top: 28px;
+        }
+
+        .trip-section {
+            padding: 0 0 30px;
+            margin-bottom: 30px;
+            border-bottom: 1px solid #e6e3dc;
+        }
+
+        .trip-section:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: 0;
+        }
+
+        .trip-section h3 {
+            margin: 0 0 8px;
+            font-size: 23px;
+        }
+
+        .trip-section > p {
+            color: #737a75;
+            margin: 0 0 20px;
+            line-height: 1.6;
+        }
+
+        .choice-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        .choice-input {
+            position: absolute;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .choice {
+            display: block;
+            padding: 17px;
+            border: 1px solid #ddd9d0;
+            border-radius: 16px;
+            cursor: pointer;
+            background: #fff;
+            transition: .2s ease;
+        }
+
+        .choice:hover {
+            transform: translateY(-2px);
+            border-color: #c28a40;
+        }
+
+        .choice strong {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 16px;
+        }
+
+        .choice span {
+            color: #747b76;
+            font-size: 14px;
+            line-height: 1.45;
+        }
+
+        .choice-input:checked + .choice {
+            border-color: #c28a40;
+            background: #fff7eb;
+            box-shadow: inset 0 0 0 2px rgba(194,138,64,.15);
+        }
+
+        .select-field,
+        .number-field {
+            width: 100%;
+            padding: 15px 16px;
+            border: 1px solid #ddd9d0;
+            border-radius: 14px;
+            background: #fff;
+            color: #17231d;
+            font: inherit;
+            outline: none;
+        }
+
+        .select-field:focus,
+        .number-field:focus {
+            border-color: #c28a40;
+        }
+
+        .trip-actions {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .trip-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 15px 22px;
+            border-radius: 999px;
+            text-decoration: none;
+            font-weight: 800;
+            border: 0;
+            cursor: pointer;
+        }
+
+        .trip-button.primary {
+            background: #17231d;
+            color: #fff;
+        }
+
+        .trip-button.secondary {
+            background: #eeeae2;
+            color: #17231d;
+        }
+
+        .trip-summary .trip-eyebrow {
+            margin-bottom: 10px;
+        }
+
+        .trip-summary h3 {
+            font-size: 29px;
+            margin: 0 0 12px;
+        }
+
+        .summary-list {
+            list-style: none;
+            padding: 0;
+            margin: 22px 0;
+        }
+
+        .summary-list li {
+            padding: 13px 0;
+            border-bottom: 1px solid #ebe8e1;
+            color: #59625c;
+        }
+
+        .summary-list li strong {
+            color: #17231d;
+            display: block;
+            margin-bottom: 3px;
+        }
+
+        .planner-note {
+            padding: 18px;
+            border-radius: 16px;
+            background: #f7f1e7;
+            color: #646b66;
+            line-height: 1.6;
+            font-size: 14px;
+        }
+
+        .ready-trips {
+            margin-top: 70px;
+        }
+
+        .ready-trips h2 {
+            font-size: clamp(32px, 4vw, 48px);
+            margin-bottom: 10px;
+        }
+
+        .ready-trips > p {
+            color: #6e756f;
+            margin-bottom: 28px;
+        }
+
+        .ready-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .ready-card {
+            background: #fff;
+            border-radius: 22px;
+            overflow: hidden;
+            border: 1px solid rgba(23,35,29,.09);
+            box-shadow: 0 12px 32px rgba(23,35,29,.06);
+        }
+
+        .ready-card-image {
+            height: 190px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .ready-card:nth-child(1) .ready-card-image {
+            background-image: url("https://commons.wikimedia.org/wiki/Special:Redirect/file/Rila%20Lakes.jpg");
+        }
+
+        .ready-card:nth-child(2) .ready-card-image {
+            background-image: url("https://commons.wikimedia.org/wiki/Special:Redirect/file/Pomorie%20Lake%20Black%20Sea%20Black%20Beach.jpg");
+        }
+
+        .ready-card:nth-child(3) .ready-card-image {
+            background-image: url("https://commons.wikimedia.org/wiki/Special:Redirect/file/Tsarevets%20-%20Veliko%20Tarnovo.jpg");
+        }
+
+        .ready-card-content {
+            padding: 22px;
+        }
+
+        .ready-card-content h3 {
+            margin: 0 0 8px;
+            font-size: 22px;
+        }
+
+        .ready-card-content p {
+            color: #6d746f;
+            line-height: 1.55;
+            margin-bottom: 16px;
+        }
+
+        .ready-card-content a {
+            color: #b87526;
+            font-weight: 800;
+            text-decoration: none;
+        }
+
+        @media (max-width: 900px) {
+            .trip-form {
+                grid-template-columns: 1fr;
+            }
+
+            .trip-summary {
+                position: static;
+            }
+
+            .ready-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .choice-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .trip-panel,
+            .trip-summary {
+                padding: 24px;
+            }
+
+            .trip-hero-content {
+                padding-top: 90px;
+            }
+        }
+    </style>
+</head>
+
+<body class="trip-page">
+
+<header>
+    <nav>
+        <div class="logo">DISCOVER BULGARIA</div>
+
+        <ul>
+            <li><a href="../index.html">Начало</a></li>
+            <li><a href="destinations.html">Дестинации</a></li>
+            <li><a href="destinations.html#catalog">Преживявания</a></li>
+            <li><a href="destinations.html#catalog">Настаняване</a></li>
+            <li><a href="destinations.html#catalog">Магазин</a></li>
+        </ul>
+
+        <div class="nav-actions">
+            <a href="destinations.html#catalog" aria-label="Любими">♡</a>
+            <a href="destinations.html#catalog" aria-label="Количка">🛒</a>
+            <a href="destinations.html#catalog">Вход</a>
+        </div>
+    </nav>
+</header>
+
+<main>
+    <section class="trip-hero">
+        <div class="trip-hero-content">
+            <p class="trip-eyebrow">ТВОЕТО ПЪТУВАНЕ · DISCOVER BULGARIA</p>
+            <h1>Създай своето приключение.</h1>
+            <p>
+                Избери колко време имаш, какво обичаш и какъв тип пътуване търсиш.
+                След това разгледай подходящите готови предложения и избери своята дестинация.
+            </p>
+        </div>
+    </section>
+
+    <section class="trip-main">
+        <div class="trip-intro">
+            <h2>Нека започнем с твоето пътуване.</h2>
+            <p>
+                Тази версия на планера е изградена изцяло с HTML и CSS.
+                Вместо JavaScript използваме ясни избори, готови маршрути и директни
+                връзки към дестинациите.
+            </p>
+        </div>
+
+        <div class="trip-form">
+            <form class="trip-panel" action="destinations.html" method="get">
+                <div class="trip-section">
+                    <h3>Колко време имаш?</h3>
+                    <p>Избери приблизителната продължителност.</p>
+
+                    <div class="choice-grid">
+                        <div>
+                            <input class="choice-input" type="radio" id="days1" name="duration" value="1" checked>
+                            <label class="choice" for="days1">
+                                <strong>1 ден</strong>
+                                <span>Кратко бягство</span>
+                            </label>
+                        </div>
+
+                        <div>
+                            <input class="choice-input" type="radio" id="days2" name="duration" value="2">
+                            <label class="choice" for="days2">
+                                <strong>2–3 дни</strong>
+                                <span>Уикенд приключение</span>
+                            </label>
+                        </div>
+
+                        <div>
+                            <input class="choice-input" type="radio" id="days4" name="duration" value="4">
+                            <label class="choice" for="days4">
+                                <strong>4–5 дни</strong>
+                                <span>По-пълно пътуване</span>
+                            </label>
+                        </div>
+
+                        <div>
+                            <input class="choice-input" type="radio" id="days7" name="duration" value="7">
+                            <label class="choice" for="days7">
+                                <strong>7+ дни</strong>
+                                <span>Голяма обиколка</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="trip-section">
+                    <h3>Какво ти се прави?</h3>
+                    <p>Избери основния тип преживяване.</p>
+
+                    <div class="choice-grid">
+                        <div>
+                            <input class="choice-input" type="radio" id="mountain" name="interest" value="mountain" checked>
+                            <label class="choice" for="mountain">
+                                <strong>🏔️ Планини</strong>
+                                <span>Върхове, езера и преходи</span>
+                            </label>
+                        </div>
+
+                        <div>
+                            <input class="choice-input" type="radio" id="sea" name="interest" value="sea">
+                            <label class="choice" for="sea">
+                                <strong>🌊 Море</strong>
+                                <span>Плажове, заливи и каяк</span>
+                            </label>
+                        </div>
+
+                        <div>
+                            <input class="choice-input" type="radio" id="history" name="interest" value="history">
+                            <label class="choice" for="history">
+                                <strong>🏛️ История</strong>
+                                <span>Крепости, църкви и стари градове</span>
+                            </label>
+                        </div>
+
+                        <div>
+                            <input class="choice-input" type="radio" id="food" name="interest" value="food">
+                            <label class="choice" for="food">
+                                <strong>🍷 Кулинария</strong>
+                                <span>Местна храна, вина и традиции</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="trip-section">
+                    <h3>Къде искаш да бъде?</h3>
+                    <p>Избери регион, от който да започнеш.</p>
+
+                    <select class="select-field" name="region">
+                        <option value="all">Цяла България</option>
+                        <option value="southwest">Югозападна България</option>
+                        <option value="south">Южна България</option>
+                        <option value="north">Северна България</option>
+                        <option value="black-sea">Черноморие</option>
+                    </select>
+                </div>
+
+                <div class="trip-section">
+                    <h3>Колко души пътуват?</h3>
+                    <p>Избери приблизителния размер на групата.</p>
+
+                    <input class="number-field" type="number" name="people" min="1" max="20" value="2">
+                </div>
+
+                <div class="trip-actions">
+                    <button class="trip-button primary" type="submit">
+                        Разгледай подходящите места →
+                    </button>
+
+                    <a class="trip-button secondary" href="destinations.html">
+                        Виж всички дестинации
+                    </a>
+                </div>
+            </form>
+
+            <aside class="trip-summary">
+                <p class="trip-eyebrow">КАК РАБОТИ</p>
+                <h3>Твоят избор → твоето пътуване</h3>
+
+                <ul class="summary-list">
+                    <li>
+                        <strong>1. Избери продължителност</strong>
+                        Определи колко време искаш да отделиш.
+                    </li>
+                    <li>
+                        <strong>2. Избери интерес</strong>
+                        Планина, море, история или кулинария.
+                    </li>
+                    <li>
+                        <strong>3. Избери регион</strong>
+                        Стесни търсенето до част от България.
+                    </li>
+                    <li>
+                        <strong>4. Разгледай предложенията</strong>
+                        Отвори конкретна дестинация и продължи към нейното пътуване.
+                    </li>
+                </ul>
+
+                <div class="planner-note">
+                    <strong>Важно:</strong> планерът е демонстрационна HTML/CSS версия
+                    за дипломния проект. Избраните параметри се изпращат чрез стандартна
+                    HTML форма, без JavaScript.
+                </div>
+            </aside>
+        </div>
+
+        <section class="ready-trips">
+            <p class="trip-eyebrow">ГОТОВИ ИДЕИ</p>
+            <h2>Ако искаш да тръгнеш веднага.</h2>
+            <p>Избери готово направление и разгледай подробната му страница.</p>
+
+            <div class="ready-grid">
+                <article class="ready-card">
+                    <div class="ready-card-image"></div>
+                    <div class="ready-card-content">
+                        <h3>Планинско бягство</h3>
+                        <p>Рила, езера, планински маршрути и Рилският манастир.</p>
+                        <a href="rila.html">Открий Рила →</a>
+                    </div>
+                </article>
+
+                <article class="ready-card">
+                    <div class="ready-card-image"></div>
+                    <div class="ready-card-content">
+                        <h3>Море и релакс</h3>
+                        <p>Поморие, морски преживявания, солено езеро и СПА.</p>
+                        <a href="pomorie.html">Открий Поморие →</a>
+                    </div>
+                </article>
+
+                <article class="ready-card">
+                    <div class="ready-card-image"></div>
+                    <div class="ready-card-content">
+                        <h3>История и култура</h3>
+                        <p>Царевец, Трапезица и атмосферата на старо Търново.</p>
+                        <a href="veliko-tarnovo.html">Открий Велико Търново →</a>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </section>
+</main>
+
+</body>
+</html>

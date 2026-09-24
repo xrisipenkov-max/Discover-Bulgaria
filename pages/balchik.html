@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Балчик | DISCOVER BULGARIA</title>
+<link rel="stylesheet" href="../css/style.css">
+<style>
+:root{--b-ink:#17201d;--b-muted:#66736e;--b-cream:#f3eee4;--b-paper:#fbfaf7;--b-sea:#2b6265;--b-line:rgba(23,32,29,.14)}
+body{margin:0;background:var(--b-paper);color:var(--b-ink)}
+.b-page{font-family:inherit;overflow:hidden}
+.b-hero{min-height:780px;position:relative;display:flex;align-items:flex-end;color:#fff;background:linear-gradient(180deg,rgba(0,0,0,.04),rgba(0,0,0,.15) 38%,rgba(0,0,0,.78)),url("https://commons.wikimedia.org/wiki/Special:Redirect/file/Balchik%20palace.jpg") center/cover}
+.b-hero-inner{width:min(1160px,calc(100% - 48px));margin:auto;padding:150px 0 72px}
+.b-eyebrow{font-size:13px;letter-spacing:.18em;font-weight:800;margin-bottom:18px}
+.b-hero h1{font-size:clamp(70px,11vw,145px);line-height:.82;letter-spacing:-.06em;margin:0 0 28px}
+.b-lead{max-width:700px;font-size:clamp(20px,2.4vw,31px);line-height:1.34;margin:0 0 28px}
+.b-chip{display:inline-flex;border:1px solid rgba(255,255,255,.35);background:rgba(255,255,255,.1);padding:11px 16px;border-radius:999px;backdrop-filter:blur(8px);font-size:14px}
+
+.b-story{padding:110px 24px;background:var(--b-paper)}
+.b-story-grid{width:min(1120px,100%);margin:auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:end}
+.b-kicker{font-size:12px;letter-spacing:.17em;font-weight:800;color:var(--b-sea);margin-bottom:16px}
+.b-story h2{font-size:clamp(43px,5.3vw,74px);line-height:.98;letter-spacing:-.045em;margin:0}
+.b-story-copy{font-size:18px;line-height:1.8;color:var(--b-muted);margin:0}
+.b-facts{width:min(1120px,100%);margin:55px auto 0;display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.b-fact{border-top:1px solid var(--b-line);padding-top:16px}
+.b-fact strong{display:block;font-size:19px;margin-bottom:5px}.b-fact span{font-size:14px;color:var(--b-muted)}
+
+.b-palace{padding:105px 24px;background:var(--b-cream)}
+.b-palace-head{width:min(1120px,100%);margin:auto;display:flex;justify-content:space-between;gap:35px;align-items:end;margin-bottom:42px}
+.b-palace h2{font-size:clamp(40px,5vw,68px);line-height:.97;letter-spacing:-.045em;margin:0}
+.b-palace-head p{max-width:390px;color:var(--b-muted);line-height:1.7;margin:0}
+.b-mosaic{width:min(1120px,100%);margin:auto;display:grid;grid-template-columns:1.25fr .75fr;grid-template-rows:290px 290px;gap:18px}
+.b-photo{overflow:hidden;border-radius:22px;position:relative;background:#ddd}
+.b-photo img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s ease}
+.b-photo:hover img{transform:scale(1.045)}
+.b-photo.main{grid-row:1/3}
+.b-label{position:absolute;left:18px;bottom:18px;padding:9px 13px;border-radius:999px;background:rgba(0,0,0,.54);color:#fff;font-size:13px;backdrop-filter:blur(7px)}
+
+.b-garden{background:var(--b-ink);color:#fff;padding:115px 24px}
+.b-garden-grid{width:min(1120px,100%);margin:auto;display:grid;grid-template-columns:.72fr 1.28fr;gap:80px;align-items:center}
+.b-garden h2{font-size:clamp(44px,5.4vw,78px);line-height:.93;letter-spacing:-.05em;margin:0}
+.b-garden-copy p{font-size:18px;line-height:1.8;color:rgba(255,255,255,.72);margin:0 0 35px}
+.b-route{display:grid;grid-template-columns:repeat(4,1fr);background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.13)}
+.b-stop{padding:23px;background:var(--b-ink);border-right:1px solid rgba(255,255,255,.13)}
+.b-stop:last-child{border-right:0}.b-stop b{display:block;font-size:14px;margin-bottom:9px}.b-stop span{font-size:13px;line-height:1.55;color:rgba(255,255,255,.58)}
+
+.b-exps{padding:110px 24px;background:#fff}.b-exps-inner{width:min(1120px,100%);margin:auto}
+.b-exps h2{font-size:clamp(40px,5vw,66px);line-height:1;margin:0 0 45px;letter-spacing:-.04em}
+.b-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.b-exp{border:1px solid var(--b-line);border-radius:20px;padding:28px;min-height:170px;display:flex;flex-direction:column;justify-content:space-between;transition:.25s;background:#fff}
+.b-exp:hover{transform:translateY(-5px);box-shadow:0 18px 40px rgba(23,32,29,.08)}
+.b-tag{font-size:11px;letter-spacing:.14em;color:var(--b-sea);font-weight:800}.b-exp h3{font-size:21px;line-height:1.35;margin:20px 0 8px}.b-price{font-size:18px;font-weight:800}
+
+.b-practical{padding:100px 24px;background:var(--b-cream)}
+.b-practical-grid{width:min(1120px,100%);margin:auto;display:grid;grid-template-columns:1fr 1fr;gap:70px}
+.b-practical h2{font-size:clamp(40px,5vw,62px);line-height:1;letter-spacing:-.04em;margin:0 0 28px}
+.b-info{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--b-line)}
+.b-info div{padding:20px 0;border-bottom:1px solid var(--b-line)}.b-info strong{display:block;margin-bottom:6px}.b-info span{font-size:14px;color:var(--b-muted)}
+.b-note{align-self:end;color:var(--b-muted);font-size:18px;line-height:1.8}
+
+.b-cta{padding:110px 24px;text-align:center;background:var(--b-sea);color:#fff}.b-cta h2{font-size:clamp(45px,6vw,82px);line-height:.95;letter-spacing:-.05em;margin:0 0 22px}.b-cta p{max-width:570px;margin:0 auto 32px;font-size:18px;line-height:1.7;color:rgba(255,255,255,.78)}
+.b-btn{display:inline-block;padding:15px 24px;border-radius:999px;background:#fff;color:var(--b-ink);text-decoration:none;font-weight:800;transition:.25s}.b-btn:hover{transform:translateY(-3px);box-shadow:0 12px 25px rgba(0,0,0,.16)}
+.b-credits{padding:28px 24px;background:#111714;color:rgba(255,255,255,.52);font-size:12px;line-height:1.7;text-align:center}.b-credits a{color:rgba(255,255,255,.78)}
+
+@media(max-width:900px){
+.b-story-grid,.b-garden-grid,.b-practical-grid{grid-template-columns:1fr;gap:42px}
+.b-mosaic{grid-template-columns:1fr 1fr;grid-template-rows:340px 240px}.b-photo.main{grid-column:1/3;grid-row:auto}
+.b-route,.b-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:620px){
+.b-hero{min-height:680px}.b-hero-inner{width:calc(100% - 32px);padding-bottom:48px}
+.b-story,.b-palace,.b-garden,.b-exps,.b-practical,.b-cta{padding-top:75px;padding-bottom:75px}
+.b-facts,.b-grid,.b-route,.b-info{grid-template-columns:1fr}
+.b-mosaic{grid-template-columns:1fr;grid-template-rows:300px 220px 220px}.b-photo.main{grid-column:auto}
+.b-palace-head{display:block}.b-palace-head p{margin-top:20px}
+}
+</style>
+</head>
+<body>
+<div class="b-page">
+
+<section class="b-hero">
+<div class="b-hero-inner">
+<div class="b-eyebrow">МОРЕ · ГРАДИНА · ИСТОРИЯ</div>
+<h1>Балчик.</h1>
+<p class="b-lead">Белият град на брега — място на камък, море, градини и едно тихо гнездо над Черно море.</p>
+<span class="b-chip">🌿 Дворецът и ботаническата градина</span>
+</div>
+</section>
+
+<section class="b-story">
+<div class="b-story-grid">
+<div><div class="b-kicker">ОТКРИЙ БАЛЧИК</div><h2>Градът, в който градините слизат към морето.</h2></div>
+<p class="b-story-copy">Балчик има различен ритъм — белите склонове, пристанището и архитектурно-парковият комплекс „Дворецът“ създават пейзаж, който се разглежда бавно. Тук природата и архитектурата не стоят отделно, а се допълват.</p>
+</div>
+<div class="b-facts">
+<div class="b-fact"><strong>Дворецът</strong><span>Лятната резиденция и градините</span></div>
+<div class="b-fact"><strong>Ботаническата градина</strong><span>Колекция от растения и тераси</span></div>
+<div class="b-fact"><strong>Балчишкият бряг</strong><span>Пристанище, море и бели склонове</span></div>
+</div>
+</section>
+
+<section class="b-palace">
+<div class="b-palace-head">
+<div><div class="b-kicker">ТИХОТО ГНЕЗДО</div><h2>Балчик се разглежда<br>на пластове.</h2></div>
+<p>Дворецът, водата и зеленината създават естествен маршрут — от архитектурата към градините и после обратно към морето.</p>
+</div>
+<div class="b-mosaic">
+<div class="b-photo main"><img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Balchik%20Palace.jpg" alt="Дворецът в Балчик"><span class="b-label">Дворецът</span></div>
+<div class="b-photo"><img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Balchik%20Botanical%20Garden6.jpg" alt="Ботаническата градина в Балчик"><span class="b-label">Градините</span></div>
+<div class="b-photo"><img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Balchik%20palace%20140258277.jpg" alt="Гледка към морето от Двореца в Балчик"><span class="b-label">Морето</span></div>
+</div>
+</section>
+
+<section class="b-garden">
+<div class="b-garden-grid">
+<h2>Един следобед.<br>Четири спирки.</h2>
+<div class="b-garden-copy">
+<p>Започни при Двореца, слез през градините, остани за момент край водата и завърши деня с гледка към белия град. Балчик е преживяване на движение — нагоре, надолу и все към морето.</p>
+<div class="b-route">
+<div class="b-stop"><b>01 · Дворецът</b><span>Архитектура и история.</span></div>
+<div class="b-stop"><b>02 · Градините</b><span>Тераси, растения и вода.</span></div>
+<div class="b-stop"><b>03 · Брегът</b><span>Морски хоризонт и спокойствие.</span></div>
+<div class="b-stop"><b>04 · Пристанището</b><span>Финал с гледка към града.</span></div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="b-exps">
+<div class="b-exps-inner">
+<div class="b-kicker">ИЗЖИВЕЙ БАЛЧИК</div>
+<h2>Един град.<br>Много начини да го усетиш.</h2>
+<div class="b-grid">
+<article class="b-exp"><div><div class="b-tag">ДВОРЕЦЪТ</div><h3>Дворецът и ботаническата градина</h3></div><div class="b-price">20,40 €</div></article>
+<article class="b-exp"><div><div class="b-tag">ПРИРОДА</div><h3>Разходка из градините</h3></div><div class="b-price">17,84 €</div></article>
+<article class="b-exp"><div><div class="b-tag">МОРЕ</div><h3>Балчик по залез</h3></div><div class="b-price">25,51 €</div></article>
+<article class="b-exp"><div><div class="b-tag">ФОТОГРАФИЯ</div><h3>Фотографски маршрут</h3></div><div class="b-price">28,07 €</div></article>
+<article class="b-exp"><div><div class="b-tag">ВКУС</div><h3>Морска вечеря и местни вкусове</h3></div><div class="b-price">30,63 €</div></article>
+<article class="b-exp"><div><div class="b-tag">ЦЕЛОДНЕВНО</div><h3>Балчик — дворец, градини и море</h3></div><div class="b-price">35,74 €</div></article>
+</div>
+</div>
+</section>
+
+<section class="b-practical">
+<div class="b-practical-grid">
+<div>
+<div class="b-kicker">ПРАКТИЧНО</div>
+<h2>Балчик се обикаля бавно.</h2>
+<div class="b-info">
+<div><strong>Северно Черноморие</strong><span>Област Добрич</span></div>
+<div><strong>Дворецът</strong><span>Култура, архитектура и градини</span></div>
+<div><strong>Сезон</strong><span>Пролет, лято и есен</span></div>
+<div><strong>Подходящо за</strong><span>Море, природа и история</span></div>
+</div>
+</div>
+<p class="b-note">Балчик е различен от останалите морски градове в проекта — тук основното преживяване е срещата между архитектура, ботаника и море.</p>
+</div>
+</section>
+
+<section class="b-cta">
+<h2>Балчик те чака.</h2>
+<p>Създай своето пътуване и превърни един ден край белия град в истинско преживяване.</p>
+<a class="b-btn" href="trip-planner.html">Създай своето пътуване →</a>
+</section>
+
+<footer class="b-credits">
+Изображения: Wikimedia Commons — <a href="https://commons.wikimedia.org/wiki/File:Balchik_palace.jpg" target="_blank">Balchik palace.jpg</a>,
+<a href="https://commons.wikimedia.org/wiki/File:Balchik_Botanical_Garden6.jpg" target="_blank">Balchik Botanical Garden6.jpg</a>,
+<a href="https://commons.wikimedia.org/wiki/File:Balchik_palace_140258277.jpg" target="_blank">Balchik palace 140258277.jpg</a>.
+Лицензите са посочени на съответните страници на Wikimedia Commons.
+</footer>
+
+</div>
+</body>
+</html>

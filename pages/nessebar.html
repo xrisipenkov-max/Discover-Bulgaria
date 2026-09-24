@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Discover Bulgaria — Несебър: старият град, средновековни църкви, морето и атмосферата на древния полуостров.">
+    <title>Несебър | Discover Bulgaria</title>
+    <link rel="stylesheet" href="../css/style.css">
+
+    <style>
+        :root {
+            --nes-deep: #182b36;
+            --nes-blue: #315f72;
+            --nes-sand: #eee6d7;
+            --nes-stone: #d9c8ae;
+            --nes-gold: #c69b59;
+            --nes-ink: #1b2c34;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            background: var(--nes-sand);
+            color: var(--nes-ink);
+        }
+
+        .nes-page { overflow: hidden; }
+
+        /* HERO */
+        .nes-hero {
+            min-height: 780px;
+            position: relative;
+            display: flex;
+            align-items: flex-end;
+            background:
+                linear-gradient(180deg, rgba(12,31,41,.12) 0%, rgba(12,31,41,.25) 42%, rgba(12,31,41,.88) 100%),
+                url("https://commons.wikimedia.org/wiki/Special:Redirect/file/The%20Old%20Town%2C%20Nessebar%2C%20Bulgaria.jpg")
+                center 48% / cover no-repeat;
+        }
+
+        .nes-hero::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, rgba(12,31,41,.55), transparent 72%);
+            pointer-events: none;
+        }
+
+        .nes-hero-content {
+            width: min(1180px, calc(100% - 48px));
+            margin: 0 auto;
+            padding: 155px 0 95px;
+            position: relative;
+            z-index: 2;
+            color: #fff;
+        }
+
+        .nes-eyebrow {
+            margin: 0 0 18px;
+            color: #e8bf7a;
+            font-size: 13px;
+            font-weight: 800;
+            letter-spacing: .18em;
+            text-transform: uppercase;
+        }
+
+        .nes-hero h1 {
+            margin: 0;
+            max-width: 900px;
+            font-size: clamp(60px, 9vw, 116px);
+            line-height: .88;
+            letter-spacing: -.06em;
+        }
+
+        .nes-hero-lead {
+            max-width: 700px;
+            margin: 30px 0 0;
+            font-size: 20px;
+            line-height: 1.7;
+            color: rgba(255,255,255,.88);
+        }
+
+        .nes-hero-pill {
+            display: inline-flex;
+            margin-top: 32px;
+            padding: 12px 18px;
+            border: 1px solid rgba(255,255,255,.28);
+            border-radius: 999px;
+            background: rgba(255,255,255,.10);
+            backdrop-filter: blur(10px);
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        /* STORY */
+        .nes-story {
+            padding: 115px 24px;
+            background: #fff;
+        }
+
+        .nes-story-inner {
+            width: min(1180px, 100%);
+            margin: auto;
+            display: grid;
+            grid-template-columns: .82fr 1.18fr;
+            gap: 90px;
+        }
+
+        .nes-kicker {
+            margin: 0 0 15px;
+            color: var(--nes-gold);
+            font-size: 13px;
+            font-weight: 800;
+            letter-spacing: .17em;
+            text-transform: uppercase;
+        }
+
+        .nes-story h2 {
+            margin: 0;
+            font-size: clamp(40px, 5vw, 68px);
+            line-height: .98;
+            letter-spacing: -.05em;
+            color: var(--nes-deep);
+        }
+
+        .nes-story-copy {
+            margin: 0;
+            font-size: 18px;
+            line-height: 1.85;
+            color: #58686d;
+        }
+
+        .nes-facts {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 36px;
+        }
+
+        .nes-fact {
+            padding: 21px;
+            background: #f6f2e9;
+            border-top: 2px solid var(--nes-gold);
+        }
+
+        .nes-fact strong {
+            display: block;
+            margin-bottom: 7px;
+            color: var(--nes-deep);
+            font-size: 23px;
+        }
+
+        .nes-fact span {
+            color: #738084;
+            font-size: 13px;
+        }
+
+        /* OLD TOWN / CHURCHES */
+        .nes-heritage {
+            padding: 105px 24px 120px;
+            background:
+                radial-gradient(circle at 85% 15%, rgba(198,155,89,.13), transparent 25%),
+                #e9e5dc;
+        }
+
+        .nes-heritage-inner {
+            width: min(1180px, 100%);
+            margin: auto;
+        }
+
+        .nes-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+            gap: 30px;
+            margin-bottom: 42px;
+        }
+
+        .nes-head h2 {
+            margin: 0;
+            max-width: 690px;
+            font-size: clamp(40px, 5vw, 64px);
+            line-height: .98;
+            letter-spacing: -.05em;
+            color: var(--nes-deep);
+        }
+
+        .nes-head p {
+            max-width: 390px;
+            margin: 0;
+            line-height: 1.7;
+            color: #647277;
+        }
+
+        .nes-heritage-grid {
+            display: grid;
+            grid-template-columns: 1.25fr .75fr;
+            grid-template-rows: 300px 300px;
+            gap: 20px;
+        }
+
+        .nes-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 28px;
+            background: var(--nes-deep);
+            color: #fff;
+        }
+
+        .nes-card.big { grid-row: 1 / 3; }
+
+        .nes-card-img {
+            position: absolute;
+            inset: 0;
+            background-position: center;
+            background-size: cover;
+            transition: transform .5s ease;
+        }
+
+        .nes-card:hover .nes-card-img { transform: scale(1.045); }
+
+        .nes-card::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, transparent 24%, rgba(9,25,33,.90) 100%);
+        }
+
+        .nes-card-content {
+            position: absolute;
+            left: 28px;
+            right: 28px;
+            bottom: 28px;
+            z-index: 2;
+        }
+
+        .nes-card-content small {
+            display: inline-block;
+            margin-bottom: 9px;
+            color: #e8bf7a;
+            font-weight: 800;
+            letter-spacing: .11em;
+            text-transform: uppercase;
+        }
+
+        .nes-card-content h3 {
+            margin: 0 0 8px;
+            font-size: 30px;
+            letter-spacing: -.025em;
+        }
+
+        .nes-card-content p {
+            margin: 0;
+            line-height: 1.55;
+            color: rgba(255,255,255,.80);
+        }
+
+        /* WALK */
+        .nes-walk {
+            padding: 110px 24px;
+            background: var(--nes-deep);
+            color: #fff;
+        }
+
+        .nes-walk-inner {
+            width: min(1180px, 100%);
+            margin: auto;
+        }
+
+        .nes-walk h2 {
+            max-width: 800px;
+            margin: 0 0 55px;
+            font-size: clamp(42px, 5.5vw, 72px);
+            line-height: .98;
+            letter-spacing: -.05em;
+        }
+
+        .nes-route {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1px;
+            background: rgba(255,255,255,.12);
+            border: 1px solid rgba(255,255,255,.12);
+        }
+
+        .nes-stop {
+            min-height: 250px;
+            padding: 28px;
+            background: var(--nes-deep);
+        }
+
+        .nes-stop-number {
+            color: #e8bf7a;
+            font-weight: 900;
+            font-size: 13px;
+            letter-spacing: .12em;
+        }
+
+        .nes-stop-icon {
+            margin: 38px 0 18px;
+            font-size: 31px;
+        }
+
+        .nes-stop h3 {
+            margin: 0 0 9px;
+            font-size: 22px;
+        }
+
+        .nes-stop p {
+            margin: 0;
+            color: rgba(255,255,255,.62);
+            line-height: 1.6;
+        }
+
+        /* EXPERIENCES */
+        .nes-experiences {
+            padding: 110px 24px 120px;
+            background: #f7f1e5;
+        }
+
+        .nes-experiences-inner {
+            width: min(1180px, 100%);
+            margin: auto;
+        }
+
+        .nes-experiences h2 {
+            margin: 0 0 48px;
+            max-width: 780px;
+            font-size: clamp(40px, 5vw, 64px);
+            line-height: 1;
+            letter-spacing: -.05em;
+            color: var(--nes-deep);
+        }
+
+        .nes-exp-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .nes-exp {
+            min-height: 295px;
+            padding: 31px;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid #ded4c3;
+            border-radius: 24px;
+            background: #fff;
+        }
+
+        .nes-exp-icon {
+            font-size: 33px;
+            margin-bottom: 42px;
+        }
+
+        .nes-exp h3 {
+            margin: 0 0 9px;
+            font-size: 25px;
+            color: var(--nes-deep);
+        }
+
+        .nes-exp p {
+            margin: 0;
+            color: #69777b;
+            line-height: 1.62;
+        }
+
+        .nes-exp-bottom {
+            margin-top: auto;
+            padding-top: 25px;
+            display: flex;
+            align-items: end;
+            justify-content: space-between;
+        }
+
+        .nes-price {
+            color: #a67535;
+            font-size: 26px;
+            font-weight: 800;
+        }
+
+        .nes-duration {
+            color: #899397;
+            font-size: 13px;
+        }
+
+        /* INFO */
+        .nes-info {
+            padding: 90px 24px;
+            background: #eee7d8;
+        }
+
+        .nes-info-inner {
+            width: min(1180px, 100%);
+            margin: auto;
+        }
+
+        .nes-info-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            border-top: 1px solid #d2c7b4;
+            border-bottom: 1px solid #d2c7b4;
+        }
+
+        .nes-info-item {
+            padding: 30px 22px;
+            border-right: 1px solid #d2c7b4;
+        }
+
+        .nes-info-item:last-child { border-right: 0; }
+
+        .nes-info-item span {
+            display: block;
+            margin-bottom: 10px;
+            color: #8a806e;
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+        }
+
+        .nes-info-item strong {
+            color: var(--nes-deep);
+            font-size: 18px;
+        }
+
+        /* CTA */
+        .nes-cta {
+            padding: 120px 24px 125px;
+            text-align: center;
+            color: #fff;
+            background:
+                linear-gradient(rgba(14,33,43,.74), rgba(14,33,43,.92)),
+                url("https://commons.wikimedia.org/wiki/Special:Redirect/file/Nessebar%20Sunset.jpg")
+                center 43% / cover no-repeat;
+        }
+
+        .nes-cta-inner {
+            width: min(820px, 100%);
+            margin: auto;
+        }
+
+        .nes-cta h2 {
+            margin: 0 0 20px;
+            font-size: clamp(44px, 6vw, 78px);
+            line-height: .96;
+            letter-spacing: -.05em;
+        }
+
+        .nes-cta p {
+            max-width: 650px;
+            margin: 0 auto 34px;
+            font-size: 18px;
+            line-height: 1.7;
+            color: rgba(255,255,255,.78);
+        }
+
+        .nes-cta a {
+            display: inline-flex;
+            padding: 15px 24px;
+            border-radius: 999px;
+            background: #e8bf7a;
+            color: #172b34;
+            text-decoration: none;
+            font-weight: 800;
+            transition: transform .25s ease;
+        }
+
+        .nes-cta a:hover { transform: translateY(-3px); }
+
+        .nes-credits {
+            padding: 22px 24px;
+            text-align: center;
+            font-size: 11px;
+            line-height: 1.7;
+            color: #728084;
+            background: #13242c;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 900px) {
+            .nes-story-inner { grid-template-columns: 1fr; }
+            .nes-heritage-grid {
+                grid-template-columns: 1fr;
+                grid-template-rows: 380px 270px 270px;
+            }
+            .nes-card.big { grid-row: auto; }
+            .nes-route { grid-template-columns: 1fr 1fr; }
+            .nes-exp-grid, .nes-info-grid { grid-template-columns: 1fr 1fr; }
+            .nes-info-item:nth-child(2) { border-right: 0; }
+            .nes-info-item:nth-child(-n+2) { border-bottom: 1px solid #d2c7b4; }
+        }
+
+        @media (max-width: 650px) {
+            .nes-hero { min-height: 680px; }
+            .nes-hero-content { width: calc(100% - 32px); padding-bottom: 60px; }
+            .nes-story, .nes-heritage, .nes-walk, .nes-experiences, .nes-info, .nes-cta {
+                padding-left: 18px;
+                padding-right: 18px;
+            }
+            .nes-facts, .nes-route, .nes-exp-grid, .nes-info-grid { grid-template-columns: 1fr; }
+            .nes-info-item { border-right: 0; border-bottom: 1px solid #d2c7b4; }
+            .nes-info-item:last-child { border-bottom: 0; }
+            .nes-head { display: block; }
+            .nes-head p { margin-top: 20px; }
+            .nes-heritage-grid { grid-template-rows: 360px 250px 250px; }
+        }
+    </style>
+</head>
+
+<body>
+<div class="nes-page">
+
+    <header>
+        <nav>
+            <div class="logo">DISCOVER BULGARIA</div>
+
+            <div class="main-nav">
+                <div class="nav-links">
+                    <a href="../index.html">Начало</a>
+                    <a href="destinations.html">Дестинации</a>
+                    <a href="trip-planner.html">Планирай</a>
+                </div>
+
+                <div class="nav-actions">
+                    <a href="#" aria-label="Любими">♡</a>
+                    <a href="#" aria-label="Количка">🛒</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+
+        <section class="nes-hero">
+            <div class="nes-hero-content">
+                <p class="nes-eyebrow">ИСТОРИЯ · МОРЕ · СТАРИЯТ ГРАД</p>
+                <h1>Несебър.</h1>
+                <p class="nes-hero-lead">
+                    Каменни улици, стари църкви и море от всички страни —
+                    град, в който всяка крачка разкрива още един слой история.
+                </p>
+                <div class="nes-hero-pill">🏛️ Древният град на полуострова</div>
+            </div>
+        </section>
+
+        <section class="nes-story">
+            <div class="nes-story-inner">
+
+                <div>
+                    <p class="nes-kicker">ОТКРИЙ НЕСЕБЪР</p>
+                    <h2>Градът, в който морето среща историята.</h2>
+                </div>
+
+                <div>
+                    <p class="nes-story-copy">
+                        Старият Несебър е разположен на малък полуостров в Черно море
+                        и е един от най-разпознаваемите исторически градове по
+                        българското крайбрежие. Древният град е включен в списъка
+                        на световното наследство на UNESCO през 1983 г. В тесните
+                        улици се срещат средновековни църкви, каменни основи,
+                        дървени възрожденски къщи и гледки към морето.
+                    </p>
+
+                    <div class="nes-facts">
+                        <div class="nes-fact">
+                            <strong>🏛️</strong>
+                            <span>Древен град</span>
+                        </div>
+                        <div class="nes-fact">
+                            <strong>⛪</strong>
+                            <span>Средновековни църкви</span>
+                        </div>
+                        <div class="nes-fact">
+                            <strong>🌊</strong>
+                            <span>Черно море</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="nes-heritage">
+            <div class="nes-heritage-inner">
+
+                <div class="nes-head">
+                    <div>
+                        <p class="nes-kicker">КАМЪК, ТУХЛА И МОРЕ</p>
+                        <h2>Старият град не се разглежда. Той се обикаля.</h2>
+                    </div>
+                    <p>
+                        Остави картата за момент и тръгни по уличките —
+                        Несебър започва да разказва историята си отвъд
+                        големите забележителности.
+                    </p>
+                </div>
+
+                <div class="nes-heritage-grid">
+
+                    <article class="nes-card big">
+                        <div class="nes-card-img"
+                             style="background-image:url('https://commons.wikimedia.org/wiki/Special:Redirect/file/The%20Old%20Town%2C%20Nessebar%2C%20Bulgaria.jpg');"></div>
+                        <div class="nes-card-content">
+                            <small>СТАРИЯТ ГРАД</small>
+                            <h3>Каменни улици и възрожденски къщи</h3>
+                            <p>
+                                Разходка между море, камък и дърво — архитектурата
+                                е част от самото преживяване.
+                            </p>
+                        </div>
+                    </article>
+
+                    <article class="nes-card">
+                        <div class="nes-card-img"
+                             style="background-image:url('https://commons.wikimedia.org/wiki/Special:Redirect/file/Nesebar%20-%20Church%20of%20Christ%20Pantocrator.jpg');"></div>
+                        <div class="nes-card-content">
+                            <small>СРЕДНОВЕКОВИЕ</small>
+                            <h3>Христос Пантократор</h3>
+                            <p>Една от най-разпознаваемите църкви в Стария Несебър.</p>
+                        </div>
+                    </article>
+
+                    <article class="nes-card">
+                        <div class="nes-card-img"
+                             style="background-image:url('https://commons.wikimedia.org/wiki/Special:Redirect/file/Nessebar%20Sunset.jpg');"></div>
+                        <div class="nes-card-content">
+                            <small>ВЕЧЕР</small>
+                            <h3>Несебър след залез</h3>
+                            <p>Когато камъкът потъмнее, а морето остане светло.</p>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="nes-walk">
+            <div class="nes-walk-inner">
+                <p class="nes-kicker">ЕДНА РАЗХОДКА</p>
+                <h2>Маршрут през стария Несебър.</h2>
+
+                <div class="nes-route">
+
+                    <article class="nes-stop">
+                        <div class="nes-stop-number">01</div>
+                        <div class="nes-stop-icon">🌬️</div>
+                        <h3>Мелницата</h3>
+                        <p>Началото на разходката и първата среща с полуострова.</p>
+                    </article>
+
+                    <article class="nes-stop">
+                        <div class="nes-stop-number">02</div>
+                        <div class="nes-stop-icon">⛪</div>
+                        <h3>Пантократор</h3>
+                        <p>Средновековна архитектура и характерната тухлена украса.</p>
+                    </article>
+
+                    <article class="nes-stop">
+                        <div class="nes-stop-number">03</div>
+                        <div class="nes-stop-icon">🏘️</div>
+                        <h3>Старите улици</h3>
+                        <p>Къщи, малки дворове, каменни стени и морски гледки.</p>
+                    </article>
+
+                    <article class="nes-stop">
+                        <div class="nes-stop-number">04</div>
+                        <div class="nes-stop-icon">🌅</div>
+                        <h3>Крайбрежието</h3>
+                        <p>Финал с хоризонт, вятър и залез над Черно море.</p>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="nes-experiences">
+            <div class="nes-experiences-inner">
+                <p class="nes-kicker">ПРЕЖИВЕЙ НЕСЕБЪР</p>
+                <h2>Историята е само началото.</h2>
+
+                <div class="nes-exp-grid">
+
+                    <article class="nes-exp">
+                        <div class="nes-exp-icon">🏛️</div>
+                        <h3>Старият град</h3>
+                        <p>Пешеходен маршрут през най-интересните места на полуострова.</p>
+                        <div class="nes-exp-bottom">
+                            <div>
+                                <div class="nes-price">17,84 €</div>
+                                <div class="nes-duration">2 часа</div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="nes-exp">
+                        <div class="nes-exp-icon">⛪</div>
+                        <h3>Църкви и история</h3>
+                        <p>Запознай се с архитектурата и историята на старите храмове.</p>
+                        <div class="nes-exp-bottom">
+                            <div>
+                                <div class="nes-price">20,40 €</div>
+                                <div class="nes-duration">2,5 часа</div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="nes-exp">
+                        <div class="nes-exp-icon">🌅</div>
+                        <h3>Несебър по залез</h3>
+                        <p>Вечерна разходка по крайбрежието и старите улици.</p>
+                        <div class="nes-exp-bottom">
+                            <div>
+                                <div class="nes-price">25,51 €</div>
+                                <div class="nes-duration">2 часа</div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="nes-exp">
+                        <div class="nes-exp-icon">📷</div>
+                        <h3>Фотографски маршрут</h3>
+                        <p>Каменни фасади, църкви, морски хоризонт и залез.</p>
+                        <div class="nes-exp-bottom">
+                            <div>
+                                <div class="nes-price">28,07 €</div>
+                                <div class="nes-duration">2,5 часа</div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="nes-exp">
+                        <div class="nes-exp-icon">🐟</div>
+                        <h3>Морски вкус</h3>
+                        <p>Свободно време за местна кухня и вечер край пристанището.</p>
+                        <div class="nes-exp-bottom">
+                            <div>
+                                <div class="nes-price">30,63 €</div>
+                                <div class="nes-duration">3 часа</div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="nes-exp">
+                        <div class="nes-exp-icon">🚶</div>
+                        <h3>Целодневен Несебър</h3>
+                        <p>Комбиниран маршрут с история, свободно време и море.</p>
+                        <div class="nes-exp-bottom">
+                            <div>
+                                <div class="nes-price">35,74 €</div>
+                                <div class="nes-duration">Цял ден</div>
+                            </div>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="nes-info">
+            <div class="nes-info-inner">
+                <div class="nes-info-grid">
+                    <div class="nes-info-item">
+                        <span>Местоположение</span>
+                        <strong>Южно Черноморие</strong>
+                    </div>
+                    <div class="nes-info-item">
+                        <span>Акцент</span>
+                        <strong>Старият град</strong>
+                    </div>
+                    <div class="nes-info-item">
+                        <span>Подходящо за</span>
+                        <strong>Пролет, лято и есен</strong>
+                    </div>
+                    <div class="nes-info-item">
+                        <span>Настроение</span>
+                        <strong>История и море</strong>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="nes-cta">
+            <div class="nes-cta-inner">
+                <h2>Несебър е за разходка.</h2>
+                <p>
+                    Създай маршрут, който събира стария град, морето,
+                    историята и времето за откриване на малките места.
+                </p>
+                <a href="trip-planner.html">Създай своето пътуване →</a>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="nes-credits">
+        Изображения: Wikimedia Commons — „The Old Town, Nessebar, Bulgaria“,
+        „Nesebar - Church of Christ Pantocrator.jpg“ и „Nessebar Sunset.jpg“.
+        Лицензите и авторите са посочени в съответните източници.
+    </footer>
+
+</div>
+</body>
+</html>

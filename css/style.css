@@ -1,0 +1,5006 @@
+/* =========================================================
+   DISCOVER BULGARIA
+   Main Stylesheet
+   Version: 0.1
+   ========================================================= */
+
+
+/* =========================================================
+   1. DESIGN SYSTEM
+   ========================================================= */
+
+:root {
+    --color-background: #f7f5f0;
+    --color-surface: #ffffff;
+    --color-surface-soft: #eeece5;
+
+    --color-text: #1d2521;
+    --color-text-soft: #66706b;
+    --color-text-light: #ffffff;
+
+    --color-primary: #b5793d;
+    --color-primary-dark: #8e5a2b;
+    --color-primary-light: #d7a46d;
+
+    --color-border: #dedbd3;
+
+    --shadow-small: 0 8px 25px rgba(20, 25, 22, 0.08);
+    --shadow-medium: 0 18px 45px rgba(20, 25, 22, 0.12);
+    --shadow-large: 0 30px 80px rgba(20, 25, 22, 0.18);
+
+    --radius-small: 10px;
+    --radius-medium: 18px;
+    --radius-large: 28px;
+
+    --container-width: 1240px;
+
+    --transition-fast: 0.2s ease;
+    --transition-normal: 0.35s ease;
+}
+
+
+/* =========================================================
+   2. RESET
+   ========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--color-background);
+    color: var(--color-text);
+    line-height: 1.6;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button,
+input {
+    font: inherit;
+}
+
+
+/* =========================================================
+   3. GENERAL ELEMENTS
+   ========================================================= */
+
+main {
+    overflow: hidden;
+}
+
+section {
+    padding: 100px 6%;
+}
+
+.section-heading {
+    max-width: 700px;
+    margin: 0 auto 55px;
+    text-align: center;
+}
+
+.eyebrow {
+    margin-bottom: 12px;
+
+    color: var(--color-primary);
+
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+}
+
+.section-heading h2 {
+    margin-bottom: 15px;
+
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    line-height: 1.1;
+    letter-spacing: -0.04em;
+}
+
+.section-heading p {
+    color: var(--color-text-soft);
+}
+
+
+/* =========================================================
+   4. BUTTONS
+   ========================================================= */
+
+.button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 52px;
+    padding: 0 26px;
+
+    border-radius: 999px;
+
+    font-size: 0.95rem;
+    font-weight: 700;
+
+    transition:
+        transform var(--transition-fast),
+        background var(--transition-fast),
+        color var(--transition-fast),
+        box-shadow var(--transition-fast);
+}
+
+.button:hover {
+    transform: translateY(-2px);
+}
+
+.button.primary {
+    background: var(--color-primary);
+    color: var(--color-text-light);
+
+    box-shadow: 0 10px 25px rgba(181, 121, 61, 0.25);
+}
+
+.button.primary:hover {
+    background: var(--color-primary-dark);
+}
+
+.button.secondary {
+    border: 1px solid rgba(255, 255, 255, 0.6);
+
+    color: var(--color-text-light);
+
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(10px);
+}
+
+.button.secondary:hover {
+    background: rgba(255, 255, 255, 0.18);
+}
+
+
+/* =========================================================
+   5. NAVIGATION
+   ========================================================= */
+
+header {
+    position: absolute;
+    z-index: 100;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    max-width: var(--container-width);
+
+    min-height: 86px;
+
+    margin: 0 auto;
+    padding: 0 6%;
+
+    color: var(--color-text-light);
+}
+
+.logo {
+    font-size: 1rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    white-space: nowrap;
+}
+
+nav ul {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+
+    list-style: none;
+}
+
+nav ul a {
+    position: relative;
+
+    font-size: 0.9rem;
+    font-weight: 600;
+
+    opacity: 0.9;
+
+    transition: opacity var(--transition-fast);
+}
+
+nav ul a::after {
+    content: "";
+
+    position: absolute;
+    left: 0;
+    bottom: -7px;
+
+    width: 0;
+    height: 2px;
+
+    background: var(--color-primary-light);
+
+    transition: width var(--transition-fast);
+}
+
+nav ul a:hover {
+    opacity: 1;
+}
+
+nav ul a:hover::after {
+    width: 100%;
+}
+
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.nav-actions a {
+    font-size: 0.9rem;
+    font-weight: 600;
+
+    opacity: 0.9;
+
+    transition:
+        opacity var(--transition-fast),
+        transform var(--transition-fast);
+}
+
+.nav-actions a:hover {
+    opacity: 1;
+    transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   6. HERO
+   ========================================================= */
+
+.hero {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+
+    min-height: 850px;
+
+    padding-top: 150px;
+    padding-bottom: 100px;
+
+    color: var(--color-text-light);
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(10, 17, 14, 0.82) 0%,
+            rgba(10, 17, 14, 0.62) 45%,
+            rgba(10, 17, 14, 0.25) 100%
+        ),
+        linear-gradient(
+            0deg,
+            rgba(10, 17, 14, 0.5),
+            transparent 45%
+        ),
+        url("https://www.daskalo.com/evgeniatopalova/files/2016/06/Rila-1024x682.jpg");
+
+    background-position: center;
+    background-size: cover;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+
+    width: min(900px, 100%);
+
+    margin: 0 auto;
+
+    text-align: center;
+}
+
+.hero .eyebrow {
+    color: var(--color-primary-light);
+}
+
+.hero h1 {
+    margin-bottom: 25px;
+
+    font-size: clamp(3.2rem, 7vw, 6.5rem);
+    line-height: 0.98;
+    letter-spacing: -0.055em;
+}
+
+.hero-description {
+    max-width: 680px;
+
+    margin: 0 auto 35px;
+
+    color: rgba(255, 255, 255, 0.86);
+
+    font-size: 1.1rem;
+}
+
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 14px;
+
+    margin-bottom: 45px;
+}
+
+
+/* =========================================================
+   7. SEARCH BOX
+   ========================================================= */
+
+.search-box {
+    max-width: 760px;
+
+    margin: 0 auto;
+    padding: 18px;
+
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: var(--radius-medium);
+
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(18px);
+
+    box-shadow: var(--shadow-medium);
+
+    text-align: left;
+}
+
+.search-box label {
+    display: block;
+
+    margin-bottom: 9px;
+
+    color: rgba(255, 255, 255, 0.9);
+
+    font-size: 0.85rem;
+    font-weight: 700;
+}
+
+.search-input {
+    display: flex;
+    gap: 10px;
+}
+
+.search-input input {
+    flex: 1;
+
+    min-width: 0;
+    height: 55px;
+
+    padding: 0 18px;
+
+    border: 0;
+    border-radius: 12px;
+
+    outline: none;
+
+    background: rgba(255, 255, 255, 0.96);
+    color: var(--color-text);
+}
+
+.search-input input::placeholder {
+    color: #858b87;
+}
+
+.search-input button {
+    min-width: 110px;
+
+    border: 0;
+    border-radius: 12px;
+
+    background: var(--color-primary);
+    color: white;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: background var(--transition-fast);
+}
+
+.search-input button:hover {
+    background: var(--color-primary-dark);
+}
+
+
+/* =========================================================
+   8. CATEGORIES
+   ========================================================= */
+
+.categories {
+    background: var(--color-background);
+}
+
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+
+    max-width: var(--container-width);
+
+    margin: 0 auto;
+}
+
+.category-card {
+    display: block;
+
+    padding: 32px;
+
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-medium);
+
+    background: var(--color-surface);
+
+    transition:
+        transform var(--transition-normal),
+        box-shadow var(--transition-normal),
+        border-color var(--transition-normal);
+}
+
+.category-card:hover {
+    transform: translateY(-7px);
+
+    border-color: rgba(181, 121, 61, 0.35);
+
+    box-shadow: var(--shadow-medium);
+}
+
+.category-card span {
+    display: block;
+
+    margin-bottom: 20px;
+
+    font-size: 2.2rem;
+}
+
+.category-card h3 {
+    margin-bottom: 8px;
+
+    font-size: 1.25rem;
+}
+
+.category-card p {
+    color: var(--color-text-soft);
+
+    font-size: 0.95rem;
+}
+
+
+/* =========================================================
+   9. DESTINATIONS
+   ========================================================= */
+
+.destinations {
+    background: var(--color-surface);
+}
+
+.destination-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+
+    max-width: var(--container-width);
+
+    margin: 0 auto;
+}
+
+.destination-card {
+    overflow: hidden;
+
+    border-radius: var(--radius-large);
+
+    background: var(--color-background);
+
+    box-shadow: var(--shadow-small);
+
+    transition:
+        transform var(--transition-normal),
+        box-shadow var(--transition-normal);
+}
+
+.destination-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-medium);
+}
+
+.image-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 300px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #78836f,
+            #38463d
+        );
+
+    color: rgba(255, 255, 255, 0.9);
+
+    font-size: 1rem;
+    font-weight: 800;
+    letter-spacing: 0.15em;
+}
+
+.destination-card:nth-child(2) .image-placeholder {
+    background:
+        linear-gradient(
+            135deg,
+            #817764,
+            #4a4136
+        );
+}
+
+.destination-card:nth-child(3) .image-placeholder {
+    background:
+        linear-gradient(
+            135deg,
+            #6f7779,
+            #353c3d
+        );
+}
+
+.card-content {
+    padding: 28px;
+}
+
+.card-content > p:first-child {
+    margin-bottom: 8px;
+
+    color: var(--color-primary);
+
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.card-content h3 {
+    margin-bottom: 10px;
+
+    font-size: 1.45rem;
+}
+
+.card-content p {
+    color: var(--color-text-soft);
+
+    font-size: 0.95rem;
+}
+
+.card-content a {
+    display: inline-block;
+
+    margin-top: 20px;
+
+    color: var(--color-primary);
+
+    font-size: 0.9rem;
+    font-weight: 800;
+
+    transition: transform var(--transition-fast);
+}
+
+.card-content a:hover {
+    transform: translateX(4px);
+}
+
+
+/* =========================================================
+   10. EXPERIENCES
+   ========================================================= */
+
+.experiences {
+    background: var(--color-background);
+}
+
+.experience-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+
+    max-width: var(--container-width);
+
+    margin: 0 auto;
+}
+
+.experience-card {
+    overflow: hidden;
+
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-large);
+
+    background: var(--color-surface);
+
+    box-shadow: var(--shadow-small);
+
+    transition:
+        transform var(--transition-normal),
+        box-shadow var(--transition-normal);
+}
+
+.experience-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-medium);
+}
+
+.experience-card .image-placeholder {
+    min-height: 250px;
+}
+
+.experience-card:nth-child(1) .image-placeholder {
+    background:
+        linear-gradient(
+            rgba(0, 0, 0, 0.15),
+            rgba(0, 0, 0, 0.15)
+        ),
+        url("https://commons.wikimedia.org/wiki/Special:Redirect/file/National%20Park%20Rila%2C%20Bulgaria.jpg");
+
+    background-position: center;
+    background-size: cover;
+}
+
+.experience-card:nth-child(2) .image-placeholder {
+    background:
+        linear-gradient(
+            rgba(0, 0, 0, 0.15),
+            rgba(0, 0, 0, 0.15)
+        ),
+        url("https://commons.wikimedia.org/wiki/Special:Redirect/file/Sea%20Kayak.JPG");
+
+    background-position: center;
+    background-size: cover;
+}
+
+.experience-card:nth-child(3) .image-placeholder {
+    background:
+        linear-gradient(
+            rgba(0, 0, 0, 0.15),
+            rgba(0, 0, 0, 0.15)
+        ),
+        url("https://commons.wikimedia.org/wiki/Special:Redirect/file/Tsarevets%20Fortress%2C%20Veliko%20Tarnovo%20-%203%20March%202021%2C%20rk.aerial.jpg");
+
+    background-position: center;
+    background-size: cover;
+}
+
+.experience-card strong {
+    display: block;
+
+    margin-top: 20px;
+
+    color: var(--color-text);
+
+    font-size: 1.35rem;
+}
+
+
+/* =========================================================
+   11. TRIP BUILDER
+   ========================================================= */
+
+.trip-builder {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+
+    min-height: 500px;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(26, 34, 29, 0.95),
+            rgba(26, 34, 29, 0.75)
+        ),
+        linear-gradient(
+            135deg,
+            #6c7a6b,
+            #303a33
+        );
+
+    color: white;
+}
+
+.trip-builder-content {
+    max-width: 760px;
+
+    margin: 0 auto;
+
+    text-align: center;
+}
+
+.trip-builder .eyebrow {
+    color: var(--color-primary-light);
+}
+
+.trip-builder h2 {
+    margin-bottom: 20px;
+
+    font-size: clamp(2.4rem, 5vw, 4.2rem);
+    line-height: 1;
+    letter-spacing: -0.04em;
+}
+
+.trip-builder p:not(.eyebrow) {
+    max-width: 650px;
+
+    margin: 0 auto 30px;
+
+    color: rgba(255, 255, 255, 0.8);
+}
+
+
+/* =========================================================
+   12. AROUND DESTINATION
+   ========================================================= */
+
+.around-destination {
+    background: var(--color-surface);
+}
+
+.around-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+
+    max-width: 900px;
+
+    margin: 0 auto;
+}
+
+.around-grid > div {
+    padding: 30px;
+
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-medium);
+
+    background: var(--color-background);
+
+    text-align: center;
+
+    transition:
+        transform var(--transition-normal),
+        box-shadow var(--transition-normal);
+}
+
+.around-grid > div:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-small);
+}
+
+.around-grid > div:first-line {
+    font-size: 2rem;
+}
+
+.around-grid h3 {
+    margin-top: 12px;
+
+    font-size: 1rem;
+}
+
+
+/* =========================================================
+   13. SHOP
+   ========================================================= */
+
+.shop {
+    text-align: center;
+
+    background: var(--color-surface-soft);
+}
+
+.shop .section-heading {
+    margin-bottom: 30px;
+}
+
+
+/* =========================================================
+   14. FOOTER
+   ========================================================= */
+
+footer {
+    padding: 70px 6% 25px;
+
+    background: #18201c;
+    color: white;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 60px;
+
+    max-width: var(--container-width);
+
+    margin: 0 auto 60px;
+}
+
+.footer-content h2 {
+    margin-bottom: 12px;
+
+    font-size: 1rem;
+    letter-spacing: 0.1em;
+}
+
+.footer-content h3 {
+    margin-bottom: 18px;
+
+    font-size: 0.95rem;
+}
+
+.footer-content p {
+    max-width: 350px;
+
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.footer-content a {
+    display: block;
+
+    width: fit-content;
+
+    margin-bottom: 10px;
+
+    color: rgba(255, 255, 255, 0.65);
+
+    font-size: 0.9rem;
+
+    transition:
+        color var(--transition-fast),
+        transform var(--transition-fast);
+}
+
+.footer-content a:hover {
+    color: white;
+    transform: translateX(3px);
+}
+
+.footer-bottom {
+    max-width: var(--container-width);
+
+    margin: 0 auto;
+
+    padding-top: 25px;
+
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+
+    color: rgba(255, 255, 255, 0.45);
+
+    font-size: 0.8rem;
+}
+
+
+/* =========================================================
+   15. RESPONSIVE — TABLET
+   ========================================================= */
+
+@media (max-width: 1000px) {
+
+    nav ul {
+        gap: 15px;
+    }
+
+    .category-grid,
+    .destination-grid,
+    .experience-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .around-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .footer-content > div:first-child {
+        grid-column: 1 / -1;
+    }
+}
+
+
+/* =========================================================
+   16. RESPONSIVE — MOBILE
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+    section {
+        padding: 75px 5%;
+    }
+
+    nav {
+        min-height: 75px;
+        padding: 0 5%;
+    }
+
+    nav ul {
+        display: none;
+    }
+
+    .nav-actions {
+        gap: 10px;
+    }
+
+    .nav-actions a {
+        font-size: 0.8rem;
+    }
+
+    .hero {
+        min-height: 780px;
+
+        padding-top: 120px;
+    }
+
+    .hero h1 {
+        font-size: clamp(2.8rem, 13vw, 4.5rem);
+    }
+
+    .hero-description {
+        font-size: 1rem;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .button {
+        width: 100%;
+    }
+
+    .search-input {
+        flex-direction: column;
+    }
+
+    .search-input button {
+        min-height: 52px;
+    }
+
+    .category-grid,
+    .destination-grid,
+    .experience-grid,
+    .around-grid,
+    .footer-content {
+        grid-template-columns: 1fr;
+    }
+
+    .destination-card .image-placeholder {
+        min-height: 250px;
+    }
+
+    .trip-builder {
+        min-height: 550px;
+    }
+
+    .trip-builder h2 {
+        font-size: 2.6rem;
+    }
+
+    .footer-content {
+        gap: 35px;
+    }
+}
+
+
+/* =========================================================
+   17. ACCESSIBILITY
+   ========================================================= */
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible {
+    outline: 3px solid var(--color-primary-light);
+    outline-offset: 3px;
+}
+
+
+/* =========================================================
+   END OF FILE
+   ========================================================= */
+   /* =========================================
+   DISCOVER BULGARIA
+   DESTINATIONS PAGE
+========================================= */
+
+
+/* ---------- HEADER ---------- */
+
+.site-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 20;
+    padding: 24px 0;
+}
+
+.site-header .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.site-header .logo {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    font-size: 20px;
+}
+
+.site-header .logo span {
+    color: #d6a066;
+}
+
+.main-nav {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.main-nav a {
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: 0.25s ease;
+}
+
+.main-nav a:hover,
+.main-nav a.active {
+    color: #ffffff;
+}
+
+.main-nav a.active {
+    position: relative;
+}
+
+.main-nav a.active::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -8px;
+    height: 2px;
+    background: #d6a066;
+    border-radius: 10px;
+}
+
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.nav-actions a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 14px;
+    transition: 0.25s ease;
+}
+
+.nav-actions a:hover {
+    color: #d6a066;
+}
+
+
+/* ---------- DESTINATIONS HERO ---------- */
+
+.destinations-hero {
+    min-height: 620px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(10, 25, 20, 0.88),
+            rgba(10, 25, 20, 0.55),
+            rgba(10, 25, 20, 0.35)
+        ),
+        url("https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=2200&q=85");
+
+    background-size: cover;
+    background-position: center;
+}
+
+.destinations-hero .container {
+    padding-top: 80px;
+}
+
+.destinations-hero .eyebrow {
+    color: #d6a066;
+    margin-bottom: 18px;
+}
+
+.destinations-hero h1 {
+    max-width: 800px;
+    margin: 0 0 25px;
+    color: #ffffff;
+    font-size: clamp(48px, 6vw, 82px);
+    line-height: 0.98;
+    letter-spacing: -2px;
+}
+
+.destinations-hero .hero-description {
+    max-width: 680px;
+    margin-bottom: 35px;
+    color: rgba(255, 255, 255, 0.86);
+    font-size: 17px;
+    line-height: 1.7;
+}
+
+
+/* ---------- SEARCH ---------- */
+
+.destination-search {
+    width: min(700px, 100%);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 8px 8px 20px;
+
+    background: #ffffff;
+    border-radius: 16px;
+
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.2);
+}
+
+.destination-search span {
+    color: #6d746f;
+    font-size: 24px;
+}
+
+.destination-search input {
+    flex: 1;
+    min-width: 0;
+
+    border: none;
+    outline: none;
+
+    font-family: inherit;
+    font-size: 15px;
+    color: #17231d;
+}
+
+.destination-search input::placeholder {
+    color: #929792;
+}
+
+.destination-search button {
+    border: none;
+    padding: 14px 25px;
+
+    border-radius: 11px;
+
+    background: #b5793d;
+    color: #ffffff;
+
+    font-family: inherit;
+    font-weight: 600;
+
+    cursor: pointer;
+    transition: 0.25s ease;
+}
+
+.destination-search button:hover {
+    background: #95612f;
+    transform: translateY(-1px);
+}
+
+
+/* ---------- SECTION HEADING ---------- */
+
+.section-heading {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 40px;
+    margin-bottom: 45px;
+}
+
+.section-heading > p {
+    max-width: 440px;
+    margin: 0;
+    line-height: 1.7;
+    color: #68706b;
+}
+
+.section-heading h2 {
+    margin: 8px 0 0;
+}
+
+
+/* ---------- DESTINATION CARDS ---------- */
+
+.destination-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.destination-card {
+    overflow: hidden;
+    background: #ffffff;
+    border: 1px solid #e6e2dc;
+    border-radius: 20px;
+
+    box-shadow: 0 8px 25px rgba(30, 40, 35, 0.06);
+
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.destination-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 18px 40px rgba(30, 40, 35, 0.12);
+}
+
+.destination-image {
+    height: 260px;
+
+    display: flex;
+    align-items: flex-end;
+
+    padding: 20px;
+
+    position: relative;
+    background-size: cover;
+    background-position: center;
+}
+
+.destination-image::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background: linear-gradient(
+        transparent 35%,
+        rgba(0, 0, 0, 0.55)
+    );
+}
+
+.destination-image span {
+    position: relative;
+    z-index: 2;
+
+    padding: 7px 12px;
+
+    border-radius: 30px;
+
+    background: rgba(255, 255, 255, 0.92);
+
+    color: #27332d;
+
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+
+/* Temporary destination images */
+
+.destination-rila {
+    background-image:
+        linear-gradient(
+            rgba(0, 0, 0, 0.10),
+            rgba(0, 0, 0, 0.10)
+        ),
+        url("https://commons.wikimedia.org/wiki/Special:Redirect/file/Seven%20Rila%20Lakes.jpg");
+
+    background-position: center;
+    background-size: cover;
+}
+
+.destination-rhodopes {
+    background-image:
+        linear-gradient(
+            rgba(0, 0, 0, 0.05),
+            rgba(0, 0, 0, 0.05)
+        ),
+        url("https://cdn.prod.website-files.com/644906381498836718de2386/644906381498835c26de37b2_60c076e13b72cd51e5feaef0_Magiyata-na-Rodopite-1_.png");
+}
+
+.destination-tarnovo {
+    background-image:
+        linear-gradient(
+            rgba(0, 0, 0, 0.05),
+            rgba(0, 0, 0, 0.05)
+        ),
+        url("https://res.klook.com/image/upload/fl_lossy.progressive,q_60/v1777273566/destination/ai_poi_auto_dfe677_Veliko_Tarnovo.png");
+}
+
+
+.destination-content {
+    padding: 24px;
+}
+
+.destination-location {
+    margin-bottom: 8px;
+
+    color: #a06c38;
+
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.destination-content h3 {
+    margin: 0 0 10px;
+
+    color: #17231d;
+    font-size: 26px;
+}
+
+.destination-content p {
+    margin: 0;
+
+    color: #68706b;
+    line-height: 1.65;
+}
+
+.destination-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-top: 22px;
+    padding-top: 18px;
+
+    border-top: 1px solid #ece9e4;
+}
+
+.destination-footer span {
+    color: #555e58;
+    font-size: 14px;
+}
+
+.destination-footer a {
+    color: #a06c38;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.destination-footer a:hover {
+    text-decoration: underline;
+}
+
+
+/* ---------- FILTERS ---------- */
+
+.filters {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr) auto;
+    gap: 16px;
+
+    padding: 25px;
+
+    background: #ffffff;
+    border: 1px solid #e5e1db;
+    border-radius: 20px;
+
+    box-shadow: 0 8px 25px rgba(30, 40, 35, 0.05);
+}
+
+.filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.filter-group label {
+    color: #3f4943;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.filter-group select {
+    width: 100%;
+    padding: 13px 14px;
+
+    border: 1px solid #dcd8d1;
+    border-radius: 10px;
+
+    background: #faf9f7;
+
+    color: #303933;
+    font-family: inherit;
+
+    outline: none;
+    cursor: pointer;
+}
+
+.filter-group select:focus {
+    border-color: #b5793d;
+}
+
+.filters .btn {
+    align-self: end;
+    white-space: nowrap;
+}
+
+
+/* ---------- TRIP BUILDER CTA ---------- */
+
+.trip-builder-cta {
+    margin-top: 50px;
+    padding: 100px 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(18, 39, 29, 0.94),
+            rgba(18, 39, 29, 0.78)
+        ),
+        url("https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=2200&q=85");
+
+    background-size: cover;
+    background-position: center;
+}
+
+.trip-builder-content {
+    max-width: 720px;
+}
+
+.trip-builder-content .eyebrow {
+    color: #d6a066;
+}
+
+.trip-builder-content h2 {
+    margin: 10px 0 20px;
+
+    color: #ffffff;
+
+    font-size: clamp(38px, 5vw, 62px);
+    line-height: 1.05;
+}
+
+.trip-builder-content p:not(.eyebrow) {
+    max-width: 620px;
+
+    color: rgba(255, 255, 255, 0.82);
+
+    font-size: 17px;
+    line-height: 1.7;
+
+    margin-bottom: 30px;
+}
+
+.btn-light {
+    display: inline-flex;
+    align-items: center;
+
+    background: #ffffff;
+    color: #1c2922;
+
+    text-decoration: none;
+}
+
+.btn-light:hover {
+    background: #f1eee9;
+}
+
+
+/* ---------- FOOTER ---------- */
+
+.site-footer {
+    background: #142019;
+    color: #ffffff;
+    padding-top: 65px;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 60px;
+}
+
+.footer-grid .logo {
+    color: #ffffff;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+}
+
+.footer-grid .logo span {
+    color: #d6a066;
+}
+
+.footer-grid p {
+    color: rgba(255, 255, 255, 0.65);
+    line-height: 1.6;
+}
+
+.footer-grid h4 {
+    margin: 0 0 18px;
+    color: #ffffff;
+}
+
+.footer-grid a {
+    display: block;
+
+    margin-bottom: 10px;
+
+    color: rgba(255, 255, 255, 0.65);
+
+    text-decoration: none;
+}
+
+.footer-grid a:hover {
+    color: #ffffff;
+}
+
+.footer-bottom {
+    margin-top: 50px;
+    padding: 20px 0;
+
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-bottom p {
+    margin: 0;
+
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 13px;
+}
+
+
+/* ---------- RESPONSIVE ---------- */
+
+@media (max-width: 1000px) {
+
+    .main-nav {
+        gap: 16px;
+    }
+
+    .destination-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .filters {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+
+@media (max-width: 760px) {
+
+    .site-header {
+        padding: 18px 0;
+    }
+
+    .site-header .nav {
+        flex-wrap: wrap;
+    }
+
+    .main-nav {
+        order: 3;
+        width: 100%;
+
+        justify-content: center;
+
+        overflow-x: auto;
+        padding-top: 10px;
+    }
+
+    .nav-actions {
+        gap: 10px;
+    }
+
+    .destinations-hero {
+        min-height: 680px;
+    }
+
+    .destinations-hero h1 {
+        font-size: 50px;
+    }
+
+    .destination-search {
+        padding: 7px;
+    }
+
+    .destination-search button {
+        padding: 13px 17px;
+    }
+
+    .section-heading {
+        display: block;
+    }
+
+    .section-heading > p {
+        margin-top: 15px;
+    }
+
+    .destination-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .filters {
+        grid-template-columns: 1fr;
+    }
+
+    .filters .btn {
+        width: 100%;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 35px;
+    }
+
+}
+
+/* =========================================
+   DESTINATION IMAGES
+   ADDITIONAL DESTINATIONS
+========================================= */
+
+.destination-nessebar {
+    background-image:
+        linear-gradient(
+            rgba(0, 0, 0, 0.05),
+            rgba(0, 0, 0, 0.05)
+        ),
+        url("https://res.klook.com/image/upload/fl_lossy.progressive,q_60/v1777341743/destination/ai_poi_auto_fa1b79_Nesebar.png");
+}
+
+.destination-pirin {
+    background-image:
+        linear-gradient(
+            rgba(0, 0, 0, 0.05),
+            rgba(0, 0, 0, 0.05)
+        ),
+        url("https://www.moew.government.bg/static/media/ups/cached/e838796f8755a337c3d017001cf126469fb0136d.jpg");
+}
+
+.destination-plovdiv {
+    background-image:
+        linear-gradient(
+            rgba(0, 0, 0, 0.05),
+            rgba(0, 0, 0, 0.05)
+        ),
+        url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSusChy1MbVmw8HSZZGYYJbcA-JlUzBWim1srvzkiXPyiJSi9i3TneLmnUa&s=10");
+}
+
+/* =====================================================
+   DISCOVER BULGARIA
+   DESTINATION DETAIL PAGE
+===================================================== */
+
+
+/* -----------------------------------------------------
+   HERO
+----------------------------------------------------- */
+
+.destination-detail-hero {
+    min-height: 650px;
+
+    background-size: cover;
+    background-position: center;
+
+    position: relative;
+
+    color: #ffffff;
+
+    display: flex;
+    align-items: center;
+}
+
+.destination-detail-overlay {
+    width: 100%;
+    min-height: 650px;
+
+    display: flex;
+    align-items: center;
+
+    padding: 140px 0 90px;
+}
+
+.destination-detail-content {
+    max-width: 780px;
+
+    padding-top: 50px;
+}
+
+.destination-breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    margin-bottom: 35px;
+
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.destination-breadcrumb a {
+    color: rgba(255, 255, 255, 0.85);
+    text-decoration: none;
+
+    transition: color 0.2s ease;
+}
+
+.destination-breadcrumb a:hover {
+    color: #ffffff;
+}
+
+.destination-eyebrow {
+    display: inline-block;
+
+    margin-bottom: 16px;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    letter-spacing: 3px;
+
+    color: #d39a5d;
+}
+
+.destination-detail-content h1 {
+    margin: 0 0 25px;
+
+    font-size: clamp(52px, 7vw, 88px);
+    line-height: 0.95;
+
+    letter-spacing: -3px;
+}
+
+.destination-detail-content p {
+    max-width: 720px;
+
+    margin: 0;
+
+    font-size: 18px;
+    line-height: 1.8;
+
+    color: rgba(255, 255, 255, 0.88);
+}
+
+.destination-meta {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+
+    margin-top: 30px;
+
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.destination-meta span {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+}
+
+
+/* -----------------------------------------------------
+   INFORMATION SECTION
+----------------------------------------------------- */
+
+.destination-information {
+    padding: 110px 0 120px;
+
+    background: #f8f6f1;
+}
+
+.destination-information .section-heading {
+    margin-bottom: 70px;
+}
+
+
+/* -----------------------------------------------------
+   DETAIL SECTION
+----------------------------------------------------- */
+
+.detail-section {
+    margin-bottom: 75px;
+}
+
+.detail-section-title {
+    display: flex;
+    align-items: center;
+
+    gap: 18px;
+
+    margin-bottom: 28px;
+}
+
+.detail-icon {
+    width: 54px;
+    height: 54px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #ffffff;
+
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+
+    font-size: 24px;
+}
+
+.detail-section-title h3 {
+    margin: 0 0 5px;
+
+    font-size: 26px;
+}
+
+.detail-section-title p {
+    margin: 0;
+
+    color: #777;
+
+    font-size: 14px;
+}
+
+
+/* -----------------------------------------------------
+   DETAIL GRID
+----------------------------------------------------- */
+
+.detail-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 20px;
+}
+
+
+/* -----------------------------------------------------
+   DETAIL CARD
+----------------------------------------------------- */
+
+.detail-card {
+    position: relative;
+
+    min-height: 180px;
+
+    padding: 28px;
+
+    background: #ffffff;
+
+    border: 1px solid rgba(0, 0, 0, 0.06);
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 10px 35px rgba(0, 0, 0, 0.05);
+
+    overflow: hidden;
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.detail-card:hover {
+    transform: translateY(-6px);
+
+    box-shadow:
+        0 18px 45px rgba(0, 0, 0, 0.10);
+}
+
+.detail-card-number {
+    display: block;
+
+    margin-bottom: 30px;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    letter-spacing: 2px;
+
+    color: #b5793d;
+}
+
+.detail-card h4 {
+    margin: 0;
+
+    font-size: 20px;
+    line-height: 1.3;
+}
+
+.detail-card-link {
+    position: absolute;
+
+    left: 28px;
+    bottom: 24px;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    color: #b5793d;
+}
+
+.experience-detail-card {
+    min-height: 190px;
+}
+
+
+/* -----------------------------------------------------
+   SEASONS
+----------------------------------------------------- */
+
+.season-list {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 12px;
+}
+
+.season-tag {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 12px 20px;
+
+    background: #ffffff;
+
+    border: 1px solid rgba(181, 121, 61, 0.25);
+
+    border-radius: 50px;
+
+    color: #444;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    box-shadow:
+        0 5px 18px rgba(0, 0, 0, 0.04);
+}
+
+
+/* -----------------------------------------------------
+   TRIP BUILDER CTA
+----------------------------------------------------- */
+
+.destination-information .trip-builder-cta {
+    margin-top: 90px;
+}
+
+
+/* -----------------------------------------------------
+   RESPONSIVE
+----------------------------------------------------- */
+
+@media (max-width: 900px) {
+
+    .detail-grid {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+    .destination-detail-content h1 {
+        font-size: 60px;
+    }
+
+}
+
+
+@media (max-width: 650px) {
+
+    .destination-detail-hero {
+        min-height: 600px;
+    }
+
+    .destination-detail-overlay {
+        min-height: 600px;
+
+        padding: 120px 0 70px;
+    }
+
+    .destination-detail-content {
+        padding-top: 20px;
+    }
+
+    .destination-detail-content h1 {
+        font-size: 48px;
+
+        letter-spacing: -2px;
+    }
+
+    .destination-detail-content p {
+        font-size: 16px;
+    }
+
+    .destination-breadcrumb {
+        font-size: 12px;
+
+        flex-wrap: wrap;
+    }
+
+    .detail-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .destination-information {
+        padding: 80px 0;
+    }
+
+}
+
+/* =====================================================
+   🧭 DISCOVER BULGARIA - NAVIGATION FIX
+   ===================================================== */
+
+.main-nav {
+    display: flex;
+    align-items: center;
+    gap: 36px;
+}
+
+.main-nav > a {
+    white-space: nowrap;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+}
+
+.nav-links a {
+    white-space: nowrap;
+}
+
+
+/* Ако навигацията използва списък */
+
+.main-nav ul {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.main-nav li {
+    white-space: nowrap;
+}
+
+
+/* Бутоните вдясно */
+
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-left: auto;
+}
+
+
+/* Малки екрани */
+
+@media (max-width: 900px) {
+
+    .main-nav {
+        gap: 18px;
+    }
+
+    .nav-links,
+    .main-nav ul {
+        gap: 16px;
+    }
+
+}
+
+/* =========================================================
+   DESTINATION 2.0
+   ========================================================= */
+
+.destination-2-section {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 20px 0 80px;
+}
+
+
+/* =========================================================
+   QUICK INFORMATION
+   ========================================================= */
+
+.destination-info-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    margin-bottom: 70px;
+}
+
+.destination-info-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.07);
+
+    border-radius: 18px;
+
+    padding: 22px;
+
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.destination-info-icon {
+    width: 46px;
+    height: 46px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    background: #f4eadf;
+    border-radius: 14px;
+
+    font-size: 21px;
+}
+
+.destination-info-content h4 {
+    margin: 0 0 6px;
+
+    font-size: 15px;
+}
+
+.destination-info-content p {
+    margin: 0;
+
+    color: #6d716c;
+
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   COMMERCE BLOCKS
+   ========================================================= */
+
+.destination-commerce-block {
+    margin-bottom: 70px;
+}
+
+.destination-commerce-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+
+    gap: 30px;
+
+    margin-bottom: 28px;
+}
+
+.destination-commerce-header h2 {
+    margin: 8px 0 10px;
+
+    font-size: 32px;
+
+    color: #24332c;
+}
+
+.destination-commerce-header p {
+    margin: 0;
+
+    max-width: 650px;
+
+    color: #6d716c;
+
+    line-height: 1.7;
+}
+
+.section-eyebrow {
+    display: inline-block;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    letter-spacing: 0.15em;
+
+    color: #b5793d;
+}
+
+
+/* =========================================================
+   ACTION BUTTON
+   ========================================================= */
+
+.destination-action-button,
+.destination-trip-button {
+    border: none;
+
+    background: #b5793d;
+    color: #ffffff;
+
+    padding: 13px 20px;
+
+    border-radius: 12px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+
+    white-space: nowrap;
+}
+
+.destination-action-button:hover,
+.destination-trip-button:hover {
+    transform: translateY(-2px);
+
+    background: #9f6732;
+
+    box-shadow:
+        0 10px 24px rgba(181, 121, 61, 0.25);
+}
+
+
+/* =========================================================
+   PLACEHOLDER CARDS
+   ========================================================= */
+
+.destination-placeholder-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 20px;
+}
+
+.destination-placeholder-card {
+    background: #ffffff;
+
+    border:
+        1px solid rgba(0, 0, 0, 0.07);
+
+    border-radius: 18px;
+
+    padding: 28px;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.destination-placeholder-card:hover {
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 14px 35px rgba(0, 0, 0, 0.08);
+}
+
+.destination-placeholder-card > span {
+    display: block;
+
+    font-size: 30px;
+
+    margin-bottom: 18px;
+}
+
+.destination-placeholder-card h4 {
+    margin: 0 0 8px;
+
+    font-size: 19px;
+
+    color: #24332c;
+}
+
+.destination-placeholder-card p {
+    margin: 0;
+
+    color: #6d716c;
+
+    line-height: 1.6;
+}
+
+
+/* =========================================================
+   MAP
+   ========================================================= */
+
+.destination-map-block {
+    margin-bottom: 70px;
+}
+
+.destination-map-card {
+    overflow: hidden;
+
+    width: 100%;
+
+    height: 430px;
+
+    border-radius: 20px;
+
+    border:
+        1px solid rgba(0, 0, 0, 0.08);
+
+    box-shadow:
+        0 12px 35px rgba(0, 0, 0, 0.07);
+
+    background: #e9e9e9;
+}
+
+.destination-map-card iframe {
+    width: 100%;
+    height: 100%;
+
+    border: 0;
+}
+
+.destination-map-link {
+    display: inline-block;
+
+    margin-top: 14px;
+
+    color: #b5793d;
+
+    font-weight: 700;
+
+    text-decoration: none;
+}
+
+.destination-map-link:hover {
+    text-decoration: underline;
+}
+
+
+/* =========================================================
+   TRIP BUILDER
+   ========================================================= */
+
+.destination-trip-builder {
+    position: relative;
+
+    overflow: hidden;
+
+    border-radius: 24px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #24332c,
+            #33473d
+        );
+
+    padding: 55px;
+}
+
+.destination-trip-content {
+    max-width: 720px;
+}
+
+.destination-trip-content h2 {
+    margin: 10px 0 14px;
+
+    color: #ffffff;
+
+    font-size: 38px;
+}
+
+.destination-trip-content p {
+    margin: 0 0 28px;
+
+    color: rgba(255, 255, 255, 0.78);
+
+    line-height: 1.7;
+}
+
+.destination-trip-button {
+    background: #d19a5d;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    .destination-info-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .destination-placeholder-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .destination-commerce-header {
+        align-items: flex-start;
+
+        flex-direction: column;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .destination-2-section {
+        padding-left: 18px;
+        padding-right: 18px;
+    }
+
+    .destination-info-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .destination-placeholder-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .destination-map-card {
+        height: 320px;
+    }
+
+    .destination-trip-builder {
+        padding: 32px 24px;
+    }
+
+    .destination-trip-content h2 {
+        font-size: 30px;
+    }
+
+}
+
+/* =========================================================
+   EXPERIENCES 2.0
+   ========================================================= */
+
+.experience-product-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 24px;
+
+    margin-top: 28px;
+}
+
+
+/* =========================================================
+   EXPERIENCE CARD
+   ========================================================= */
+
+.experience-product-card {
+    overflow: hidden;
+
+    background: #ffffff;
+
+    border:
+        1px solid rgba(0, 0, 0, 0.07);
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 12px 30px rgba(0, 0, 0, 0.06);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+
+.experience-product-card:hover {
+    transform: translateY(-5px);
+
+    box-shadow:
+        0 18px 40px rgba(0, 0, 0, 0.10);
+}
+
+
+/* =========================================================
+   IMAGE
+   ========================================================= */
+
+.experience-product-image {
+    position: relative;
+
+    width: 100%;
+
+    height: 220px;
+
+    overflow: hidden;
+
+    background: #e9e5df;
+}
+
+
+.experience-product-image img {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+
+    transition:
+        transform 0.5s ease;
+}
+
+
+.experience-product-card:hover
+.experience-product-image img {
+    transform: scale(1.05);
+}
+
+
+/* =========================================================
+   BADGE
+   ========================================================= */
+
+.experience-product-badge {
+    position: absolute;
+
+    top: 14px;
+    left: 14px;
+
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+
+    padding: 8px 11px;
+
+    background:
+        rgba(255, 255, 255, 0.94);
+
+    border-radius: 10px;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    color: #24332c;
+
+    box-shadow:
+        0 5px 15px rgba(0, 0, 0, 0.10);
+}
+
+
+/* =========================================================
+   BODY
+   ========================================================= */
+
+.experience-product-body {
+    padding: 22px;
+}
+
+
+.experience-product-rating {
+    margin-bottom: 8px;
+
+    color: #b5793d;
+
+    font-size: 14px;
+    font-weight: 700;
+}
+
+
+.experience-product-body h4 {
+    margin: 0 0 7px;
+
+    color: #24332c;
+
+    font-size: 20px;
+
+    line-height: 1.3;
+}
+
+
+.experience-product-location {
+    margin: 0 0 18px;
+
+    color: #747a75;
+
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   META
+   ========================================================= */
+
+.experience-product-meta {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 12px;
+
+    padding-top: 15px;
+
+    border-top:
+        1px solid rgba(0, 0, 0, 0.07);
+
+    color: #5f665f;
+
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.experience-product-footer {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+    margin-top: 20px;
+}
+
+
+.experience-product-price {
+    display: flex;
+
+    flex-direction: column;
+}
+
+
+.experience-product-price small {
+    color: #858b86;
+
+    font-size: 12px;
+}
+
+
+.experience-product-price strong {
+    color: #24332c;
+
+    font-size: 20px;
+}
+
+
+/* =========================================================
+   ADD BUTTON
+   ========================================================= */
+
+.experience-add-button {
+    border: none;
+
+    padding: 11px 17px;
+
+    border-radius: 11px;
+
+    background: #b5793d;
+
+    color: #ffffff;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.experience-add-button:hover {
+    background: #9f6732;
+
+    transform: translateY(-1px);
+}
+
+
+.experience-add-button.is-added {
+    background: #2f5a43;
+
+    cursor: default;
+}
+
+
+.experience-add-button.is-added:hover {
+    transform: none;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 1000px) {
+
+    .experience-product-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+}
+
+
+@media (max-width: 650px) {
+
+    .experience-product-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .experience-product-image {
+        height: 210px;
+    }
+}
+
+/* =========================================================
+   MY TRIP
+   ========================================================= */
+
+#floating-trip-button {
+    position: fixed;
+
+    right: 24px;
+    bottom: 24px;
+
+    z-index: 9000;
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    border: none;
+
+    padding: 14px 18px;
+
+    border-radius: 15px;
+
+    background: #24332c;
+
+    color: #ffffff;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 12px 30px rgba(0, 0, 0, 0.18);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+#floating-trip-button:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 16px 35px rgba(0, 0, 0, 0.22);
+}
+
+
+.trip-floating-icon {
+    font-size: 20px;
+}
+
+
+.trip-floating-count {
+    min-width: 24px;
+    height: 24px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0 6px;
+
+    border-radius: 50px;
+
+    background: #d19a5d;
+
+    color: #ffffff;
+
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   OVERLAY
+   ========================================================= */
+
+#trip-planner-overlay {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 9998;
+
+    background:
+        rgba(15, 24, 20, 0.38);
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    transition:
+        opacity 0.25s ease;
+}
+
+
+#trip-planner-overlay.is-visible {
+    opacity: 1;
+
+    pointer-events: auto;
+}
+
+
+/* =========================================================
+   PANEL
+   ========================================================= */
+
+#trip-planner-panel {
+    position: fixed;
+
+    top: 0;
+    right: 0;
+
+    z-index: 9999;
+
+    width: min(430px, 100%);
+
+    height: 100vh;
+
+    display: flex;
+
+    flex-direction: column;
+
+    background: #f8f6f1;
+
+    box-shadow:
+        -15px 0 45px rgba(0, 0, 0, 0.14);
+
+    transform:
+        translateX(100%);
+
+    transition:
+        transform 0.3s ease;
+}
+
+
+#trip-planner-panel.is-open {
+    transform:
+        translateX(0);
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.trip-panel-header {
+    display: flex;
+
+    align-items: flex-start;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    padding: 30px 26px 22px;
+
+    border-bottom:
+        1px solid rgba(0, 0, 0, 0.08);
+}
+
+
+.trip-panel-eyebrow {
+    display: block;
+
+    margin-bottom: 6px;
+
+    color: #b5793d;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.14em;
+}
+
+
+.trip-panel-header h3 {
+    margin: 0;
+
+    color: #24332c;
+
+    font-size: 27px;
+}
+
+
+#trip-panel-close {
+    width: 40px;
+    height: 40px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    background: #ffffff;
+
+    font-size: 28px;
+
+    line-height: 1;
+
+    cursor: pointer;
+}
+
+
+/* =========================================================
+   CONTENT
+   ========================================================= */
+
+.trip-panel-content {
+    flex: 1;
+
+    overflow-y: auto;
+
+    padding: 22px 22px 30px;
+}
+
+
+/* =========================================================
+   EMPTY STATE
+   ========================================================= */
+
+.trip-empty-state {
+    padding: 45px 20px;
+
+    text-align: center;
+}
+
+
+.trip-empty-icon {
+    font-size: 52px;
+
+    margin-bottom: 18px;
+}
+
+
+.trip-empty-state h4 {
+    margin: 0 0 10px;
+
+    font-size: 21px;
+
+    color: #24332c;
+}
+
+
+.trip-empty-state p {
+    margin: 0;
+
+    color: #6d716c;
+
+    line-height: 1.65;
+}
+
+
+/* =========================================================
+   ITEMS
+   ========================================================= */
+
+.trip-item {
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 14px;
+
+    margin-bottom: 14px;
+
+    padding: 17px;
+
+    background: #ffffff;
+
+    border:
+        1px solid rgba(0, 0, 0, 0.07);
+
+    border-radius: 16px;
+}
+
+
+.trip-item-icon {
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border-radius: 12px;
+
+    background: #f3e8dc;
+
+    font-size: 20px;
+}
+
+
+.trip-item-details {
+    min-width: 0;
+
+    flex: 1;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 4px;
+}
+
+
+.trip-item-details strong {
+    color: #24332c;
+
+    font-size: 15px;
+
+    line-height: 1.4;
+}
+
+
+.trip-item-details span {
+    color: #747a75;
+
+    font-size: 12px;
+}
+
+
+.trip-item-right {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: flex-end;
+
+    gap: 7px;
+}
+
+
+.trip-item-right strong {
+    color: #24332c;
+
+    white-space: nowrap;
+
+    font-size: 14px;
+}
+
+
+.trip-remove-button {
+    border: none;
+
+    padding: 0;
+
+    background: none;
+
+    color: #b5793d;
+
+    font-size: 12px;
+
+    cursor: pointer;
+}
+
+
+.trip-remove-button:hover {
+    text-decoration: underline;
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.trip-panel-footer {
+    padding: 20px 22px 25px;
+
+    background: #ffffff;
+
+    border-top:
+        1px solid rgba(0, 0, 0, 0.08);
+}
+
+
+.trip-panel-total {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    margin-bottom: 18px;
+}
+
+
+.trip-panel-total span {
+    color: #6d716c;
+
+    font-size: 14px;
+}
+
+
+.trip-panel-total strong {
+    color: #24332c;
+
+    font-size: 24px;
+}
+
+
+.trip-panel-actions {
+    display: grid;
+
+    grid-template-columns:
+        1fr 1.5fr;
+
+    gap: 10px;
+}
+
+
+.trip-secondary-button,
+.trip-primary-button {
+    min-height: 46px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+
+.trip-secondary-button {
+    background: #eee9e2;
+
+    color: #39453f;
+}
+
+
+.trip-primary-button {
+    background: #b5793d;
+
+    color: #ffffff;
+}
+
+
+.trip-secondary-button:hover {
+    background: #e4ded5;
+}
+
+
+.trip-primary-button:hover {
+    background: #9f6732;
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    #floating-trip-button {
+        right: 14px;
+        bottom: 14px;
+
+        padding: 13px 15px;
+    }
+
+    .trip-floating-text {
+        display: none;
+    }
+
+    #trip-planner-panel {
+        width: 100%;
+    }
+}
+
+/* =====================================================
+   DISCOVER BULGARIA
+   STATIC DESTINATION IMAGES
+===================================================== */
+
+
+/* -----------------------------------------------------
+   POMORIE
+----------------------------------------------------- */
+
+.destination-pomorie {
+    background-image:
+        linear-gradient(
+            rgba(0, 0, 0, 0.05),
+            rgba(0, 0, 0, 0.05)
+        ),
+        url("https://visitbulgaria.com/wp-content/uploads/2020/04/150_1-scaled-min.jpg");
+}
+
+
+/* -----------------------------------------------------
+   SOZOPOL
+----------------------------------------------------- */
+
+.destination-sozopol {
+    background-image:
+        linear-gradient(
+            rgba(0, 0, 0, 0.05),
+            rgba(0, 0, 0, 0.05)
+        ),
+        url("https://images.unsplash.com/photo-1530789253388-582c481c54b0?auto=format&fit=crop&w=1200&q=85");
+}
+
+
+/* -----------------------------------------------------
+   BALCHIK
+----------------------------------------------------- */
+
+.destination-balchik {
+    background-image:
+        linear-gradient(
+            rgba(0, 0, 0, 0.05),
+            rgba(0, 0, 0, 0.05)
+        ),
+        url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=85");
+}
+
+
+/* -----------------------------------------------------
+   SOFIA
+----------------------------------------------------- */
+
+.destination-sofia {
+    background-image:
+        linear-gradient(
+            rgba(0, 0, 0, 0.05),
+            rgba(0, 0, 0, 0.05)
+        ),
+        url("https://images.unsplash.com/photo-1556767576-cfba9d5f8b7d?auto=format&fit=crop&w=1200&q=85");
+}
+
+
+/* -----------------------------------------------------
+   VARNA
+----------------------------------------------------- */
+
+.destination-varna {
+    background-image:
+        linear-gradient(
+            rgba(0, 0, 0, 0.05),
+            rgba(0, 0, 0, 0.05)
+        ),
+        url("");
+}
+
+
+/* -----------------------------------------------------
+   BURGAS
+----------------------------------------------------- */
+
+.destination-burgas {
+    background-image:
+        linear-gradient(
+            rgba(0, 0, 0, 0.05),
+            rgba(0, 0, 0, 0.05)
+        ),
+        url("https://l.gotoburgas.com/images/pic_00.jpg");
+}
+
+/* =====================================================
+   DISCOVER BULGARIA
+   ДОПЪЛНИТЕЛНИ ИЗОБРАЖЕНИЯ НА ДЕСТИНАЦИИ
+===================================================== */
+
+.destination-pomorie {
+    background-image:
+        linear-gradient(
+            rgba(0, 0, 0, 0.05),
+            rgba(0, 0, 0, 0.05)
+        ),
+        url("https://visitbulgaria.com/wp-content/uploads/2020/04/150_1-scaled-min.jpg");
+}
+
+.destination-sozopol {
+    background-image:
+        linear-gradient(
+            rgba(0, 0, 0, 0.05),
+            rgba(0, 0, 0, 0.05)
+        ),
+        url("https://sozopol.bg/media/cache/0b/21/thumb6_opoznai-sozopol.jpeg");
+}
+
+.destination-balchik {
+    background-image:
+        linear-gradient(
+            rgba(0, 0, 0, 0.05),
+            rgba(0, 0, 0, 0.05)
+        ),
+        url("https://thumb.wikimedia.org/wikipedia/commons/thumb/7/72/Balchik_Bulgaria_aerial_photo_from_the_Black_Sea.jpg/1280px-Balchik_Bulgaria_aerial_photo_from_the_Black_Sea.jpg?utm_source=bg.wikipedia.org&utm_campaign=index&utm_content=thumbnail");
+}
+
+.destination-sofia {
+    background-image:
+        linear-gradient(
+            rgba(0, 0, 0, 0.05),
+            rgba(0, 0, 0, 0.05)
+        ),
+        url("https://thumb.wikimedia.org/wikipedia/commons/thumb/7/79/Cathedral_Saint_Alexander_Nevsky_%2823997168458%29.jpg/250px-Cathedral_Saint_Alexander_Nevsky_%2823997168458%29.jpg?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail");
+}
+
+.destination-varna {
+    background-image:
+        linear-gradient(
+            rgba(0, 0, 0, 0.05),
+            rgba(0, 0, 0, 0.05)
+        ),
+        url("https://images.trvl-media.com/place/3679/52aab41e-c820-4da3-8176-924d90efd245.jpg");
+}
+
+.destination-burgas {
+    background-image:
+        linear-gradient(
+            rgba(0, 0, 0, 0.05),
+            rgba(0, 0, 0, 0.05)
+        ),
+        url("https://l.gotoburgas.com/images/pic_00.jpg");
+}
+
+/* =====================================================
+   DISCOVER BULGARIA
+   ADDITIONAL DESTINATION IMAGES
+===================================================== */
+
+.destination-stara-zagora {
+    background-image:
+        linear-gradient(
+            rgba(0, 0, 0, 0.05),
+            rgba(0, 0, 0, 0.05)
+        ),
+        url("https://www.andrey-andreev.com/wp-content/uploads/2017/11/DJI_0088.jpg");
+}
+
+.destination-ruse {
+    background-image:
+        linear-gradient(
+            rgba(0, 0, 0, 0.05),
+            rgba(0, 0, 0, 0.05)
+        ),
+        url("https://obshtinaruse.bg/cache/thumbnails/9f75d5fdc06cec15f24019882565e45f254335f6/1c042b67098fb6d8ee65dee040efc51c02e7edd3-7dcd14d1b2539425694fed791437779e.jpg");
+}
+
+.destination-pleven {
+    background-image:
+        linear-gradient(
+            rgba(0, 0, 0, 0.05),
+            rgba(0, 0, 0, 0.05)
+        ),
+        url("https://plevenutre.bg/images/articles/2022/10/611656/865c0c0b4ab0e063e5caa3387c1a8741fc684cc7e19266b301351222d7f3b4a6.jpg");
+}
+
+.destination-sliven {
+    background-image:
+        linear-gradient(
+            rgba(0, 0, 0, 0.05),
+            rgba(0, 0, 0, 0.05)
+        ),
+        url("https://mun.sliven.bg/uploads/9BFF4C77AC22A4E082066C7C32C20A80.jpg");
+}
+
+
+/* =====================================================
+   ADDITIONAL DESTINATIONS — VISUAL FALLBACK
+===================================================== */
+
+.destination-dobrich {
+    background:
+        linear-gradient(
+            135deg,
+            #7f8b6f,
+            #39483d
+        );
+}
+
+.destination-shumen {
+    background:
+        linear-gradient(
+            135deg,
+            #8c765f,
+            #47382c
+        );
+}
+
+.destination-blagoevgrad {
+    background:
+        linear-gradient(
+            135deg,
+            #647b69,
+            #2d4035
+        );
+}
+
+.destination-bansko {
+    background:
+        linear-gradient(
+            135deg,
+            #718277,
+            #34463b
+        );
+}
+
+.destination-sandanski {
+    background:
+        linear-gradient(
+            135deg,
+            #9a856c,
+            #534235
+        );
+}
+
+
+/* =====================================================
+   DESTINATION GRID FIX
+===================================================== */
+
+.destination-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+    width: 100%;
+    max-width: 1240px;
+    margin: 0 auto;
+}
+
+.destination-card {
+    min-width: 0;
+}
+
+.destination-image {
+    width: 100%;
+    height: 260px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* =====================================================
+   DISCOVER BULGARIA
+   DESTINATION CATALOG REWORK
+===================================================== */
+
+
+/* -----------------------------------------------------
+   CATALOG GRID
+----------------------------------------------------- */
+
+.catalog-grid {
+
+    width: min(1100px, 100%);
+
+    margin: 0 auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 28px;
+
+}
+
+
+/* -----------------------------------------------------
+   CARD
+----------------------------------------------------- */
+
+.catalog-grid .destination-card {
+
+    width: 100%;
+    min-width: 0;
+
+    overflow: hidden;
+
+}
+
+
+/* -----------------------------------------------------
+   IMAGE
+----------------------------------------------------- */
+
+.catalog-grid .destination-image {
+
+    width: 100%;
+    height: 260px;
+
+    display: flex;
+    align-items: flex-end;
+
+    position: relative;
+
+    padding: 20px;
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+}
+
+
+/* -----------------------------------------------------
+   IMAGE OVERLAY
+----------------------------------------------------- */
+
+.catalog-grid .destination-image::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            transparent 35%,
+            rgba(0, 0, 0, 0.55)
+        );
+
+}
+
+
+/* -----------------------------------------------------
+   IMAGE LABEL
+----------------------------------------------------- */
+
+.catalog-grid .destination-image span {
+
+    position: relative;
+
+    z-index: 2;
+
+    padding: 7px 12px;
+
+    border-radius: 30px;
+
+    background: rgba(255, 255, 255, 0.92);
+
+    color: #27332d;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    letter-spacing: 1px;
+
+}
+
+
+/* -----------------------------------------------------
+   TEMPORARY IMAGE BACKGROUNDS
+----------------------------------------------------- */
+
+/* =====================================================
+   ADDITIONAL DESTINATION IMAGES
+===================================================== */
+
+.destination-stara-zagora {
+
+    background-image:
+        linear-gradient(
+            rgba(0, 0, 0, 0.05),
+            rgba(0, 0, 0, 0.05)
+        ),
+        url(
+            "https://www.andrey-andreev.com/wp-content/uploads/2017/11/DJI_0088.jpg"
+        );
+
+}
+
+
+.destination-dobrich {
+
+    background-image:
+        linear-gradient(
+            rgba(0, 0, 0, 0.05),
+            rgba(0, 0, 0, 0.05)
+        ),
+        url(
+            "https://www.namrb.org/pic/news/cropped/10544_Dobrich-Travel-Guide-Travel-S-Helper-1-1024x576jpg.png"
+        );
+
+}
+
+
+.destination-shumen {
+
+    background-image:
+        linear-gradient(
+            rgba(0, 0, 0, 0.05),
+            rgba(0, 0, 0, 0.05)
+        ),
+        url(
+            "https://static.bnr.bg/gallery/cr/7a258d2332122cb094e7654f15edb556.jpg"
+        );
+
+}
+
+
+.destination-blagoevgrad {
+
+    background-image:
+        linear-gradient(
+            rgba(0, 0, 0, 0.05),
+            rgba(0, 0, 0, 0.05)
+        ),
+        url(
+            "https://zeebkrhyrhejqvicqpxu.supabase.co/storage/v1/object/public/ratestars/ff8fefb2-8a85-4d3b-b839-b224b4427c0f/14554.jpg"
+        );
+
+}
+
+
+.destination-bansko {
+
+    background-image:
+        linear-gradient(
+            rgba(0, 0, 0, 0.05),
+            rgba(0, 0, 0, 0.05)
+        ),
+        url(
+            "https://d2vbr83hnyiux1.cloudfront.net/image/975050285728/image_98no1fe7sd7rd7frnfnbs9ht6a/-FWEBP-Ro:5,w:1920,h:1440,n:default"
+        );
+
+}
+
+
+.destination-sandanski {
+
+    background-image:
+        linear-gradient(
+            rgba(0, 0, 0, 0.05),
+            rgba(0, 0, 0, 0.05)
+        ),
+        url(
+            "https://sandanski.bg/wp-content/uploads/2022/03/DJI_0042-600x450.jpg"
+        );
+
+}
+
+
+/* -----------------------------------------------------
+   TABLET
+----------------------------------------------------- */
+
+@media (max-width: 850px) {
+
+    .catalog-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+}
+
+/* =====================================================
+   DISCOVER BULGARIA
+   ALL DESTINATION CARDS — 2 COLUMN LAYOUT
+===================================================== */
+
+.destinations .destination-grid {
+
+    width: min(1100px, 100%);
+
+    margin: 0 auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 28px;
+
+}
+
+
+/* Keep every card inside its grid column */
+
+.destinations .destination-grid .destination-card {
+
+    width: 100%;
+    min-width: 0;
+
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 850px) {
+
+    .destinations .destination-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+}
+
+/* =====================================================
+   HOMEPAGE — POPULAR DESTINATIONS IMAGES
+===================================================== */
+
+.homepage-destinations .destination-card:nth-child(1) .image-placeholder {
+    background:
+        linear-gradient(
+            rgba(0, 0, 0, 0.10),
+            rgba(0, 0, 0, 0.10)
+        ),
+        url("https://commons.wikimedia.org/wiki/Special:Redirect/file/Seven%20Rila%20Lakes.jpg");
+
+    background-position: center;
+    background-size: cover;
+}
+
+.homepage-destinations .destination-card:nth-child(2) .image-placeholder {
+    background:
+        linear-gradient(
+            rgba(0, 0, 0, 0.10),
+            rgba(0, 0, 0, 0.10)
+        ),
+        url("https://commons.wikimedia.org/wiki/Special:Redirect/file/Rhodope%20Mountains.JPG");
+
+    background-position: center;
+    background-size: cover;
+}
+
+.homepage-destinations .destination-card:nth-child(3) .image-placeholder {
+    background:
+        linear-gradient(
+            rgba(0, 0, 0, 0.10),
+            rgba(0, 0, 0, 0.10)
+        ),
+        url("https://commons.wikimedia.org/wiki/Special:Redirect/file/Tsarevets%20-%20Veliko%20Tarnovo.jpg");
+
+    background-position: center;
+    background-size: cover;
+}
+
+/* =====================================================
+   HOMEPAGE — POPULAR DESTINATIONS
+   2 COLUMN LAYOUT
+===================================================== */
+
+.homepage-destinations .destination-grid {
+    width: min(1100px, 100%);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 28px;
+}
+
+.homepage-destinations .destination-card {
+    width: 100%;
+    min-width: 0;
+}
+
+@media (max-width: 850px) {
+    .homepage-destinations .destination-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* =====================================================
+   DISCOVER BULGARIA
+   RILA DETAIL PAGE
+===================================================== */
+
+.rila-page-hero {
+    position: relative;
+    min-height: 620px;
+
+    display: flex;
+    align-items: center;
+
+    background-image:
+        url("https://commons.wikimedia.org/wiki/Special:Redirect/file/Seven%20Rila%20Lakes.jpg");
+
+    background-position: center;
+    background-size: cover;
+
+    color: white;
+}
+
+.rila-page-hero-overlay {
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(5, 12, 10, 0.80),
+            rgba(5, 12, 10, 0.30)
+        );
+}
+
+.rila-page-hero .container {
+    position: relative;
+    z-index: 2;
+}
+
+.rila-page-hero-content {
+    max-width: 720px;
+
+    padding-top: 80px;
+    padding-bottom: 80px;
+}
+
+.rila-page-hero-content .eyebrow {
+    color: #ffffff;
+}
+
+.rila-page-hero-content h1 {
+    margin: 15px 0 20px;
+
+    font-size: clamp(4rem, 8vw, 7rem);
+    line-height: 0.95;
+
+    color: white;
+}
+
+.rila-page-hero-content > p:last-child {
+    max-width: 620px;
+
+    font-size: 1.3rem;
+    line-height: 1.7;
+
+    color: rgba(255, 255, 255, 0.92);
+}
+
+
+/* INTRO */
+
+.rila-section {
+    padding: 100px 0;
+}
+
+.rila-section-light {
+    background: #f5f3ed;
+}
+
+.rila-intro {
+    display: grid;
+
+    grid-template-columns:
+        minmax(260px, 0.8fr)
+        minmax(0, 1.2fr);
+
+    gap: 80px;
+
+    align-items: start;
+}
+
+.rila-intro h2 {
+    margin-top: 12px;
+
+    font-size: clamp(2.2rem, 4vw, 3.5rem);
+
+    line-height: 1.1;
+}
+
+.rila-intro > div:last-child {
+    font-size: 1.08rem;
+    line-height: 1.8;
+}
+
+.rila-intro > div:last-child p + p {
+    margin-top: 22px;
+}
+
+
+/* ATTRACTIONS */
+
+.rila-attractions-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 28px;
+
+    margin-top: 50px;
+}
+
+.rila-info-card {
+    overflow: hidden;
+
+    background: white;
+
+    border: 1px solid rgba(0, 0, 0, 0.08);
+
+    border-radius: 24px;
+
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.08);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.rila-info-card:hover {
+    transform: translateY(-7px);
+
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.12);
+}
+
+.rila-info-image {
+    min-height: 260px;
+
+    display: flex;
+
+    align-items: flex-end;
+
+    padding: 24px;
+
+    background-position: center;
+    background-size: cover;
+
+    position: relative;
+}
+
+.rila-info-image::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            transparent 35%,
+            rgba(0, 0, 0, 0.65)
+        );
+}
+
+.rila-info-image span {
+    position: relative;
+
+    z-index: 2;
+
+    color: white;
+
+    font-size: 13px;
+    font-weight: 800;
+
+    letter-spacing: 2px;
+}
+
+.rila-lakes {
+    background-image:
+        url("https://commons.wikimedia.org/wiki/Special:Redirect/file/Seven%20Rila%20Lakes.jpg");
+}
+
+.rila-monastery {
+    background-image:
+        url("https://commons.wikimedia.org/wiki/Special:Redirect/file/Rila%20monastery%20-%20bulgaria.JPG");
+
+    background-position: center;
+    background-size: cover;
+}
+
+.rila-musala {
+    background-image:
+        url("https://commons.wikimedia.org/wiki/Special:Redirect/file/Musala%20peak.jpg");
+
+    background-position: center;
+    background-size: cover;
+}
+
+.rila-info-content {
+    padding: 28px;
+}
+
+.rila-info-content h3 {
+    margin-bottom: 12px;
+
+    font-size: 1.45rem;
+}
+
+.rila-info-content p {
+    margin: 0;
+
+    line-height: 1.7;
+
+    color: #657079;
+}
+
+
+/* EXPERIENCES */
+
+.rila-experiences-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 28px;
+
+    margin-top: 50px;
+}
+
+.rila-experience-card {
+    padding: 35px;
+
+    border-radius: 24px;
+
+    background: #f5f3ed;
+
+    border: 1px solid rgba(0, 0, 0, 0.07);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.rila-experience-card:hover {
+    transform: translateY(-7px);
+
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.10);
+}
+
+.rila-experience-icon {
+    font-size: 2rem;
+
+    margin-bottom: 22px;
+}
+
+.rila-experience-card h3 {
+    margin-bottom: 14px;
+
+    font-size: 1.4rem;
+}
+
+.rila-experience-card p {
+    line-height: 1.7;
+
+    color: #657079;
+}
+
+.rila-experience-card strong {
+    display: block;
+
+    margin-top: 25px;
+
+    font-size: 1.5rem;
+
+    color: #111820;
+}
+
+
+/* INFORMATION */
+
+.rila-section-dark {
+    background: #17211d;
+
+    color: white;
+}
+
+.rila-section-dark .section-heading h2 {
+    color: white;
+}
+
+.rila-section-dark .eyebrow {
+    color: #d18a3d;
+}
+
+.rila-details-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+
+    gap: 20px;
+
+    margin-top: 50px;
+}
+
+.rila-detail {
+    display: flex;
+
+    gap: 16px;
+
+    padding: 25px;
+
+    border-radius: 18px;
+
+    background: rgba(255, 255, 255, 0.07);
+
+    border: 1px solid rgba(255, 255, 255, 0.10);
+}
+
+.rila-detail > span {
+    font-size: 1.6rem;
+}
+
+.rila-detail strong {
+    display: block;
+
+    margin-bottom: 6px;
+}
+
+.rila-detail p {
+    margin: 0;
+
+    color: rgba(255, 255, 255, 0.70);
+}
+
+
+/* CTA */
+
+.rila-cta {
+    padding: 110px 0;
+
+    background: #f5f3ed;
+
+    text-align: center;
+}
+
+.rila-cta-content {
+    max-width: 720px;
+
+    margin: 0 auto;
+}
+
+.rila-cta-content h2 {
+    margin: 12px 0 20px;
+
+    font-size: clamp(2.2rem, 5vw, 4rem);
+
+    line-height: 1.1;
+}
+
+.rila-cta-content > p:not(.eyebrow) {
+    margin-bottom: 35px;
+
+    font-size: 1.1rem;
+
+    line-height: 1.7;
+
+    color: #657079;
+}
+
+.rila-cta-button {
+    display: inline-flex;
+
+    align-items: center;
+
+    padding: 15px 26px;
+
+    border-radius: 999px;
+
+    background: #c87932;
+
+    color: white;
+
+    text-decoration: none;
+
+    font-weight: 700;
+
+    transition:
+        transform 0.25s ease,
+        background 0.25s ease;
+}
+
+.rila-cta-button:hover {
+    transform: translateY(-3px);
+
+    background: #a95f24;
+}
+
+
+/* RESPONSIVE */
+
+@media (max-width: 900px) {
+
+    .rila-intro {
+        grid-template-columns: 1fr;
+
+        gap: 35px;
+    }
+
+    .rila-attractions-grid,
+    .rila-experiences-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .rila-details-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+}
+
+@media (max-width: 650px) {
+
+    .rila-page-hero {
+        min-height: 520px;
+    }
+
+    .rila-attractions-grid,
+    .rila-experiences-grid,
+    .rila-details-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .rila-section {
+        padding: 70px 0;
+    }
+
+}
+
+/* =====================================================
+   RILA PAGE — BETTER CONTENT SPACING
+===================================================== */
+
+.rila-section > .container,
+.rila-cta > .container {
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+@media (max-width: 650px) {
+
+    .rila-section > .container,
+    .rila-cta > .container {
+        padding-left: 22px;
+        padding-right: 22px;
+    }
+
+}
+
+/* =====================================================
+   HEADER — LOGO / NAVIGATION SPACING
+===================================================== */
+
+.site-header .main-nav {
+    margin-left: 35px;
+}
+
+.site-header .nav-links {
+    gap: 30px;
+}
+
+/* =====================================================
+   RILA PAGE — TYPOGRAPHY POLISH
+===================================================== */
+
+.rila-page-hero-content > p:last-child {
+    font-size: 1.4rem;
+    line-height: 1.75;
+}
+
+.rila-intro > div:last-child {
+    font-size: 1.18rem;
+    line-height: 1.85;
+}
+
+.rila-info-content p {
+    font-size: 1.08rem;
+    line-height: 1.75;
+}
+
+.rila-experience-card p {
+    font-size: 1.08rem;
+    line-height: 1.75;
+}
+
+.rila-detail p {
+    font-size: 1.05rem;
+    line-height: 1.65;
+}
+
+.rila-cta-content > p:not(.eyebrow) {
+    font-size: 1.18rem;
+    line-height: 1.75;
+}
+
+/* =====================================================
+   DISCOVER BULGARIA
+   RHODOPES DETAIL PAGE
+===================================================== */
+
+.rhodopes-page-hero {
+    position: relative;
+    min-height: 620px;
+
+    display: flex;
+    align-items: center;
+
+    background-image:
+        url("https://commons.wikimedia.org/wiki/Special:Redirect/file/Rhodope%20Mountains.JPG");
+
+    background-position: center;
+    background-size: cover;
+
+    color: white;
+}
+
+.rhodopes-page-hero-overlay {
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(8, 12, 9, 0.80),
+            rgba(8, 12, 9, 0.28)
+        );
+}
+
+.rhodopes-page-hero .container {
+    position: relative;
+    z-index: 2;
+}
+
+.rhodopes-page-hero-content {
+    max-width: 720px;
+
+    padding-top: 80px;
+    padding-bottom: 80px;
+}
+
+.rhodopes-page-hero-content .eyebrow {
+    color: white;
+}
+
+.rhodopes-page-hero-content h1 {
+    margin: 15px 0 20px;
+
+    font-size: clamp(4rem, 8vw, 7rem);
+    line-height: 0.95;
+
+    color: white;
+}
+
+.rhodopes-page-hero-content > p:last-child {
+    max-width: 650px;
+
+    font-size: 1.4rem;
+    line-height: 1.75;
+
+    color: rgba(255, 255, 255, 0.92);
+}
+
+
+/* INTRO */
+
+.rhodopes-section {
+    padding: 100px 0;
+}
+
+.rhodopes-section > .container,
+.rhodopes-cta > .container {
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+.rhodopes-section-light {
+    background: #f5f3ed;
+}
+
+.rhodopes-intro {
+    display: grid;
+
+    grid-template-columns:
+        minmax(260px, 0.8fr)
+        minmax(0, 1.2fr);
+
+    gap: 80px;
+
+    align-items: start;
+}
+
+.rhodopes-intro h2 {
+    margin-top: 12px;
+
+    font-size: clamp(2.2rem, 4vw, 3.5rem);
+
+    line-height: 1.1;
+}
+
+.rhodopes-intro > div:last-child {
+    font-size: 1.18rem;
+    line-height: 1.85;
+}
+
+.rhodopes-intro > div:last-child p + p {
+    margin-top: 22px;
+}
+
+
+/* ATTRACTIONS */
+
+.rhodopes-attractions-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 28px;
+
+    margin-top: 50px;
+}
+
+.rhodopes-info-card {
+    overflow: hidden;
+
+    background: white;
+
+    border: 1px solid rgba(0, 0, 0, 0.08);
+
+    border-radius: 24px;
+
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.08);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.rhodopes-info-card:hover {
+    transform: translateY(-7px);
+
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.12);
+}
+
+.rhodopes-info-image {
+    min-height: 260px;
+
+    display: flex;
+
+    align-items: flex-end;
+
+    padding: 24px;
+
+    background-position: center;
+    background-size: cover;
+
+    position: relative;
+}
+
+.rhodopes-info-image::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            transparent 35%,
+            rgba(0, 0, 0, 0.65)
+        );
+}
+
+.rhodopes-info-image span {
+    position: relative;
+
+    z-index: 2;
+
+    color: white;
+
+    font-size: 13px;
+    font-weight: 800;
+
+    letter-spacing: 2px;
+}
+
+.rhodopes-devils-throat {
+    background-image:
+        url("https://commons.wikimedia.org/wiki/Special:Redirect/file/Dqvolsko%20gurlo.jpg");
+}
+
+.rhodopes-wonderful-bridges {
+    background-image:
+        url("https://commons.wikimedia.org/wiki/Special:Redirect/file/%D0%A1%D0%BA%D0%B0%D0%BB%D0%BD%D0%B8%20%D1%84%D0%BE%D1%80%D0%BC%D0%B8%20-%20%D0%A7%D1%83%D0%B4%D0%BD%D0%B8%D1%82%D0%B5%20%D0%BC%D0%BE%D1%81%D1%82%D0%BE%D0%B2%D0%B5.JPG");
+}
+
+.rhodopes-bachkovo {
+    background-image:
+        url("https://commons.wikimedia.org/wiki/Special:Redirect/file/Bachkovomonastery.jpg");
+}
+
+.rhodopes-info-content {
+    padding: 28px;
+}
+
+.rhodopes-info-content h3 {
+    margin-bottom: 12px;
+
+    font-size: 1.45rem;
+}
+
+.rhodopes-info-content p {
+    margin: 0;
+
+    font-size: 1.08rem;
+
+    line-height: 1.75;
+
+    color: #657079;
+}
+
+
+/* EXPERIENCES */
+
+.rhodopes-experiences-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 28px;
+
+    margin-top: 50px;
+}
+
+.rhodopes-experience-card {
+    padding: 35px;
+
+    border-radius: 24px;
+
+    background: #f5f3ed;
+
+    border: 1px solid rgba(0, 0, 0, 0.07);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.rhodopes-experience-card:hover {
+    transform: translateY(-7px);
+
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.10);
+}
+
+.rhodopes-experience-icon {
+    font-size: 2rem;
+
+    margin-bottom: 22px;
+}
+
+.rhodopes-experience-card h3 {
+    margin-bottom: 14px;
+
+    font-size: 1.4rem;
+}
+
+.rhodopes-experience-card p {
+    font-size: 1.08rem;
+
+    line-height: 1.75;
+
+    color: #657079;
+}
+
+.rhodopes-experience-card strong {
+    display: block;
+
+    margin-top: 25px;
+
+    font-size: 1.5rem;
+
+    color: #111820;
+}
+
+
+/* INFORMATION */
+
+.rhodopes-section-dark {
+    background: #17211d;
+
+    color: white;
+}
+
+.rhodopes-section-dark .section-heading h2 {
+    color: white;
+}
+
+.rhodopes-section-dark .eyebrow {
+    color: #d18a3d;
+}
+
+.rhodopes-details-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+
+    gap: 20px;
+
+    margin-top: 50px;
+}
+
+.rhodopes-detail {
+    display: flex;
+
+    gap: 16px;
+
+    padding: 25px;
+
+    border-radius: 18px;
+
+    background: rgba(255, 255, 255, 0.07);
+
+    border: 1px solid rgba(255, 255, 255, 0.10);
+}
+
+.rhodopes-detail > span {
+    font-size: 1.6rem;
+}
+
+.rhodopes-detail strong {
+    display: block;
+
+    margin-bottom: 6px;
+}
+
+.rhodopes-detail p {
+    margin: 0;
+
+    font-size: 1.05rem;
+
+    line-height: 1.65;
+
+    color: rgba(255, 255, 255, 0.70);
+}
+
+
+/* CTA */
+
+.rhodopes-cta {
+    padding: 110px 0;
+
+    background: #f5f3ed;
+
+    text-align: center;
+}
+
+.rhodopes-cta-content {
+    max-width: 720px;
+
+    margin: 0 auto;
+}
+
+.rhodopes-cta-content h2 {
+    margin: 12px 0 20px;
+
+    font-size: clamp(2.2rem, 5vw, 4rem);
+
+    line-height: 1.1;
+}
+
+.rhodopes-cta-content > p:not(.eyebrow) {
+    margin-bottom: 35px;
+
+    font-size: 1.18rem;
+
+    line-height: 1.75;
+
+    color: #657079;
+}
+
+.rhodopes-cta-button {
+    display: inline-flex;
+
+    align-items: center;
+
+    padding: 15px 26px;
+
+    border-radius: 999px;
+
+    background: #c87932;
+
+    color: white;
+
+    text-decoration: none;
+
+    font-weight: 700;
+
+    transition:
+        transform 0.25s ease,
+        background 0.25s ease;
+}
+
+.rhodopes-cta-button:hover {
+    transform: translateY(-3px);
+
+    background: #a95f24;
+}
+
+
+/* RESPONSIVE */
+
+@media (max-width: 900px) {
+
+    .rhodopes-intro {
+        grid-template-columns: 1fr;
+
+        gap: 35px;
+    }
+
+    .rhodopes-attractions-grid,
+    .rhodopes-experiences-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .rhodopes-details-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+}
+
+@media (max-width: 650px) {
+
+    .rhodopes-page-hero {
+        min-height: 520px;
+    }
+
+    .rhodopes-attractions-grid,
+    .rhodopes-experiences-grid,
+    .rhodopes-details-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .rhodopes-section {
+        padding: 70px 0;
+    }
+
+    .rhodopes-section > .container,
+    .rhodopes-cta > .container {
+        padding-left: 22px;
+        padding-right: 22px;
+    }
+
+}
+
+/* =====================================================
+   DISCOVER BULGARIA — HEADER POLISH
+   ===================================================== */
+
+header .logo {
+    font-size: 21px;
+    font-weight: 800;
+    letter-spacing: 1.6px;
+    white-space: nowrap;
+}
+
+header nav {
+    gap: 45px;
+}
+
+header nav ul {
+    gap: 32px;
+}
+
+header nav ul a {
+    font-size: 15px;
+    font-weight: 600;
+}
+
+/* =====================================================
+   DESTINATIONS PAGE — FINAL VISUAL POLISH
+   ===================================================== */
+
+.destinations-page .container {
+    width: min(1240px, calc(100% - 48px));
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* ---------- HEADER ---------- */
+
+.destinations-page .site-header .nav {
+    gap: 45px;
+}
+
+.destinations-page .site-header .logo {
+    font-size: 21px;
+    font-weight: 800;
+    letter-spacing: 1.6px;
+}
+
+.destinations-page .main-nav {
+    gap: 32px;
+}
+
+.destinations-page .main-nav a {
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.destinations-page .nav-actions {
+    gap: 16px;
+}
+
+.destinations-page .nav-actions a {
+    font-size: 15px;
+    font-weight: 600;
+}
+
+/* ---------- HERO BUTTON ---------- */
+
+.destinations-page .btn-light {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 52px;
+    padding: 0 26px;
+
+    border-radius: 999px;
+
+    background: #ffffff;
+    color: #1c2922;
+
+    font-size: 15px;
+    font-weight: 700;
+
+    text-decoration: none;
+
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.destinations-page .btn-light:hover {
+    background: #f1eee9;
+    transform: translateY(-2px);
+    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.16);
+}
+
+/* ---------- CATALOG ---------- */
+
+.destinations-page .static-catalog {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.destinations-page .catalog-intro {
+    max-width: 820px;
+}
+
+/* ---------- FOOTER ---------- */
+
+.destinations-page .site-footer {
+    margin-top: 20px;
+}
+
+/* ---------- MOBILE ---------- */
+
+@media (max-width: 650px) {
+
+    .destinations-page .container {
+        width: min(100% - 34px, 1240px);
+    }
+
+    .destinations-page .site-header .nav {
+        gap: 18px;
+    }
+
+    .destinations-page .site-header .logo {
+        font-size: 18px;
+    }
+
+    .destinations-page .main-nav {
+        gap: 18px;
+    }
+
+    .destinations-page .main-nav a {
+        font-size: 14px;
+    }
+}
+
+/* =========================================================
+   RILA — HEADER ALIGNMENT FIX
+========================================================= */
+
+@media (min-width: 901px) {
+
+    .rila-page .site-header {
+        padding: 24px 0;
+    }
+
+    .rila-page .site-header .container.nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        width: min(1240px, calc(100% - 48px));
+        min-height: 90px;
+
+        margin: 0 auto;
+        padding: 0;
+
+        gap: 30px;
+    }
+
+    .rila-page .site-header .logo {
+        flex: 0 0 auto;
+        margin: 0;
+        white-space: nowrap;
+    }
+
+    .rila-page .site-header .main-nav {
+        flex: 0 0 auto;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        gap: 30px;
+        margin: 0 auto;
+    }
+
+    .rila-page .site-header .nav-actions {
+        flex: 0 0 auto;
+
+        display: flex;
+        align-items: center;
+
+        gap: 18px;
+        margin: 0;
+        white-space: nowrap;
+    }
+
+}

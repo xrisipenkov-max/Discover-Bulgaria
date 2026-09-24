@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Discover Bulgaria — подбрани места за настаняване в планината, край морето и в историческите градове на България.">
+    <meta name="keywords" content="настаняване, хотели, къщи за гости, България, Discover Bulgaria, почивка">
+    <meta name="author" content="Discover Bulgaria">
+    <title>Настаняване | Discover Bulgaria</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+
+    <style>
+        /* =========================================================
+           DISCOVER BULGARIA — ACCOMMODATION / CINEMATIC V2
+           HTML + CSS ONLY
+        ========================================================== */
+
+        .accommodation-page {
+            --acc-ink: #14231e;
+            --acc-muted: #65716c;
+            --acc-paper: #f7f5f0;
+            --acc-card: #ffffff;
+            --acc-line: rgba(20,35,30,.12);
+            --acc-accent: #b5793d;
+            background: var(--acc-paper);
+            color: var(--acc-ink);
+        }
+
+        .accommodation-page .site-header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 20;
+            background: linear-gradient(180deg, rgba(8,17,14,.42), transparent);
+        }
+
+        .accommodation-page .site-header .nav {
+            width: min(1240px, calc(100% - 48px));
+            min-height: 90px;
+            margin: 0 auto;
+            padding: 0;
+        }
+
+        .accommodation-page .logo,
+        .accommodation-page .main-nav a,
+        .accommodation-page .nav-actions a {
+            color: #fff;
+        }
+
+        @media (min-width: 901px) {
+            .accommodation-page .site-header .nav {
+                position: relative !important;
+                display: flex !important;
+                align-items: center !important;
+                justify-content: space-between !important;
+                width: min(1240px, calc(100% - 48px)) !important;
+                min-height: 90px !important;
+                margin: 0 auto !important;
+                padding: 0 !important;
+                gap: 30px !important;
+            }
+
+            .accommodation-page .logo {
+                position: static !important;
+                flex: 0 0 auto !important;
+                margin: 0 !important;
+            }
+
+            .accommodation-page .main-nav {
+                position: static !important;
+                flex: 0 0 auto !important;
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+                gap: 30px !important;
+                width: auto !important;
+                margin: 0 auto !important;
+                transform: none !important;
+            }
+
+            .accommodation-page .nav-actions {
+                position: static !important;
+                flex: 0 0 auto !important;
+                display: flex !important;
+                align-items: center !important;
+                gap: 18px !important;
+                margin: 0 !important;
+            }
+        }
+
+        .accommodation-hero {
+            position: relative;
+            min-height: 760px;
+            display: flex;
+            align-items: flex-end;
+            overflow: hidden;
+            background:
+                linear-gradient(180deg, rgba(8,17,14,.34) 0%, rgba(8,17,14,.18) 36%, rgba(8,17,14,.80) 100%),
+                url("https://images.unsplash.com/photo-1449158743715-0a90ebb6d2d8?auto=format&fit=crop&w=2400&q=90") center/cover no-repeat;
+        }
+
+        .accommodation-hero::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(110deg, rgba(255,255,255,.12), transparent 36%, transparent 70%, rgba(255,255,255,.06));
+            pointer-events: none;
+        }
+
+        .accommodation-hero-content {
+            position: relative;
+            z-index: 2;
+            width: min(1240px, calc(100% - 48px));
+            margin: 0 auto;
+            padding: 0 0 108px;
+            color: #fff;
+            animation: accommodationReveal .9s ease both;
+        }
+
+        .acc-eyebrow {
+            margin: 0 0 16px;
+            font-size: .82rem;
+            font-weight: 800;
+            letter-spacing: .22em;
+            text-transform: uppercase;
+            color: #f0d3aa;
+        }
+
+        .accommodation-hero h1 {
+            max-width: 900px;
+            margin: 0;
+            font-size: clamp(3.4rem, 7vw, 6.8rem);
+            line-height: .94;
+            letter-spacing: -.045em;
+            color: #fff;
+        }
+
+        .accommodation-hero p.hero-copy {
+            max-width: 760px;
+            margin: 26px 0 0;
+            font-size: clamp(1rem, 1.5vw, 1.18rem);
+            line-height: 1.72;
+            color: rgba(255,255,255,.86);
+        }
+
+        .acc-hero-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 28px;
+        }
+
+        .acc-hero-pill {
+            padding: 10px 14px;
+            border: 1px solid rgba(255,255,255,.20);
+            border-radius: 999px;
+            background: rgba(255,255,255,.10);
+            backdrop-filter: blur(10px);
+            font-size: .88rem;
+            font-weight: 700;
+        }
+
+        .accommodation-main {
+            width: min(1240px, calc(100% - 48px));
+            margin: 0 auto;
+            padding: 110px 0 120px;
+        }
+
+        .acc-intro {
+            display: grid;
+            grid-template-columns: minmax(0, 1.25fr) minmax(300px, .75fr);
+            gap: 70px;
+            align-items: end;
+            margin-bottom: 54px;
+        }
+
+        .acc-intro .eyebrow {
+            margin-bottom: 12px;
+        }
+
+        .acc-intro h2 {
+            max-width: 820px;
+            margin: 0;
+            font-size: clamp(2.6rem, 5vw, 4.4rem);
+            line-height: 1.02;
+            letter-spacing: -.04em;
+        }
+
+        .acc-intro-copy {
+            margin: 0;
+            color: var(--acc-muted);
+            line-height: 1.75;
+            font-size: 1.04rem;
+        }
+
+        .acc-filter {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 34px;
+        }
+
+        .acc-filter span {
+            padding: 10px 14px;
+            border: 1px solid var(--acc-line);
+            border-radius: 999px;
+            background: rgba(255,255,255,.66);
+            font-size: .9rem;
+            font-weight: 700;
+        }
+
+        .acc-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 26px;
+        }
+
+        .stay-card {
+            overflow: hidden;
+            border: 1px solid rgba(20,35,30,.08);
+            border-radius: 26px;
+            background: var(--acc-card);
+            box-shadow: 0 18px 48px rgba(16,28,24,.08);
+            transition: transform .45s ease, box-shadow .45s ease;
+        }
+
+        .stay-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 28px 70px rgba(16,28,24,.14);
+        }
+
+        .stay-image {
+            position: relative;
+            height: 330px;
+            overflow: hidden;
+            background-position: center;
+            background-size: cover;
+        }
+
+        .stay-image::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(0,0,0,.02), rgba(0,0,0,.62));
+        }
+
+        .stay-card:hover .stay-image {
+            background-size: 108%;
+            transition: background-size .7s ease;
+        }
+
+        .stay-location {
+            position: absolute;
+            left: 18px;
+            top: 18px;
+            z-index: 2;
+            padding: 8px 12px;
+            border-radius: 999px;
+            background: rgba(255,255,255,.90);
+            color: var(--acc-ink);
+            font-size: .78rem;
+            font-weight: 800;
+        }
+
+        .stay-type {
+            position: absolute;
+            left: 18px;
+            bottom: 18px;
+            z-index: 2;
+            color: #fff;
+            font-size: .82rem;
+            font-weight: 800;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+        }
+
+        .stay-body {
+            padding: 28px 28px 30px;
+        }
+
+        .stay-body h3 {
+            margin: 0;
+            font-size: 1.65rem;
+            line-height: 1.1;
+        }
+
+        .stay-body p {
+            margin: 14px 0 0;
+            color: var(--acc-muted);
+            line-height: 1.65;
+        }
+
+        .stay-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 20px 0 22px;
+        }
+
+        .stay-meta span {
+            padding: 8px 10px;
+            border-radius: 10px;
+            background: #f1efe9;
+            color: #49534f;
+            font-size: .8rem;
+            font-weight: 700;
+        }
+
+        .stay-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .stay-price small {
+            display: block;
+            margin-bottom: 4px;
+            color: var(--acc-muted);
+            font-size: .78rem;
+        }
+
+        .stay-price strong {
+            font-size: 1.45rem;
+        }
+
+        .stay-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--acc-accent);
+            font-weight: 800;
+            text-decoration: none;
+            transition: gap .25s ease;
+        }
+
+        .stay-link:hover {
+            gap: 13px;
+        }
+
+        .acc-banner {
+            position: relative;
+            margin-top: 34px;
+            padding: 58px 58px 64px;
+            overflow: hidden;
+            border-radius: 28px;
+            color: #fff;
+            background:
+                linear-gradient(110deg, rgba(11,24,19,.88), rgba(11,24,19,.48)),
+                url("https://images.unsplash.com/photo-1510798831971-661eb04b3739?auto=format&fit=crop&w=2200&q=90") center/cover no-repeat;
+        }
+
+        .acc-banner-content {
+            max-width: 760px;
+        }
+
+        .acc-banner h2 {
+            margin: 0;
+            font-size: clamp(2.2rem, 4.2vw, 4rem);
+            line-height: 1;
+            letter-spacing: -.035em;
+        }
+
+        .acc-banner p {
+            margin: 18px 0 26px;
+            color: rgba(255,255,255,.82);
+            line-height: 1.7;
+        }
+
+        .acc-banner .button {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .acc-banner .button::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -120%;
+            width: 70%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,.42), transparent);
+            transform: skewX(-18deg);
+            transition: left .6s ease;
+        }
+
+        .acc-banner .button:hover::after {
+            left: 140%;
+        }
+
+        .acc-note {
+            margin-top: 22px;
+            color: #7a837f;
+            font-size: .88rem;
+            line-height: 1.6;
+        }
+
+        @keyframes accommodationReveal {
+            from {
+                opacity: 0;
+                transform: translateY(24px);
+                filter: blur(9px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+                filter: blur(0);
+            }
+        }
+
+        @media (max-width: 900px) {
+            .accommodation-hero {
+                min-height: 680px;
+            }
+
+            .acc-intro {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .acc-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .acc-banner {
+                padding: 42px 30px 46px;
+            }
+        }
+
+        @media (max-width: 620px) {
+            .accommodation-hero-content,
+            .accommodation-main,
+            .accommodation-page .site-header .nav {
+                width: min(100% - 32px, 1240px);
+            }
+
+            .accommodation-hero h1 {
+                font-size: clamp(3rem, 16vw, 4.5rem);
+            }
+
+            .accommodation-main {
+                padding: 76px 0 90px;
+            }
+
+            .stay-image {
+                height: 260px;
+            }
+
+            .stay-body {
+                padding: 23px 21px 25px;
+            }
+
+            .stay-bottom {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .accommodation-hero-content,
+            .stay-card,
+            .stay-link,
+            .acc-banner .button::after {
+                animation: none !important;
+                transition: none !important;
+            }
+        }
+    </style>
+</head>
+
+<body class="accommodation-page">
+
+<header class="site-header">
+    <div class="container nav">
+        <a href="../index.html" class="logo">DISCOVER <span>BULGARIA</span></a>
+
+        <nav class="main-nav">
+            <a href="../index.html">Начало</a>
+            <a href="destinations.html">Дестинации</a>
+            <a href="../index.html#experiences">Преживявания</a>
+            <a href="accommodation.html" class="active">Настаняване</a>
+            <a href="../index.html#shop">Магазин</a>
+        </nav>
+
+        <div class="nav-actions">
+            <a href="#" aria-label="Любими">♡</a>
+            <a href="#" aria-label="Количка">🛒</a>
+            <a href="#">Вход</a>
+        </div>
+    </div>
+</header>
+
+<main>
+    <section class="accommodation-hero">
+        <div class="accommodation-hero-content">
+            <p class="acc-eyebrow">DISCOVER BULGARIA · НАСТАНЯВАНЕ</p>
+            <h1>Мястото, където<br>пътуването продължава.</h1>
+            <p class="hero-copy">
+                Подбери своето място за нощувка според дестинацията,
+                атмосферата и начина, по който искаш да изживееш България.
+            </p>
+
+            <div class="acc-hero-pills">
+                <span class="acc-hero-pill">🏔️ Планина</span>
+                <span class="acc-hero-pill">🌊 Море</span>
+                <span class="acc-hero-pill">🏛️ История</span>
+                <span class="acc-hero-pill">✨ Подбрани места</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="accommodation-main">
+        <div class="acc-intro">
+            <div>
+                <p class="eyebrow">ПОДБРАНИ МЕСТА</p>
+                <h2>Не търси просто хотел.<br>Намери атмосфера.</h2>
+            </div>
+
+            <p class="acc-intro-copy">
+                Тази секция представя примерни места за настаняване,
+                подредени според характера на пътуването. Идеята е мястото
+                за нощувка да бъде част от самото преживяване, а не отделна
+                стъпка извън него.
+            </p>
+        </div>
+
+        <div class="acc-filter" aria-label="Категории">
+            <span>Всички</span>
+            <span>Планина</span>
+            <span>Море</span>
+            <span>Исторически градове</span>
+            <span>Спокойна почивка</span>
+        </div>
+
+        <div class="acc-grid">
+            <article class="stay-card">
+                <div class="stay-image" style="background-image:url('https://cdn.prod.rexby.com/image/5429b0d5cecb410ebcb5a51e235c7aed?format=webp&width=1080&height=1350&quality=80');">
+                    <span class="stay-location">Рила</span>
+                    <span class="stay-type">Планински престой</span>
+                </div>
+                <div class="stay-body">
+                    <h3>Планинска хижа Рила</h3>
+                    <p>Уютна планинска база за сутрини сред върхове, езера и маршрути.</p>
+                    <div class="stay-meta">
+                        <span>🥾 Пътеки наблизо</span>
+                        <span>🔥 Камина</span>
+                        <span>🌲 Планинска гледка</span>
+                    </div>
+                    <div class="stay-bottom">
+                        <div class="stay-price">
+                            <small>Демонстрационна цена</small>
+                            <strong>68,00 € / нощ</strong>
+                        </div>
+                        <a class="stay-link" href="rila.html">Разгледай →</a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="stay-card">
+                <div class="stay-image" style="background-image:url('https://www.andrey-andreev.com/wp-content/uploads/2020/07/ABA01212.jpg');">
+                    <span class="stay-location">Поморие</span>
+                    <span class="stay-type">Морски престой</span>
+                </div>
+                <div class="stay-body">
+                    <h3>Морска резиденция Поморие</h3>
+                    <p>Светло крайбрежно място за дни с море, солено езеро и бавни вечери.</p>
+                    <div class="stay-meta">
+                        <span>🌊 Близо до морето</span>
+                        <span>☀️ Балкон</span>
+                        <span>🧖 SPA зона</span>
+                    </div>
+                    <div class="stay-bottom">
+                        <div class="stay-price">
+                            <small>Демонстрационна цена</small>
+                            <strong>82,00 € / нощ</strong>
+                        </div>
+                        <a class="stay-link" href="pomorie.html">Разгледай →</a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="stay-card">
+                <div class="stay-image" style="background-image:url('https://cf.bstatic.com/xdata/images/hotel/max1024x768/463892820.jpg?k=ac63a2aaf33abd88d52055021c0f5fd7326c61129348ed872ac2f4f4e0bacd22&o=');">
+                    <span class="stay-location">Велико Търново</span>
+                    <span class="stay-type">Историческо пътуване</span>
+                </div>
+                <div class="stay-body">
+                    <h3>Къща с гледка към Царевец</h3>
+                    <p>Градско настаняване с атмосфера на старо Търново и лесен достъп до крепостите.</p>
+                    <div class="stay-meta">
+                        <span>🏰 Стара част</span>
+                        <span>☕ Закуска</span>
+                        <span>🌇 Градска гледка</span>
+                    </div>
+                    <div class="stay-bottom">
+                        <div class="stay-price">
+                            <small>Демонстрационна цена</small>
+                            <strong>74,00 € / нощ</strong>
+                        </div>
+                        <a class="stay-link" href="veliko-tarnovo.html">Разгледай →</a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="stay-card">
+                <div class="stay-image" style="background-image:url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTm7VnjdRLchOQ0zyNF-r4mMtjZQZ-6RibgMwqva3rnehO3X4K7Qx8XMrJw&s=10');">
+                    <span class="stay-location">Родопи</span>
+                    <span class="stay-type">Тиха планинска почивка</span>
+                </div>
+                <div class="stay-body">
+                    <h3>Родопска горска къща</h3>
+                    <p>Спокойно убежище сред гората за бавни уикенди, преходи и чист планински въздух.</p>
+                    <div class="stay-meta">
+                        <span>🌲 Гора</span>
+                        <span>🛁 Уютна зона</span>
+                        <span>🥾 Преходи</span>
+                    </div>
+                    <div class="stay-bottom">
+                        <div class="stay-price">
+                            <small>Демонстрационна цена</small>
+                            <strong>61,00 € / нощ</strong>
+                        </div>
+                        <a class="stay-link" href="rhodopes.html">Разгледай →</a>
+                    </div>
+                </div>
+            </article>
+        </div>
+
+        <section class="acc-banner">
+            <div class="acc-banner-content">
+                <p class="acc-eyebrow">СЛЕДВАЩАТА СТЪПКА</p>
+                <h2>Знаеш къде искаш да отидеш?</h2>
+                <p>
+                    Отвори дестинацията и виж какво можеш да изживееш там —
+                    места, приключения и идеи за целия престой.
+                </p>
+                <a href="destinations.html" class="button primary">Разгледай дестинациите →</a>
+            </div>
+        </section>
+
+        <p class="acc-note">
+            * Имената и цените в тази демо секция са примерни за дипломния проект и
+            служат за визуализация на бъдещата система за настаняване и резервации.
+        </p>
+    </section>
+</main>
+
+<footer>
+    <div class="footer-content">
+        <div>
+            <h2>DISCOVER BULGARIA</h2>
+            <p>Открий България. Изживей повече.</p>
+        </div>
+        <div>
+            <h3>Discover</h3>
+            <a href="../index.html">Начало</a>
+            <a href="destinations.html">Дестинации</a>
+            <a href="../index.html#experiences">Преживявания</a>
+            <a href="accommodation.html">Настаняване</a>
+            <a href="../index.html#shop">Магазин</a>
+        </div>
+        <div>
+            <h3>Помощ</h3>
+            <a href="#">За нас</a>
+            <a href="#">Контакти</a>
+            <a href="#">Често задавани въпроси</a>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>© 2026 Discover Bulgaria. Всички права запазени.</p>
+    </div>
+</footer>
+
+</body>
+</html>

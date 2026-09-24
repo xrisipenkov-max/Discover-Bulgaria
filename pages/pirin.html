@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Пирин — Discover Bulgaria</title>
+<link rel="stylesheet" href="../css/style.css">
+
+<style>
+/* =========================================================
+   PIRIN — DISTINCT DESTINATION PAGE
+   HTML + CSS ONLY
+========================================================= */
+
+.pirin-page{
+    background:#f3f1eb;
+    color:#18251f;
+}
+
+.pirin-hero{
+    min-height:760px;
+    position:relative;
+    display:flex;
+    align-items:flex-end;
+    color:#fff;
+    overflow:hidden;
+    background:
+        linear-gradient(180deg,rgba(5,15,13,.05) 5%,rgba(5,15,13,.10) 42%,rgba(5,15,13,.82) 100%),
+        url("https://commons.wikimedia.org/wiki/Special:Redirect/file/Pirin%20-%20Vihren%20peak.JPG")
+        center 48% / cover no-repeat;
+}
+
+.pirin-hero::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(90deg,rgba(0,0,0,.35),transparent 70%);
+    pointer-events:none;
+}
+
+.pirin-hero-inner{
+    position:relative;
+    z-index:2;
+    width:min(1180px,calc(100% - 48px));
+    margin:0 auto;
+    padding:155px 0 90px;
+}
+
+.pirin-eyebrow{
+    margin-bottom:18px;
+    font-size:13px;
+    font-weight:800;
+    letter-spacing:3px;
+}
+
+.pirin-hero h1{
+    margin:0 0 24px;
+    font-size:clamp(68px,9vw,116px);
+    line-height:.88;
+    letter-spacing:-5px;
+}
+
+.pirin-lead{
+    max-width:760px;
+    margin:0;
+    font-size:clamp(18px,2vw,23px);
+    line-height:1.55;
+    color:rgba(255,255,255,.92);
+}
+
+.pirin-chip{
+    display:inline-flex;
+    margin-top:30px;
+    padding:12px 18px;
+    border:1px solid rgba(255,255,255,.35);
+    border-radius:999px;
+    background:rgba(0,0,0,.25);
+    backdrop-filter:blur(10px);
+    font-size:14px;
+    font-weight:700;
+}
+
+.pirin-story{
+    padding:115px 0 105px;
+    background:#f3f1eb;
+}
+
+.pirin-wrap{
+    width:min(1120px,calc(100% - 48px));
+    margin:0 auto;
+}
+
+.pirin-kicker{
+    margin:0 0 14px;
+    color:#56715c;
+    font-size:12px;
+    font-weight:800;
+    letter-spacing:3px;
+}
+
+.pirin-story h2{
+    max-width:850px;
+    margin:0;
+    font-size:clamp(38px,5vw,64px);
+    line-height:1.02;
+    letter-spacing:-2.5px;
+}
+
+.pirin-story-grid{
+    display:grid;
+    grid-template-columns:1.15fr .85fr;
+    gap:70px;
+    margin-top:42px;
+    align-items:end;
+}
+
+.pirin-story-copy{
+    max-width:720px;
+    color:#626a64;
+    font-size:18px;
+    line-height:1.85;
+}
+
+.pirin-facts{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:12px;
+}
+
+.pirin-fact{
+    padding:22px;
+    border-top:1px solid #c7c8c0;
+}
+
+.pirin-fact strong{
+    display:block;
+    margin-bottom:6px;
+    font-size:21px;
+}
+
+.pirin-fact span{
+    color:#777d78;
+    font-size:13px;
+}
+
+.pirin-gallery{
+    padding:20px 0 120px;
+    background:#f3f1eb;
+}
+
+.pirin-title{
+    display:flex;
+    justify-content:space-between;
+    align-items:end;
+    gap:30px;
+    margin-bottom:32px;
+}
+
+.pirin-title h2{
+    margin:0;
+    font-size:clamp(35px,4.5vw,56px);
+    letter-spacing:-2px;
+}
+
+.pirin-title p{
+    max-width:400px;
+    margin:0;
+    color:#727972;
+    line-height:1.6;
+}
+
+.pirin-mosaic{
+    display:grid;
+    grid-template-columns:1.35fr .65fr;
+    grid-template-rows:280px 280px;
+    gap:18px;
+}
+
+.pirin-photo{
+    position:relative;
+    overflow:hidden;
+    border-radius:28px;
+    background-size:cover;
+    background-position:center;
+}
+
+.pirin-photo::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(180deg,transparent 40%,rgba(0,0,0,.72));
+}
+
+.pirin-photo span{
+    position:absolute;
+    z-index:2;
+    left:24px;
+    bottom:20px;
+    color:#fff;
+    font-size:18px;
+    font-weight:800;
+}
+
+.pirin-photo-big{
+    grid-row:1 / 3;
+    background-image:url("https://commons.wikimedia.org/wiki/Special:Redirect/file/Pirin%20-%20hiking%20trail%20from%20Vihren.jpg");
+}
+
+.pirin-photo-lake{
+    background-image:url("https://commons.wikimedia.org/wiki/Special:Redirect/file/Pirin%20-%20Popovo%20ezero%20-%20IMG%204657.jpg");
+}
+
+.pirin-photo-sinanitsa{
+    background-image:url("https://commons.wikimedia.org/wiki/Special:Redirect/file/Sinanitsa%20hut%20with%20the%20lake%20seen%20from%20Sinanitsa%20peak.jpg");
+}
+
+.pirin-route{
+    padding:110px 0;
+    background:#1c2c26;
+    color:#fff;
+}
+
+.pirin-route .pirin-kicker{
+    color:#b6c89c;
+}
+
+.pirin-route h2{
+    margin:0;
+    font-size:clamp(40px,5vw,64px);
+    letter-spacing:-2.5px;
+}
+
+.pirin-route-sub{
+    max-width:680px;
+    margin:20px 0 55px;
+    color:rgba(255,255,255,.66);
+    font-size:18px;
+    line-height:1.7;
+}
+
+.pirin-stops{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    border-top:1px solid rgba(255,255,255,.18);
+}
+
+.pirin-stop{
+    min-height:220px;
+    padding:28px 24px;
+    border-right:1px solid rgba(255,255,255,.15);
+}
+
+.pirin-stop:last-child{
+    border-right:0;
+}
+
+.pirin-stop-number{
+    color:#b6c89c;
+    font-size:12px;
+    font-weight:800;
+    letter-spacing:2px;
+}
+
+.pirin-stop h3{
+    margin:55px 0 10px;
+    font-size:22px;
+}
+
+.pirin-stop p{
+    margin:0;
+    color:rgba(255,255,255,.60);
+    font-size:14px;
+    line-height:1.55;
+}
+
+.pirin-experiences{
+    padding:115px 0;
+    background:#f3f1eb;
+}
+
+.pirin-experience-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:16px;
+    margin-top:42px;
+}
+
+.pirin-experience{
+    min-height:230px;
+    padding:28px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    border:1px solid #d8d8cf;
+    border-radius:24px;
+    background:#faf9f5;
+    transition:transform .25s ease,box-shadow .25s ease;
+}
+
+.pirin-experience:hover{
+    transform:translateY(-5px);
+    box-shadow:0 18px 45px rgba(25,35,30,.10);
+}
+
+.pirin-experience h3{
+    margin:0;
+    font-size:22px;
+}
+
+.pirin-experience p{
+    margin:12px 0 0;
+    color:#747b75;
+    line-height:1.55;
+}
+
+.pirin-price{
+    margin-top:24px;
+    color:#56715c;
+    font-size:20px;
+    font-weight:800;
+}
+
+.pirin-info{
+    padding:90px 0;
+    background:#e4e7df;
+}
+
+.pirin-info-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:12px;
+    margin-top:38px;
+}
+
+.pirin-info-card{
+    padding:28px 22px;
+    border-radius:18px;
+    background:rgba(255,255,255,.48);
+}
+
+.pirin-info-card small{
+    display:block;
+    margin-bottom:9px;
+    color:#727a72;
+    font-size:11px;
+    font-weight:800;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+}
+
+.pirin-info-card strong{
+    font-size:18px;
+}
+
+.pirin-cta{
+    padding:110px 0;
+    color:#fff;
+    text-align:center;
+    background:
+        linear-gradient(rgba(20,42,34,.70),rgba(20,42,34,.86)),
+        url("https://commons.wikimedia.org/wiki/Special:Redirect/file/Sinanitsa%20hut%20with%20the%20lake%20seen%20from%20Sinanitsa%20peak.jpg")
+        center / cover no-repeat;
+}
+
+.pirin-cta h2{
+    max-width:800px;
+    margin:0 auto 20px;
+    font-size:clamp(42px,6vw,72px);
+    letter-spacing:-3px;
+}
+
+.pirin-cta p{
+    max-width:650px;
+    margin:0 auto 32px;
+    color:rgba(255,255,255,.76);
+    font-size:18px;
+    line-height:1.7;
+}
+
+.pirin-cta a{
+    display:inline-flex;
+    padding:15px 23px;
+    border-radius:999px;
+    background:#fff;
+    color:#1c2c26;
+    text-decoration:none;
+    font-weight:800;
+}
+
+.pirin-credits{
+    padding:24px 0;
+    background:#111d18;
+    color:rgba(255,255,255,.55);
+    font-size:12px;
+    line-height:1.7;
+}
+
+.pirin-credits a{
+    color:rgba(255,255,255,.78);
+}
+
+@media(max-width:900px){
+    .pirin-story-grid,
+    .pirin-mosaic{
+        grid-template-columns:1fr;
+    }
+
+    .pirin-mosaic{
+        grid-template-rows:330px 220px 220px;
+    }
+
+    .pirin-photo-big{
+        grid-row:auto;
+    }
+
+    .pirin-stops,
+    .pirin-info-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .pirin-stop:nth-child(2){
+        border-right:0;
+    }
+
+    .pirin-experience-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+@media(max-width:650px){
+    .pirin-hero{
+        min-height:680px;
+    }
+
+    .pirin-hero-inner,
+    .pirin-wrap{
+        width:min(100% - 34px,1120px);
+    }
+
+    .pirin-hero-inner{
+        padding-bottom:58px;
+    }
+
+    .pirin-facts,
+    .pirin-stops,
+    .pirin-info-grid,
+    .pirin-experience-grid{
+        grid-template-columns:1fr;
+    }
+
+    .pirin-stop{
+        border-right:0;
+        border-bottom:1px solid rgba(255,255,255,.15);
+    }
+
+    .pirin-stop:last-child{
+        border-bottom:0;
+    }
+
+    .pirin-title{
+        display:block;
+    }
+
+    .pirin-title p{
+        margin-top:15px;
+    }
+}
+</style>
+</head>
+
+<body class="pirin-page">
+
+<header class="site-header">
+    <div class="container main-nav">
+        <a class="logo" href="../index.html">DISCOVER <span>BULGARIA</span></a>
+        <nav class="nav-links">
+            <a href="../index.html">Начало</a>
+            <a href="destinations.html">Дестинации</a>
+            <a href="trip-planner.html">Планирай</a>
+        </nav>
+        <div class="nav-actions">
+            <a href="trip-planner.html" class="btn btn-primary">Започни пътуване</a>
+        </div>
+    </div>
+</header>
+
+<main>
+
+<section class="pirin-hero">
+    <div class="pirin-hero-inner">
+        <div class="pirin-eyebrow">ПЛАНИНА · ПИРИН · ДИВО ПРИКЛЮЧЕНИЕ</div>
+        <h1>Пирин.</h1>
+        <p class="pirin-lead">
+            Остри върхове, ледени езера и пътеки, които водят все по-високо —
+            планина за хора, които искат да усетят Балкана с всяка крачка.
+        </p>
+        <div class="pirin-chip">⛰️ Вихрен — 2914 м</div>
+    </div>
+</section>
+
+<section class="pirin-story">
+    <div class="pirin-wrap">
+        <p class="pirin-kicker">ОТКРИЙ ПИРИН</p>
+        <h2>Планината, в която камъкът, водата и небето се срещат.</h2>
+
+        <div class="pirin-story-grid">
+            <p class="pirin-story-copy">
+                Пирин е висок, суров и изненадващо разнообразен.
+                Върхът Вихрен е най-високата точка на планината, а сред
+                гранитните ридове са разпръснати множество високопланински
+                езера. Попово езеро е най-голямото от Поповите езера,
+                а маршрутите през планината предлагат гледки, които се
+                променят с всяка височина.
+            </p>
+
+            <div class="pirin-facts">
+                <div class="pirin-fact">
+                    <strong>Вихрен</strong>
+                    <span>2914 м</span>
+                </div>
+                <div class="pirin-fact">
+                    <strong>Попово езеро</strong>
+                    <span>2233,5 м</span>
+                </div>
+                <div class="pirin-fact">
+                    <strong>Пирин</strong>
+                    <span>Национален парк</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="pirin-gallery">
+    <div class="pirin-wrap">
+        <div class="pirin-title">
+            <div>
+                <p class="pirin-kicker">ТРИ ЛИЦА НА ПИРИН</p>
+                <h2>Върхове. Езера. Пътеки.</h2>
+            </div>
+            <p>
+                Тук пейзажът се сменя постоянно — от стръмни алпийски ридове
+                до тихи езера, скрити високо в планината.
+            </p>
+        </div>
+
+        <div class="pirin-mosaic">
+            <div class="pirin-photo pirin-photo-big">
+                <span>Пътеката от Вихрен</span>
+            </div>
+            <div class="pirin-photo pirin-photo-lake">
+                <span>Попово езеро</span>
+            </div>
+            <div class="pirin-photo pirin-photo-sinanitsa">
+                <span>Синаница</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="pirin-route">
+    <div class="pirin-wrap">
+        <p class="pirin-kicker">ЕДИН ДЕН В ПЛАНИНАТА</p>
+        <h2>Четири спирки. Все по-високо.</h2>
+        <p class="pirin-route-sub">
+            Маршрут за усещане на Пирин — от планинската атмосфера до
+            високите гледки и езерата.
+        </p>
+
+        <div class="pirin-stops">
+            <div class="pirin-stop">
+                <div class="pirin-stop-number">01</div>
+                <h3>Хижа Вихрен</h3>
+                <p>Началото на много от най-впечатляващите маршрути в района.</p>
+            </div>
+
+            <div class="pirin-stop">
+                <div class="pirin-stop-number">02</div>
+                <h3>Вихрен</h3>
+                <p>Най-високият връх на Пирин — 2914 м над морското равнище.</p>
+            </div>
+
+            <div class="pirin-stop">
+                <div class="pirin-stop-number">03</div>
+                <h3>Попово езеро</h3>
+                <p>Високопланинско езеро сред гранитния пейзаж на Пирин.</p>
+            </div>
+
+            <div class="pirin-stop">
+                <div class="pirin-stop-number">04</div>
+                <h3>Синаница</h3>
+                <p>Езеро, хижа и планински хоризонт в една от най-запомнящите се части на Пирин.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="pirin-experiences">
+    <div class="pirin-wrap">
+        <div class="pirin-title">
+            <div>
+                <p class="pirin-kicker">ПРЕЖИВЯВАНИЯ</p>
+                <h2>Изживей Пирин.</h2>
+            </div>
+            <p>
+                Подбрани идеи за планински ден — от лек маршрут до
+                по-сериозно приключение.
+            </p>
+        </div>
+
+        <div class="pirin-experience-grid">
+            <article class="pirin-experience">
+                <div>
+                    <h3>Пирински панорамен маршрут</h3>
+                    <p>Преход с гледки към високите ридове и долини.</p>
+                </div>
+                <div class="pirin-price">25,51 €</div>
+            </article>
+
+            <article class="pirin-experience">
+                <div>
+                    <h3>По пътеката към Вихрен</h3>
+                    <p>Планинско преживяване за любители на високите върхове.</p>
+                </div>
+                <div class="pirin-price">30,63 €</div>
+            </article>
+
+            <article class="pirin-experience">
+                <div>
+                    <h3>Попово езеро</h3>
+                    <p>Маршрут до едно от най-впечатляващите езера в Пирин.</p>
+                </div>
+                <div class="pirin-price">28,07 €</div>
+            </article>
+
+            <article class="pirin-experience">
+                <div>
+                    <h3>Фотографски маршрут</h3>
+                    <p>Пирин през обектива — върхове, езера и облаци.</p>
+                </div>
+                <div class="pirin-price">25,51 €</div>
+            </article>
+
+            <article class="pirin-experience">
+                <div>
+                    <h3>Планинска разходка край Бъндерица</h3>
+                    <p>Спокойно преживяване сред гори и високопланински пейзажи.</p>
+                </div>
+                <div class="pirin-price">20,40 €</div>
+            </article>
+
+            <article class="pirin-experience">
+                <div>
+                    <h3>Пирин — ден за приключение</h3>
+                    <p>Целодневна идея за хора, които искат да останат по-дълго в планината.</p>
+                </div>
+                <div class="pirin-price">35,74 €</div>
+            </article>
+        </div>
+    </div>
+</section>
+
+<section class="pirin-info">
+    <div class="pirin-wrap">
+        <p class="pirin-kicker">ПРАКТИЧНО</p>
+        <h2>Преди да тръгнеш.</h2>
+
+        <div class="pirin-info-grid">
+            <div class="pirin-info-card">
+                <small>Район</small>
+                <strong>Югозападна България</strong>
+            </div>
+
+            <div class="pirin-info-card">
+                <small>Най-висок връх</small>
+                <strong>Вихрен — 2914 м</strong>
+            </div>
+
+            <div class="pirin-info-card">
+                <small>Сезон</small>
+                <strong>Пролет / лято / есен</strong>
+            </div>
+
+            <div class="pirin-info-card">
+                <small>Подходящо за</small>
+                <strong>Преходи, природа и приключения</strong>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="pirin-cta">
+    <div class="pirin-wrap">
+        <h2>Пирин не се разглежда. Пирин се изкачва.</h2>
+        <p>
+            Създай своето пътуване и превърни планината
+            в следващото си голямо приключение.
+        </p>
+        <a href="trip-planner.html">Създай своето пътуване →</a>
+    </div>
+</section>
+
+</main>
+
+<footer class="pirin-credits">
+    <div class="pirin-wrap">
+        <strong>Изображения:</strong>
+        Wikimedia Commons —
+        <a href="https://commons.wikimedia.org/wiki/File:Pirin_-_Vihren_peak.JPG" target="_blank">Вихрен</a>
+        — Pudelek, CC BY-SA 3.0;
+        <a href="https://commons.wikimedia.org/wiki/File:Pirin_-_hiking_trail_from_Vihren.jpg" target="_blank">пътеката от Вихрен</a>
+        — Pudelek, CC BY-SA 3.0;
+        <a href="https://commons.wikimedia.org/wiki/File:Pirin_-_Popovo_ezero_-_IMG_4657.jpg" target="_blank">Попово езеро</a>
+        — Dido3, CC BY-SA 4.0;
+        <a href="https://commons.wikimedia.org/wiki/File:Sinanitsa_hut_with_the_lake_seen_from_Sinanitsa_peak.jpg" target="_blank">Синаница</a>
+        — Ivano Giambattista, CC0.
+        <br>
+        Discover Bulgaria · „Открий България. Изживей повече.“
+    </div>
+</footer>
+
+</body>
+</html>
